@@ -1,0 +1,67 @@
+.devide {
+    height: 20rpx;
+    background: #f3f3f3;
+}
+
+.member-list {
+    padding: 0 36rpx;
+    font-size: 32rpx;
+    font-weight: bord;
+    color: #333;
+}
+
+.member-item {
+    padding: 32rpx 0;
+    border-bottom: 2rpx solid #f3f3f3;
+    display: flex;
+    justify-content: space-between;
+}
+
+.member-num {
+    margin-right: 58rpx;
+}
+
+.member-status {
+}
+
+.status-image {
+    width: 24rpx;
+    height: 24rpx;
+    margin-right: 24rpx;
+}
+
+.status-wait {
+    color: #1890ff;
+}
+
+.status-unpass {
+    color: #ff4d4f;
+}
+
+.status-pass {
+    color: #52c41a;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.no-data-con {
+    width: 100%;
+    height: 600rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-content {
+    background: #fff;
+}

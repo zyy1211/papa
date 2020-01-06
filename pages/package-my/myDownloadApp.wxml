@@ -1,0 +1,16 @@
+<view class="main-content">
+    <view class="main-text">
+        <view class="main-text-content">PaPa体育全新上线啦，PaPa体育APP是一款集约球、俱乐部、比赛、赛事计分登于一体的应用，是羽毛球爱好者不可或缺的神器！</view>
+        <view class="download-memo">下载方式</view>
+        <view>1、iOS用户去AppStore搜索“<text>PaPa体育</text>”即可下载使用</view>
+        <view>2、点击“<text>下载APP</text>”按钮，复制地址到浏览器打开即可下载使用</view>
+    </view>
+    <view class="contact-box">
+        <form reportSubmit bindsubmit="bindDownloadApp" class="form-for-formid contact-download">
+            <i class="icon icon-memo">
+                <image src="/static/icon-logo-white.svg"></image>
+            </i>
+            <button formType="submit" type="default"></button>下载APP
+    </form>
+    </view>
+</view>

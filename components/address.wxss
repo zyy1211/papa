@@ -1,0 +1,116 @@
+@import "authorize.wxss";
+
+.wxapp-modal {
+    text-align: left;
+    line-height: 65rpx;
+}
+
+.modal-content {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 900rpx;
+    background: #fff;
+    font-size: 24rpx;
+}
+
+.modal-header {
+}
+
+.modal-steps-wrap {
+    width: 700rpx;
+    padding-left: 50rpx;
+}
+
+.modal-steps-left {
+    float: left;
+}
+
+.modal-steps-item {
+    float: left;
+    margin-left: 30rpx;
+}
+
+.modal-steps-item.on {
+    color: #00CD91;
+}
+
+.steps-item,.steps-item-county {
+    width: 10rpx;
+    height: 10rpx;
+    background: #fff;
+    border: 2rpx solid #00CD91;
+    border-radius: 50%;
+}
+
+.steps-item.active {
+    background: #00CD91;
+}
+
+.steps-item-line {
+    width: 2rpx;
+    height: 50rpx;
+    margin-left: 6rpx;
+    background: #00CD91;
+}
+
+.modal-title {
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.city-content {
+    width: 100%;
+    height: 740rpx;
+    background: #f3f3f3;
+    overflow-y: auto;
+}
+
+.city-content.showCity {
+    height: 610rpx;
+}
+
+.city-content.showCounty {
+    height: 545rpx;
+}
+
+.list-city-item {
+    display: block;
+    position: relative;
+    padding-left: 100rpx;
+}
+
+.list-active {
+    display: none;
+    position: absolute;
+    top: 21rpx;
+    right: 50rpx;
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.list-city-item.on {
+    background: #fff;
+}
+
+.list-city-item.on .list-active {
+    display: block;
+}
+
+.list-letter-name {
+    position: absolute;
+    left: 40rpx;
+}
+
+.modal-footer {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 28rpx;
+}

@@ -1,0 +1,15 @@
+<view class="main-content">
+    <view class="main-text">
+    有疑问请拨打客服电话或添加客服微信进行咨询，我们会第一时间为您解答疑惑。同时，也欢迎大家提出意见，您的宝贵意见将是我们改进的动力。
+  </view>
+    <view class="contact-box">
+        <form reportSubmit bindsubmit="bindConactCall" class="form-for-formid contact-call">
+            <button formType="submit" type="default">拨打电话</button>
+            <image class="icon-image" src="/static/icon-phone-white.svg"></image>
+        </form>
+        <form reportSubmit bindsubmit="bindConactWeixin" class="form-for-formid contact-weixin">
+            <button formType="submit" type="default">添加微信</button>
+            <image class="icon-image" src="/static/icon-weixin.svg"></image>
+        </form>
+    </view>
+</view>

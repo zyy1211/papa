@@ -1,0 +1,67 @@
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <canvas canvasId="myCanvas" class="my-canvas"></canvas>
+    <view class="image-swiper-box">
+        <swiper bindchange="bindSwiperChange" class="" indicatorDots="{{false}}" style="height:{{subjectDetailEntry.swiperHeight}}rpx;">
+            <swiper-item wx:for="{{subjectDetailEntry.imageUrlList}}">
+                <image bindload="imageOnload" class="image-swiper" data-index="{{index}}" mode="widthFix" src="{{item}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="image-swiper-nav">{{imageCurrent}}/{{subjectDetailEntry.imageUrlList.length}}</view>
+    </view>
+    <view class="subject-detail">
+        <userHeader id="userHeader" userInfo="{{userHeaderInfo}}"></userHeader>
+        <view class="subject-content">
+            <text space="nbsp">{{subjectDetailEntry.content}}</text>
+        </view>
+        <view class="activity-list" wx:if="{{subjectDetailEntry.linkActivityList.length!==0}}">
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid activity-list-item clearfix" data-url="{{item.navigateUrl}}" data-url-type="noLogin" wx:for="{{subjectDetailEntry.linkActivityList}}">
+                <button formType="submit" type="default"></button>
+                <view class="activity-info">
+                    <view class="activity-title text-row-ellipsis">{{item.activityTitle}}</view>
+                    <view class="activity-time">{{item.gmt}}</view>
+                </view>
+                <view class="activity-image-box">
+                    <image class="activity-image-url" src="{{item.imageUrl}}"></image>
+                </view>
+                <view class="activity-type" style="background:{{item.typeBack}}">{{item.typeName}}</view>
+            </form>
+        </view>
+        <form reportSubmit bindsubmit="openClub" class="form-for-formid subject-club" wx:if="{{subjectDetailEntry.clubName}}">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-club">
+                <image class="club-image-url" src="{{subjectDetailEntry.clubLogoUrl}}"></image>
+            </i>
+            <text class="text-overflow">{{subjectDetailEntry.clubName}}</text>
+        </form>
+        <view class="subject-address" wx:if="{{subjectDetailEntry.addressName}}">
+            <i class="icon icon-address">
+                <image class="club-image-url" src="/static/icon-address.svg"></image>
+            </i>
+            <text class="text-overflow">{{subjectDetailEntry.addressName}}</text>
+        </view>
+    </view>
+    <view class="comments">
+        <view class="comments-title">评论({{subjectDetailEntry.commentCountStr}})</view>
+        <view class="comments-list">
+            <commentCard bindaddReply="addReply" bindaddReplyCount="addReplyCount" bindcreateReply="createReply" binddeleteReply="deleteReply" bindminusReplyCount="minusReplyCount" bindnavigate="navigate" dataList="{{commentsList}}" id="commentCard" pageType="subjectDetail" subjectId="{{id}}" type="comment" userLogoUrl="{{userLogoUrl}}" userNickName="{{userNickName}}"></commentCard>
+        </view>
+    </view>
+    <view class="main-footer clearfix {{isIpx?'fix-iphonex':''}} {{hideFooter?'hide':''}}">
+        <view bindtap="getCommentFocus" class="footer-comment-button">评论一下吧 </view>
+        <view class="footer-share clearfix">
+            <button openType="share" type="default">
+                <i class="icon-share-box">
+                    <i class="icon icon-share">
+                        <image class="club-image-url" src="/static/icon-share-gray.svg"></image>
+                    </i>
+                </i>
+                <text class="share-text">分享</text>
+            </button>
+        </view>
+        <view class="footer-like">
+            <likeCard id="likeCard" isLike="{{subjectDetailEntry.isLike}}" likeCountStr="{{subjectDetailEntry.likeCountStr}}" likeId="{{id}}" pageType="subject" type="subject"></likeCard>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<appFooter id="appFooter" pageId="{{id}}" pageType="subject"></appFooter>

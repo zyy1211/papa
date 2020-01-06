@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "俱乐部详情",
+    "navigationBarBackgroundColor": "#43AD72",
+    "navigationBarTextStyle": "white",
+    "usingComponents": {
+        "appFooter": "/components/appFooter"
+    }
+}

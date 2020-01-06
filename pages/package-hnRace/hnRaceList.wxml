@@ -1,0 +1,12 @@
+<view class="data-list-con {{isIpx?'has-ipx':''}}">
+    <view class="data-page-item" wx:if="{{dataList[0].length>0}}" wx:for="{{dataList}}" wx:key="{{index}}">
+        <view class="data-item-con" wx:for="{{item}}" wx:for-item="dataItem" wx:key="{{item.id}}">
+            <hnRaceCard raceInfo="{{dataItem}}"></hnRaceCard>
+        </view>
+    </view>
+</view>
+<view class="no-fans-con" wx:if="{{dataList[0].length===0}}">
+    <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+    <view class="no-data-text">暂无数据</view>
+</view>
+<view class="fix-ipx-content" wx:if="{{isIpx}}"></view>

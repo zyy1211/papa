@@ -1,0 +1,71 @@
+.form-footer {
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 20rpx 20rpx;
+    text-align: center;
+    color: #788286;
+    font-size: 26rpx;
+    background-color: #f3f3f3;
+}
+
+.white-button {
+    background-color: #fff!important;
+    color: #333!important;
+}
+
+.white-diabled-button {
+    background-color: #788286!important;
+}
+
+.form-footer-button {
+    background-color: #00cd91!important;
+}
+
+.disabled-button {
+    background-color: #98e2c8!important;
+}
+
+.warning-button {
+    background-color: #ffa918!important;
+}
+
+.error-button {
+    background-color: #f06969!important;
+}
+
+.error-disabled-button {
+    color: #fff;
+    background-color: #ffb1b1!important;
+}
+
+.protocol-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.checkbox {
+    transform: scale(0.6,0.6);
+}
+
+.protocol-button {
+    color: #03c682;
+}
+
+.button-group {
+    display: flex;
+}
+
+.button-item {
+    flex: 1;
+    margin: 0 10rpx;
+}
+
+.relief-modal {
+    overflow: scroll;
+    width: 100%;
+    height: 600rpx;
+}

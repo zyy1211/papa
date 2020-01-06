@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "发现",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "publishNav": "/components/publishNav",
+        "subjectCard": "/components/subjectCard",
+        "userHeader": "/components/subject/userHeader",
+        "likeCard": "/components/likeCard"
+    }
+}

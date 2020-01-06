@@ -1,0 +1,141 @@
+.my-info {
+    width: 100%;
+    padding: 16rpx 20rpx 0;
+    box-sizing: border-box;
+}
+
+.info-con {
+    width: 100%;
+    padding-bottom: 20rpx;
+    background: #fff;
+    border-radius: 14rpx;
+    font-size: 30rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.info-item-con {
+    width: 100%;
+    padding: 38rpx 32rpx;
+    background: #fff;
+    margin-bottom: 2rpx;
+    border-bottom: 2rpx solid #F5F6F8;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-item-title {
+    width: 125rpx;
+    flex-shrink: 0;
+}
+
+.info-item-description {
+    height: 200rpx;
+    padding-left: 32rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.info-hedaer {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right: 35rpx;
+}
+
+.info-item-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.info-input {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+    color: #666;
+}
+
+.icon-link {
+    width: 16rpx;
+    height: 16rpx;
+    border-left: 2rpx solid #AAA;
+    border-bottom: 2rpx solid #AAA;
+    transform: rotate(-135deg);
+    margin-left: 34rpx;
+    flex-shrink: 0;
+}
+
+.info-text {
+    color: #666;
+    margin-right: 52rpx;
+}
+
+.bullet-input {
+    width: 500rpx;
+    border-radius: 14rpx;
+    font-size: 30rpx;
+    overflow: hidden;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    position: relative;
+}
+
+.bullet-title {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background: #fff;
+}
+
+.input-con {
+    width: 100%;
+    height: 100rpx;
+    background: #fff;
+    box-sizing: border-box;
+    margin-bottom: 2rpx;
+}
+
+.bullet-input-con {
+    width: 460rpx;
+    height: 100%;
+    box-sizing: border-box;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
+}
+
+.bullet-btn-con {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bullet-btn {
+    width: 249rpx;
+    background: #fff;
+    border-radius: 0;
+    font-size: 30rpx;
+    padding: 0;
+    margin: 0;
+}
+
+.bullet-btn::after {
+    border: none;
+}
+
+.add-modle-input {
+    width: 80%;
+    margin: 0 auto;
+    padding: 6rpx 12rpx;
+    line-height: 40rpx;
+    border: 2rpx solid #eaeaea;
+    border-radius: 5rpx;
+    text-align: left;
+}

@@ -1,0 +1,43 @@
+<template name="card">
+    <view class="item-image-box">
+        <form reportSubmit bindtap="navigate" class="form-for-formid" data-url="{{navigateUrl}}">
+            <button formType="submit" type="default"></button>
+            <image class="item-image" lazyLoad="{{true}}" src="{{imageUrlList[0]}}" style="height:{{height}}rpx;" wx:if="{{!isDelete}}"></image>
+            <view class="item-image-delete" style="height:{{height}}rpx;" wx:else>
+                <image lazyLoad="{{true}}" mode="widthFix" src="/static/image-delete.png"></image>
+            </view>
+            <view class="item-image-content text-row-ellipsis">{{content}}</view>
+        </form>
+        <view class="clearfix">
+            <form reportSubmit bindtap="navigate" class="form-for-formid small-user-header" data-url="{{navigateUrl}}">
+                <button formType="submit" type="default"></button>
+                <image class="user-logo" src="{{userLogoUrl}}"></image>
+                <view class="user-name text-overflow">{{createUserName}}</view>
+            </form>
+            <likeCard id="likeCard" isLike="{{isLike}}" likeCountStr="{{likeCountStr}}" likeId="{{id}}" type="subject"></likeCard>
+        </view>
+    </view>
+</template>
+<view class="content">
+    <canvas canvasId="textCanvas" style="position: fixed; left: -10px; top: -10rpx; width: 1px;height: 1px"></canvas>
+    <view class="no-data-content" wx:if="{{empty}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+        <view class="no-data-text">{{noData}}</view>
+    </view>
+    <view class="list clearfix" wx:else>
+        <view class="list-left">
+            <view class="list-item" wx:for="{{leftDataList}}" wx:key="index">
+                <view wx:for="{{item}}" wx:for-item="pageItem" wx:key="pageItem.id">
+                    <template is="card" data="{{...pageItem}}"></template>
+                </view>
+            </view>
+        </view>
+        <view class="list-right">
+            <view class="list-item" wx:for="{{rightDataList}}" wx:key="index">
+                <view wx:for="{{item}}" wx:for-item="pageItem" wx:key="pageItem.id">
+                    <template is="card" data="{{...pageItem}}"></template>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

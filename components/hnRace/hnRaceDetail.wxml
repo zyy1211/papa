@@ -1,0 +1,92 @@
+<view class="content {{isIpx?'fix-iphonex':''}}">
+    <view class="header">
+        <view class="race-info" wx:if="{{raceTopInfo}}">{{raceTopInfo}}</view>
+        <view class="header-bg">
+            <image class="header-bg-img" src="{{imageSrc}}"></image>
+        </view>
+        <view class="header-card">
+            <view class="header-title">
+                <text space="nbsp">{{raceInfo.raceTitle}}</text>
+            </view>
+            <view class="header-card-fee">
+                <text>报名费用：免费</text>
+                <view class="register-count" wx:if="{{raceInfo.groupType==='SINGLE_GROUP'}}">
+          已报名: {{raceInfo.enterAmount}}/{{raceInfo.totalAmount}}{{raceInfo.enterType==='SINGLE_ENTER'?'人':'队'}}
+        </view>
+            </view>
+            <scroll-view class="tags-wrapper" scrollX="{{true}}" wx:if="{{raceInfo.tags.length}}">
+                <text class="tag-item" wx:for="{{raceInfo.tags}}" wx:key="{{item}}">{{item}}</text>
+            </scroll-view>
+        </view>
+        <view class="header-box">
+            <form reportSubmit bindsubmit="openMap" class="form-for-formid header-card-address">
+                <button formType="submit" type="default"></button>
+                <i class="icon icon-item" style="margin-top:0;">
+                    <image src="/static/icon-address.svg"></image>
+                </i>
+                <text class="text-overflow">{{raceInfo.addressDescribe}}</text>
+                <i class="icon icon-address">
+                    <image src="/static/icon-arrow.svg"></image>
+                </i>
+            </form>
+            <view>
+                <i class="icon icon-item">
+                    <image src="/static/icon-time.svg"></image>
+                </i>报名时间: {{raceInfo.registerDate}}</view>
+            <view>
+                <i class="icon icon-item">
+                    <image src="/static/icon-time-interval.svg"></image>
+                </i>活动时间: {{raceInfo.raceDate}}</view>
+        </view>
+        <view class="header-description clearfix">
+            <view class="commissioner-info">
+                <view class="invisible-dot"></view>
+                <image class="commissioner-logo" src="/static/logo.jpg"></image>
+                <text class="commissioner-name">PaPa报名</text>
+            </view>
+            <view class="contact-info">
+                <view class="yellow-dot"></view>
+                <text class="contact-text">联系人:</text>
+                <text class="contactor">{{raceInfo.creatorName}}</text>
+                <i bind:tap="copyToClipBoard" class="icon icon-weixin" wx:if="{{raceInfo.creatorWeixinNo}}">
+                    <image src="/static/icon-weixin.svg"></image>
+                </i>
+                <i class="contact-split"></i>
+                <i bind:tap="makePhoneCall" class="icon icon-phone">
+                    <image src="/static/icon-phone.svg"></image>
+                </i>
+            </view>
+        </view>
+    </view>
+    <view class="info-wrap" wx:if="{{raceInfo.groupType==='MULTIPART_GROUP'}}">
+        <view class="info-wrap-title">
+            <view class="info-left-title">
+                <i class="icon-border"></i>赛事组别
+      </view>
+        </view>
+        <groupDetailCard cardDetail="{{item}}" wx:for="{{registerSubjects}}" wx:key="{{item}}"></groupDetailCard>
+        <view bindtap="toggleShowMore" class="see-more-btn" wx:if="{{allSubjects.length>2}}">
+      {{!isShowMore?'查看更多':'收起'}}
+      <i class="icon {{!isShowMore?'icon-more':'icon-collapse'}}"></i>
+        </view>
+    </view>
+    <view class="info-wrap" wx:if="{{raceInfo.raceDetail.content.length}}">
+        <view class="info-wrap-title">
+            <view class="info-left-title">
+                <i class="icon-border"></i>赛事详情
+      </view>
+        </view>
+        <view class="race-detail">
+            <text style="font-size:30rpx" wx:if="{{raceInfo.raceDetail.type==='TEXT'}}">
+        {{raceInfo.raceDetail.content[0]}}
+      </text>
+            <block wx:else>
+                <image mode="widthFix" src="{{item}}" style="width: 100%;" wx:for="{{raceInfo.raceDetail.content}}" wx:key="{{item}}"></image>
+            </block>
+        </view>
+    </view>
+    <createQrCode bindgetPhotosAlbum="getPhotosAlbum" id="createQrCode" pageData="{{raceInfo}}" pageId="{{raceId}}" pageType="hnRaceDetail"></createQrCode>
+    <detailFooter bindcreateQrcode="bindCreateQrcode" bindnavigate="navigate" footerData="{{footerData}}" id="hnRaceFooter" pageType="hnRace"></detailFooter>
+    <authorize id="authorize"></authorize>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

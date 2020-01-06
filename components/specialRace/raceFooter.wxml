@@ -1,0 +1,114 @@
+<view class="form-footer {{isIpx?'fix-iphonex-button':''}}">
+    <view class="protocol-box" style="margin: 10rpx 0; " wx:if="{{footerData.showProto}}">
+        <view>
+            <checkbox-group bindchange="checkboxChange" style="float:left;">
+                <label>
+                    <checkbox checked="{{footerData.checked}}" class="checkbox" color="#00CD91" value="true"></checkbox>
+                </label>
+            </checkbox-group>
+      我已阅读《
+      <i catchtap="showProtocolModal" class="protocol-button">用户参与及付款协议</i>
+      》《
+      <i catchtap="showReliefModal" class="protocol-button">活动免责协议</i>
+      》
+    </view>
+    </view>
+    <view class="button-group">
+        <block wx:if="{{footerData.entry==='team'}}">
+            <block wx:if="{{footerData.canMange}}">
+                <form reportSubmit bindsubmit="onSubmit" class="button-item">
+                    <button class="white-button" data-etype="dissmissTeam" formType="submit" type="primary" wx:if="{{!footerData.hasEnter&&footerData.checked}}">
+            解散队伍
+          </button>
+                    <button class="white-diabled-button" type="primary" wx:if="{{!footerData.hasEnter&&!footerData.checked||footerData.hasEnter}}">
+            解散队伍
+          </button>
+                </form>
+                <form reportSubmit bindsubmit="onSubmit" class="button-item" wx:if="{{footerData.cancelEnter||!footerData.hasEnter}}">
+                    <button class="form-footer-button" data-etype="enter" formType="submit" type="primary" wx:if="{{!footerData.hasEnter&&footerData.checked}}">
+            团队报名
+            </button>
+                    <button class="form-footer-button disabled-button" type="primary" wx:if="{{!footerData.hasEnter&&!footerData.checked}}">
+            团队报名
+            </button>
+                    <button class="error-button" data-etype="cancelEnter" formType="submit" type="primary" wx:if="{{footerData.hasEnter}}">
+            取消报名
+          </button>
+                </form>
+            </block>
+        </block>
+        <block wx:if="{{footerData.entry==='double'}}">
+            <form reportSubmit bindsubmit="onSubmit" class="button-item" wx:if="{{footerData.canMange}}">
+                <button class="form-footer-button" data-etype="enter" formType="submit" type="primary" wx:if="{{!footerData.hasEnter&&footerData.checked&&memberList.length>=2}}">
+            报名<block wx:if="{{footerData.amount}}">(共{{footerData.amount}}元)</block>
+                </button>
+                <button class="form-footer-button disabled-button" type="primary" wx:if="{{!footerData.hasEnter&&!footerData.checked||memberList.length<2}}">
+            报名<block wx:if="{{footerData.amount}}">(共{{footerData.amount}}元)</block>
+                </button>
+                <button class="error-button" data-etype="cancelEnter" formType="submit" type="primary" wx:if="{{footerData.hasEnter}}">
+            取消报名
+          </button>
+            </form>
+        </block>
+        <block wx:if="{{footerData.entry==='detail'}}">
+            <form reportSubmit bindsubmit="onSubmit" class="button-item" wx:if="{{footerData.canModify}}">
+                <button class="warning-button" data-etype="reEnter" formType="submit" type="primary">
+          重新提交
+        </button>
+            </form>
+            <form reportSubmit bindsubmit="onSubmit" class="button-item" wx:if="{{footerData.canCancel||footerData.canEnter}}">
+                <button class="error-button" data-etype="cancelEnter" formType="submit" type="primary" wx:if="{{footerData.canCancel}}">
+          取消报名
+        </button>
+                <button class="form-footer-button" data-etype="enter" formType="submit" type="primary" wx:if="{{footerData.canEnter&&footerData.checked}}">
+          报名<block wx:if="{{footerData.amount}}">(共{{footerData.amount}}元)</block>
+                </button>
+                <button class="form-footer-button disabled-button" type="primary" wx:if="{{footerData.canEnter&&!footerData.checked}}">
+          报名<block wx:if="{{footerData.amount}}">(共{{footerData.amount}}元)</block>
+                </button>
+            </form>
+        </block>
+        <form reportSubmit bindsubmit="onSubmit" class="button-item" wx:if="{{footerData.entry==='teamDetail'}}">
+            <button class="form-footer-button" data-etype="enter" formType="submit" type="primary" wx:if="{{footerData.canEnter}}">
+          确定
+        </button>
+            <button class="form-footer-button" data-etype="reEnter" formType="submit" type="primary" wx:elif="{{!footerData.hasEnter}}">
+          确定
+        </button>
+            <button class="warning-button" data-etype="reEnter" formType="submit" type="primary" wx:elif="{{footerData.hasEnter&&footerData.noReject}}">
+          重新提交
+        </button>
+        </form>
+        <form reportSubmit bindsubmit="onSubmit" class="button-item" wx:if="{{footerData.entry==='createTeam'}}">
+            <button class="form-footer-button" formType="submit" type="primary">提交</button>
+        </form>
+    </view>
+    <modal bindconfirm="hideProtocolModal" confirmText="确定" hidden="{{hideProtocol}}" noCancel="{{true}}" title="用户参与及付款协议">
+        <view class="relief-modal">
+            <view>1.1平台上的活动比赛均隶属第三方活动发起者，与PaPa体育平台无关；</view>
+            <view>1.2支付前请先确认您的支付项目，以及付款金额；</view>
+            <view>1.3当您使用本平台任意服务时，如您未遵守法律法规，本协议及相关操作提示和业务规则，由此造成的风险和损失由您自行承担，本公司不向您承担任何风险和损失。</view>
+            <view>
+        1.4您使用本服务时，应当仔细确认及其金额后进行支付。本公司有权根据您的指令扣划资金给收款人，届时您不应以未在交易单据中签名、姓名不符、非本人意愿交易等原因要求本公司退款或承担其他责任。
+      </view>
+            <view>1.5如活动参与中遇到问题无法解决，可及时联系在线客服或添加客服微进行协调。</view>
+            <view>客服微信号：ilovebadmintonpapaai。</view>
+        </view>
+    </modal>
+    <modal bindconfirm="hideReliefModal" confirmText="确定" hidden="{{hideRelief}}" noCancel="{{true}}" title="活动免责协议">
+        <view class="relief-modal">
+            <view>1.1 本次活动（包括但不限于羽毛球运动）具有潜在的危险性和不可预知性，参加者须对自身的安全和行为负责。</view>
+            <view>
+        1.2 报名参加本次活动者应当对自身的身体条件进行全面了解，并科学评估是否适宜参加本次活动。若因参加此次活动（包括途中）和在活动中剧烈运动、激烈对抗等方式而导致伤残、死亡等严重伤害，由侵害人或参加者本人承担后果，平台和组织者不承担保障参加者安全的义务。
+      </view>
+            <view>1.3 报名参加本次活动者即被视为年满18周岁的完全民事行为能力人，未满18周岁的限制民事行为能力人和无民事行为能力人应当在其监护人的陪同下参加。</view>
+            <view>1.4 参加者在本次活动中（包括来往活动场地的途中）遭受人身损害或造成他人人身损害的，由侵害人或参加者本人承担法律后果。</view>
+            <view>
+        1.5 参加者应当妥善管理其财物，不应轻信他人，包括其他活动参加者。平台和组织者不承担保管参加者财物的义务，若发生财物失窃、损毁等情形，其损失由参加者本人自行承担。
+      </view>
+            <view>1.6 平台和组织者对上述条款规定的人身和财产损失概不承担任何法律责任</view>
+            <view>1.6 平台和组织者对上述条款规定的人身和财产损失概不承担任何法律责任</view>
+            <view>1.7 但凡报名参加本次活动者将视为已知晓并服从上述条款。</view>
+        </view>
+    </modal>
+</view>

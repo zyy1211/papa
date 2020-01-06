@@ -1,0 +1,35 @@
+<template name="itemCard">
+    <form reportSubmit bindsubmit="navigateToEnter" class="form-for-formid form-item" data-amount="{{amount}}" data-createteam="{{createTeam}}" data-enter="{{isEnter}}" data-enterid="{{enterId}}" data-itemid="{{id}}" data-type="{{itemType}}">
+        <button formType="submit" type="default"></button>
+        <view class="item-box">
+            <view class="item-fee-box">
+                <view class="item-money" wx:if="{{amount===0}}">免费</view>
+                <view class="item-fee" wx:else>
+                    <span class="item-money">{{amount}}</span>元</view>
+            </view>
+            <view class="item-enter" wx:if="{{isEnter}}">已报名</view>
+            <view class="item-name text-overflow">{{name}}</view>
+            <view class="item-birth">出生日期：{{birth}}</view>
+            <view class="item-limit-age">
+                <span wx:if="{{allowOverLimitAge}}">允许高年龄组报名</span>
+                <span wx:if="{{allowUnderLimitAge}}">允许低年龄组报名</span>
+            </view>
+            <view class="item-team-count" wx:if="{{itemType==='TEAM'}}">队伍人数要求：{{teamCount}}</view>
+            <view class="item-enter-box">
+        已报名
+        <span class="item-enter-count">{{memberCount}}</span>
+                <view class="item-member-memo">
+                    <span>{{labelType.message}}</span>
+                </view>
+            </view>
+            <view class="item-reject" wx:if="{{noReject}}">提示：报名审核不通过，请重新提交报名信息</view>
+        </view>
+    </form>
+</template>
+<view class="bg"></view>
+<view class="data-list-con {{isIpx?'has-ipx':''}}">
+    <view class="data-page-item" wx:for="{{dataList}}" wx:key="{{index}}">
+        <template is="itemCard" data="{{...item}}"></template>
+    </view>
+</view>
+<view class="fix-ipx-content" wx:if="{{isIpx}}"></view>

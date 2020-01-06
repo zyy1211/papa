@@ -1,0 +1,30 @@
+page {
+    background: #fff;
+}
+
+.info-box {
+    background: #fff;
+    font-size: 26rpx;
+    border-top: 20rpx solid #f5f6f8;
+}
+
+.info-box.fix-iphonex {
+    padding-bottom: 68rpx;
+}
+
+.info-title {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 36rpx;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.info-content {
+    width: 90%;
+    margin: 20rpx auto 0;
+    color: #55666d;
+    word-wrap: break-word;
+}

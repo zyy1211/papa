@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "报名详情",
+    "usingComponents": {
+        "multiGroupSelect": "/components/hnRace/multiGroupSelect",
+        "flexbleForm": "/components/hnRace/flexbleForm",
+        "hnRaceFooter": "/components/hnRace/hnRaceFooter",
+        "enterTimeTitle": "/components/hnRace/enterTimeTitle"
+    }
+}

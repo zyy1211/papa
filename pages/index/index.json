@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "PaPa报名",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "authorize": "/components/authorize",
+        "publishNav": "/components/publishNav"
+    }
+}

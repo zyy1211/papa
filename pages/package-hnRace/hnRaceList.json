@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "赛事",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "hnRaceCard": "/components/hnRace/hnRaceCard"
+    }
+}

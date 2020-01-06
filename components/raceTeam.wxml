@@ -1,0 +1,50 @@
+<view class="team-con" wx:if="{{teamInfo.raceType==='team'||isHnRace}}">
+    <view class="team-header">
+        <view class="team-index">{{teamIndex+1}}</view>
+        <view class="team-name">{{teamInfo.name}}</view>
+    </view>
+    <view class="team-main">
+        <view class="info-con" wx:if="{{teamInfo.leaderName}}">
+            <view class="info-title">领队</view>
+            <view class="member-con">
+                <view class="member-name">{{tools.sub(teamInfo.leaderName,4)}}</view>
+            </view>
+        </view>
+        <view class="info-con" wx:if="{{teamInfo.coachName}}">
+            <view class="info-title">教练</view>
+            <view class="member-con">
+                <view class="member-name">{{tools.sub(teamInfo.coachName,4)}}</view>
+            </view>
+        </view>
+        <view class="info-con">
+            <view class="info-title">队员</view>
+            <view class="member-con {{!isShowMore?'no-more':null}}">
+                <view class="member-name" wx:for="{{teamInfo.players}}" wx:key="{{index}}">{{tools.sub(item,4)}}</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="changeShowMore" class="see-more-btn" wx:if="{{teamInfo.players.length>10}}">{{!isShowMore?'查看更多':'收起'}}
+    <i class="icon {{!isShowMore?'icon-more':'icon-collapse'}}"></i>
+    </view>
+</view>
+<view class="personal-con" wx:if="{{teamInfo.raceType==='personal'}}">
+    <view class="personal-item">
+        <view class="personal-index">{{teamIndex+1}}</view>
+        <view class="personal-name">
+            <view class="name-con" wx:for="{{teamInfo.players}}" wx:key="{{index}}">{{item}}</view>
+        </view>
+    </view>
+</view>
+<wxs module="tools">
+var sub = (function(val, length) {
+    if (val === undefined || val.length === 0) {
+        return
+    };
+    if (val.length > length) {
+        return (val.slice(0, length))
+    } else {
+        return (val)
+    }
+});
+module.exports.sub = sub;
+</wxs>

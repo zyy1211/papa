@@ -1,0 +1,181 @@
+.fix-ipx-content {
+    position: fixed;
+    width: 100%;
+    height: 68rpx;
+    bottom: 0;
+    background: #fff;
+}
+
+.page-con {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 10rpx;
+    color: #333;
+    font-size: 30rpx;
+}
+
+.page-con.is-ipx {
+    padding-bottom: 68rpx;
+}
+
+.page-title {
+    display: block;
+    font-size: 32rpx;
+    font-weight: bold;
+    line-height: 145rpx;
+    width: 100%;
+    text-align: center;
+}
+
+.info-con {
+    width: 100%;
+    background: #fff;
+    border-radius: 14rpx;
+    overflow: hidden;
+    margin-bottom: 60rpx;
+}
+
+.info-item {
+    box-sizing: border-box;
+    width: 100%;
+    height: 105rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2rpx solid #F5F6F8;
+    padding: 0 44rpx 0 38rpx;
+}
+
+.info-item:last-child {
+    border-bottom: 0;
+}
+
+.info-title {
+    flex-shrink: 0;
+    width: 100rpx;
+}
+
+.info-input {
+    flex-shrink: 0;
+    flex-grow: 1;
+    text-align: right;
+}
+
+.form-button-submit[type="primary"] {
+    background: #03C682;
+}
+
+.form-button-submit[type="primary"]::after {
+    border: none;
+}
+
+.disabled-button[type="primary"] {
+    background: #98E2C8;
+}
+
+.disabled-button[type="primary"]::after {
+    border: none;
+}
+
+.container-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.container-content {
+    position: absolute;
+    top: 300rpx;
+    left: 50%;
+    width: 630rpx;
+    margin-left: -315rpx;
+    background: #fff;
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+
+.my-canvas {
+    position: fixed;
+    left: -800px;
+    top: -800px;
+    width: 100%;
+    height: 410rpx;
+    background: #fff;
+}
+
+.canvas-container-header {
+    width: 100%;
+    padding: 33rpx 0;
+    font-size: 32rpx;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    position: relative;
+}
+
+.icon-close {
+    position: absolute;
+    right: 42rpx;
+    left: auto;
+    top: 50%;
+    display: block;
+    width: 18rpx;
+    height: 18rpx;
+    margin-top: -9rpx;
+}
+
+.swiper-box {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 20rpx 30rpx;
+}
+
+.certificate-swiper {
+    width: 100%;
+    height: 410rpx;
+    background: #fff;
+}
+
+.certificate-swiper.has-dots {
+    height: 470rpx;
+}
+
+.img-item {
+    width: 100%;
+    height: 410rpx;
+}
+
+.wx-swiper-dots {
+    position: relative;
+}
+
+.wx-swiper-dots.wx-swiper-dots-horizontal {
+    margin-bottom: -10rpx;
+}
+
+.save-button {
+    width: 100%;
+    height: 92rpx;
+    line-height: 92rpx;
+    background: #00CD91;
+    color: #fff;
+    text-align: center;
+    border-radius: 0 0 16rpx 16rpx;
+    font-size: 30rpx;
+}

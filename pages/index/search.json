@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "搜索",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "activityCard": "/components/activityCard",
+        "subjectCard": "/components/subjectCard",
+        "userHeader": "/components/subject/userHeader"
+    }
+}

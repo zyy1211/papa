@@ -1,0 +1,10 @@
+<view class="data-list-con {{isIpx?'has-ipx':''}}">
+    <view class="data-item-con" wx:if="{{dataList.length>0}}" wx:for="{{dataList}}" wx:key="{{item.userId}}">
+        <userHeader userInfo="{{item}}"></userHeader>
+    </view>
+</view>
+<view class="no-fans-con" wx:if="{{dataList.length===0}}">
+    <image class="no-data-img" mode="widthFix" src="/static/no-fans.png"></image>
+    <view class="no-data-text">{{pageType==='attention'?'快去多多关注吧':'别着急，小粉丝还在赶来的路上'}}</view>
+</view>
+<view class="fix-ipx-content" wx:if="{{isIpx}}"></view>

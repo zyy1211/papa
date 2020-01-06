@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "回复",
+    "usingComponents": {
+        "commentCard": "/components/commentCard"
+    }
+}

@@ -1,0 +1,204 @@
+.fix-ipx-content {
+    position: fixed;
+    width: 100%;
+    height: 68rpx;
+    bottom: 0;
+    background: #fff;
+}
+
+.knockout-con {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.knockout-con.is-ipx {
+    bottom: 68rpx;
+}
+
+.knockout-bg {
+    width: 100%;
+    height: 100%;
+}
+
+.team-con {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.is-ipx .team-con {
+    bottom: 68rpx;
+}
+
+.scroll-con {
+    box-sizing: border-box;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.round-con {
+    flex-shrink: 0;
+    margin-left: 26rpx;
+}
+
+.round-con.right {
+    margin-left: 0;
+    margin-right: 26rpx;
+}
+
+.filter-con {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.round-item {
+    min-height: 200rpx;
+    flex-shrink: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.round-item::before {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    content: '';
+    width: 2rpx;
+    height: 25%;
+    background: #3f5a80;
+}
+
+.round-item::after {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    content: '';
+    width: 2rpx;
+    height: 25%;
+    background: #3f5a80;
+}
+
+.round-item.team1::before {
+    background: #718aaf;
+}
+
+.round-item.team2::after {
+    background: #718aaf;
+}
+
+.round-item.final-round::before {
+    width: 0;
+    height: 0;
+}
+
+.round-item.final-round::after {
+    width: 0;
+    height: 0;
+}
+
+.team-item {
+    box-sizing: border-box;
+    position: relative;
+    width: 100rpx;
+    height: 80rpx;
+    line-height: 40rpx;
+    background: #00CD91;
+    padding: 0 8rpx;
+    font-size: 24rpx;
+    text-align: center;
+    color: #1d2f48;
+    border-radius: 8rpx;
+    z-index: 10;
+}
+
+.team-item.no-win {
+    background: #1d2f48;
+    color: #8b98ac;
+}
+
+.team-item::before {
+    position: absolute;
+    top: 50%;
+    left: -76rpx;
+    content: '';
+    width: 76rpx;
+    height: 2rpx;
+    background: #3f5a80;
+}
+
+.team-item.out-line::before {
+    background: #718aaf;
+}
+
+.right .team-item::before {
+    left: 100rpx;
+}
+
+.round-con:first-child .team-item::before {
+    width: 0;
+    height: 0;
+}
+
+.round-con:last-child .team-item::before {
+    width: 0;
+    height: 0;
+}
+
+.text-con {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-con view {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.vs-con {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin: 0 10rpx;
+}
+
+.three-four-round {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 80%;
+}
+
+.three-four-con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.three-four-round .team-item::before {
+    width: 0;
+    height: 0;
+}
+
+.three-four-title {
+    text-align: center;
+    font-size: 24rpx;
+    color: #fff;
+}

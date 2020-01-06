@@ -1,0 +1,2 @@
+<flexbleForm bindformSubmit="onFormSubmit" entry="team" id="flexbleForm" sectionList="{{createFormList}}"></flexbleForm>
+<hnRaceFooter bind:onSubmit="onBtnClick" footerData="{{footerData}}"></hnRaceFooter>

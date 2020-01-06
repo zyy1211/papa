@@ -1,0 +1,131 @@
+.main-content {
+    font-size: 24rpx;
+    color: #333;
+}
+
+.odd-row {
+}
+
+.tdr {
+    float: left;
+    height: 110rpx;
+    line-height: 110rpx;
+    text-align: center;
+}
+
+.result-box-title .tdr {
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.result-box-title .tdr-nick-name {
+    padding: 0;
+}
+
+.tdr-index {
+    width: 85rpx;
+}
+
+.tdr-nick-name {
+    width: 232rpx;
+    height: 90rpx;
+    padding: 10rpx 0;
+    line-height: 90rpx;
+}
+
+.tdr-victory-count {
+    width: 115rpx;
+}
+
+.tdr-total-count {
+    width: 130rpx;
+}
+
+.tdr-net-victory-score {
+    width: 130rpx;
+}
+
+.point-race-list .tdr-index {
+    width: 65rpx;
+}
+
+.point-race-list .tdr-nick-name {
+    width: 212rpx;
+}
+
+.point-race-list .tdr-victory-count {
+    width: 105rpx;
+}
+
+.point-race-list .tdr-total-count {
+    width: 120rpx;
+}
+
+.point-race-list .tdr-net-victory-score {
+    width: 120rpx;
+}
+
+.point-race-list .tdr-point-race {
+    width: 70rpx;
+}
+
+.main-result-content {
+    position: relative;
+    padding-bottom: 110rpx;
+    background: #fff;
+}
+
+.main-result-content.fix-iphonex {
+    padding-bottom: 178rpx;
+}
+
+.main-result-no-bottom {
+    padding-bottom: 0;
+}
+
+.main-result-no-bottom.fix-iphonex {
+    padding-bottom: 68px;
+}
+
+.result-box {
+}
+
+.result-box-title {
+    width: 702rpx;
+    margin: 0 24rpx;
+    border-bottom: 2rpx solid #eaeaea;
+}
+
+.result-list-item {
+    width: 702rpx;
+    margin: 0 24rpx;
+    border-bottom: 2rpx solid #eaeaea;
+}
+
+.icon-result {
+    width: 44rpx;
+    height: 61rpx;
+    margin: 0;
+}
+
+.result-footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.result-footer.fix-iphonex {
+    bottom: 68rpx;
+}
+
+.result-footer {
+    width: 100%;
+}
+
+.result-footer button[type="default"] {
+    width: 100%;
+    height: 92rpx;
+    background: #37D7AC;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+}

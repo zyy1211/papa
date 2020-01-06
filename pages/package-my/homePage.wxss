@@ -1,0 +1,271 @@
+page {
+    background: #fff;
+}
+
+.main-content {
+    font-size: 24rpx;
+}
+
+.header-box {
+    width: 100%;
+    background: linear-gradient(#00CD91,#0EA1AD);
+}
+
+.header {
+    width: 675rpx;
+    padding: 25rpx 45rpx 50rpx 30rpx;
+    color: #fff;
+    font-size: 26rpx;
+}
+
+.nick-name-box {
+    float: left;
+    width: 530rpx;
+}
+
+.nick-name {
+    font-size: 45rpx;
+    font-weight: bold;
+}
+
+.nick-name-memo {
+}
+
+.user-logo-box {
+    float: right;
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.user-logo {
+    width: 100%;
+    height: 100%;
+    border: 2rpx solid #fff;
+    border-radius: 50%;
+}
+
+.header-description {
+    width: 470rpx;
+    margin: 40rpx 0;
+}
+
+.header-memo {
+    color: #B8E1E2;
+    font-size: 22rpx;
+}
+
+.header-link-con {
+    width: 100%;
+    display: flex;
+    margin-top: 40rpx;
+}
+
+.header-form-item {
+    position: relative;
+    display: flex;
+    width: 25%;
+    flex-shrink: 0;
+    font-size: 26rpx;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.header-form-item.edit-form {
+    align-items: flex-end;
+}
+
+.header-form-item button[type="default"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: none;
+}
+
+.header-form-item button[type="default"]::after {
+    border: none;
+    background: none;
+}
+
+.header-link-count {
+    font-size: 42rpx;
+    line-height: 60rpx;
+}
+
+.attention-form {
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.attention-form .attention-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: 10;
+}
+
+.attention-btn::after {
+    border: none;
+}
+
+.attention-btn-con {
+    height: 50rpx;
+    line-height: 50rpx;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 26rpx;
+    border-radius: 25rpx;
+    background: #F06969;
+    color: #fff;
+    font-size: 26rpx;
+}
+
+.attention-btn-con.has-attention {
+    border: 2rpx solid rgba(233,233,233,1);
+    background: #fff;
+    color: #F06969;
+}
+
+.icon-edit-box {
+    display: block;
+    float: right;
+    margin-top: 60rpx;
+}
+
+.icon-sex {
+    width: 45rpx;
+    height: 45rpx;
+    margin-right: 4rpx;
+}
+
+.icon-badminton {
+    width: 45rpx;
+    height: 45rpx;
+}
+
+.icon-edit {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.my-data-box {
+    margin-top: -20rpx;
+    padding-bottom: 20rpx;
+}
+
+.my-data-box.fix-iphonex {
+    padding-bottom: 88rpx;
+}
+
+.switch-tab {
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.switch-tab-list .tab-list-memo {
+    display: inline-block;
+    margin-left: 4rpx;
+    color: #777;
+}
+
+.switch-tab-list.on .tab-bottom-line {
+    width: 60rpx;
+    margin-left: -30rpx;
+}
+
+.on .tab-list-memo {
+    font-weight: normal;
+}
+
+.switch-tab-list-0 {
+    padding-left: 65rpx;
+}
+
+.switch-tab-list-0.on .tab-bottom-line {
+    width: 100rpx;
+    margin-left: -52rpx;
+}
+
+.icon-help {
+    width: 26rpx;
+    height: 26rpx;
+    margin: -5rpx 0 0 10rpx;
+    vertical-align: middle;
+}
+
+.wxapp-modal {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.wxapp-modal .content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    z-index: 1000;
+    width: 482rpx;
+    background: #fff;
+    text-align: center;
+    border-radius: 10rpx;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.wxapp-modal .content .header {
+    width: 100%;
+    height: 180rpx;
+    line-height: 180rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+    padding: 0;
+}
+
+.wxapp-modal .content .footer {
+    width: 100%;
+    height: 92rpx;
+    line-height: 92rpx;
+    border-top: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer button {
+    display: inline-block;
+    width: 49%;
+    height: 92rpx;
+    line-height: 92rpx;
+    background: #fff;
+    border-radius: 0;
+}
+
+.wxapp-modal .content .footer button::after {
+    border: none;
+}
+
+.wxapp-modal .content .footer .cancel {
+    color: #000;
+    border-right: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer .confirm {
+    color: #00CD91;
+}
+
+.wxapp-modal .mask,.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}

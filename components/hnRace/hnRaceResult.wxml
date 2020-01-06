@@ -1,0 +1,32 @@
+<view class="race-live-list  {{isIpx?'is-ipx':''}} {{showDownloadBtn?'has-download':''}}">
+    <toggleProject bindchooseProject="switchGroup" projectList="{{groupList}}" wx:if="{{raceGroupType==='MULTIPART_GROUP'}}"></toggleProject>
+    <view class="group-rank-con" wx:if="{{resultList.length>0&&resultType==='TEXT'}}">
+        <view class="rank-header">
+            <view class="ranking" wx:if="{{showListType!=='SCORE'}}">排名</view>
+            <view class="team-name">{{resultBelongType==='TEAM_RESULT'&&raceGroupType==='SINGLE_GROUP'?'队伍':'姓名'}}</view>
+            <view class="scores" wx:if="{{showListType!=='RANK'}}">成绩</view>
+        </view>
+        <view class="rank-item" wx:for="{{resultList}}" wx:key="{{index}}">
+            <view class="team-info">
+                <view class="ranking" wx:if="{{showListType!=='SCORE'}}">{{item.resultRank}}</view>
+                <view class="team-name">{{item.name}}</view>
+                <view class="scores" wx:if="{{showListType!=='RANK'}}">{{item.resultGrade}}</view>
+            </view>
+            <i class="icon-advance" wx:if="{{item.resultRank===1||2||3}}">
+                <image class="icon-advance-image" mode="widthFix" src="{{item.resultRank===1?'/static/icon-result1.png':item.resultRank===2?'/static/icon-result2.png':item.resultRank===3?'/static/icon-result3.png':''}}"></image>
+            </i>
+        </view>
+    </view>
+    <view class="group-rank-con" wx:if="{{resultImg.length>0&&resultType==='IMAGE'}}">
+        <image class="result-img" mode="widthFix" src="{{imageUrl+item.id}}" wx:for="{{resultImg}}" wx:key="{{index}}"></image>
+    </view>
+    <view class="no-data-con" wx:if="{{resultList.length<=0&&resultType==='TEXT'||resultImg.length<=0&&resultType==='IMAGE'||resultList.length<=0&&resultImg.length<=0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无数据！</view>
+    </view>
+    <view class="down-btn-con {{isIpx?'is-ipx':''}}" wx:if="{{showDownloadBtn}}">
+        <form reportSubmit bindsubmit="navigate" class="footer-item-download" data-url="/pages/package-hnRace/downloadCertificate?raceId={{raceId}}">
+            <button class="download-btn" formType="submit" type="default">下载电子证书</button>
+        </form>
+    </view>
+</view>

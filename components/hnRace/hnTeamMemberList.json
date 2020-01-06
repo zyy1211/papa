@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "toggleProject": "/components/hnRace/toggleProject",
+        "raceTeam": "/components/raceTeam"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "matchCard": "/components/specialRace/matchCard",
+        "toggleProject": "/components/specialRace/toggleRaceProject"
+    }
+}

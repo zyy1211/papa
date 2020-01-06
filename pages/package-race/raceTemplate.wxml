@@ -1,0 +1,37 @@
+<view class="show main-content">
+    <view class="list {{isIpx?'fix-iphonex':''}}">
+        <view class="list-item {{item.className}} clearfix" wx:for="{{datalist}}">
+            <view bindtap="bindNavigate" class="item-box clearfix" data-id="{{item.id}}" data-isnotpublic="{{item.isNotPublic}}" data-rulecode="{{item.ruleCode}}">
+                <view class="left">
+                    <image class="left-bg" mode="widthFix" src="{{item.titleBgUrl}}"></image>
+                    <image class="left-title {{item.isMoreTitle?'left-more-title':''}}" mode="widthFix" src="{{item.titleUrl}}"></image>
+                    <image class="left-point-bg" mode="widthFix" src="/static/icon-point-race.png" wx:if="{{item.isPointRace}}"></image>
+                </view>
+                <view class="item-content" wx:if="{{item.isNotPublic}}">
+                    <view class="content-not-public">敬请期待</view>
+                </view>
+                <view class="item-content" wx:else>
+                    <view class="content-text {{item.ruleCode==='TEAM'?'content-text-team':''}}">{{item.ruleDescribe}}</view>
+                    <view class="content-memo" wx:if="{{item.recommendNumDescr}}">推荐人数：{{item.recommendNumDescr}}</view>
+                </view>
+            </view>
+            <view bindtap="showDescribe" class="right" data-id="{{item.id}}" wx:if="{{item.ruleCode!=='TEAM'}}">
+                <image class="right-abstract-bg" mode="widthFix" src="/static/icon-from-man.svg"></image>
+                <view class="right-abstract">规则</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{modalHidden}}">
+    <view bindtap="closeModal" class="mask"></view>
+    <view class="modal-content content">
+        <view class="modal-header">{{currentRuleName}}</view>
+        <view class="modal-body">
+            <text>{{currentDescribe}}</text>
+        </view>
+        <view class="footer">
+            <button bindtap="closeModal" class="confirm" style="width: 100%;color: #31a4e1;" type="default">确定</button>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

@@ -1,0 +1,70 @@
+<view class="main-content">
+    <view class="form-header">
+        <view class="form-search">
+            <i class="icon icon-search">
+                <image src="/static/icon-search.svg"></image>
+            </i>
+            <i bindtap="deleteSearchInput" class="icon icon-delete" wx:if="{{showDelete}}">
+                <image src="/static/icon-delete-circle.svg"></image>
+            </i>
+            <input bindinput="bindCityInput" class="form-search-input" placeholder="请输入城市名进行搜索"
+                placeholderStyle="color: #9E9E9E;" type="text" value="{{searchAddress}}"></input>
+        </view>
+    </view>
+    <view class="search-city-box" wx:if="{{searchDataList.length!==0||searchDataListEmpty}}">
+        <view class="no-data-content" wx:if="{{searchDataListEmpty}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+            <view class="no-data-text">暂无数据</view>
+        </view>
+        <block wx:else>
+            <form reportSubmit bindsubmit="getCity" class="form-for-formid search-city-item" data-city="{{item}}"
+                wx:for="{{searchDataList}}">
+                <button formType="submit" type="default"></button>{{item}}
+            </form>
+        </block>
+    </view>
+    <block wx:else>
+        <form reportSubmit bindsubmit="getCity" class="form-for-formid form-city" data-city="{{cityName}}">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-address">
+                <image src="/static/icon-address.svg"></image>
+            </i>
+            <text class="form-city-name">{{cityName}}</text>
+            <text>GPS定位</text>
+        </form>
+        <view class="letter-box">
+            <form reportSubmit bindsubmit="getKeyWord"
+                class="form-for-formid letter-item {{item.letter===seletedId?'active':''}}" data-id="{{item.letter}}"
+                wx:if="{{cityList.length!==0}}" wx:for="{{cityList}}">
+                <button formType="submit" type="default"></button>
+                {{item.letter}}
+            </form>
+        </view>
+        <view class="content-box">
+            <scroll-view scrollY bindscroll="bindscroll" scrollIntoView="{{intoView}}" style="height:100%;">
+                <view class="hot-city-box">
+                    <view class="hot-city-title">热门城市</view>
+                    <view class="clearfix">
+                        <form reportSubmit bindsubmit="getCity"
+                            class="form-for-formid hot-city-item {{item.active?'active':''}}" data-city="{{item.name}}"
+                            wx:for="{{hotCitylist}}">
+                            <button formType="submit" type="default"></button>
+                            {{item.name}}
+                        </form>
+                    </view>
+                </view>
+                <view class="city-box {{isIpx?'fix-iphonex':''}}" wx:if="{{cityList.length!==0}}">
+                    <view class="city-letter-box" wx:for="{{cityList}}">
+                        <view class="city-letter-title" id="{{item.letter}}">{{item.letter}}</view>
+                        <form reportSubmit bindsubmit="getCity" class="form-for-formid city-item" data-city="{{item}}"
+                            wx:for="{{item.data}}">
+                            <button formType="submit" type="default"></button>{{item}}
+                        </form>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </block>
+</view>
+<authorize id="authorize"></authorize>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

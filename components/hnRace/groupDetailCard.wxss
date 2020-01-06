@@ -1,0 +1,92 @@
+.root-wrap {
+    display: flex;
+    align-items: center;
+    padding: 10rpx 30rpx;
+}
+
+.item-checkbox {
+    transform: scale(0.8,0.8) translateX(-8rpx);
+}
+
+.register-subject {
+    overflow: visible;
+    padding: 28rpx 30rpx;
+    margin: 10rpx 0;
+    width: 90%;
+    font-size: 26rpx;
+    background-color: #f6f8f7;
+    border-radius: 20rpx;
+    box-shadow: 0 5rpx 0 #efefef;
+}
+
+.register-subject-row {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.row-text {
+    display: inline-block;
+}
+
+.triangle {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: 40rpx solid #ffa918;
+    border-left: 20rpx solid transparent;
+}
+
+.requirement-desc {
+    position: relative;
+    padding: 0 23rpx;
+    height: 40rpx;
+    font-size: 22rpx;
+    line-height: 40rpx;
+    background-color: #ffa918;
+}
+
+.register-requirement {
+    position: absolute;
+    right: -40rpx;
+    display: flex;
+    color: #fff;
+}
+
+.register-count {
+    color: #b8b8b8;
+}
+
+.subject-name,.subject-fee {
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.birth-range {
+    font-size: 26rpx;
+}
+
+.registered-count {
+    color: #b9b9b9;
+    line-height: 17rpx;
+}
+
+.icon-group {
+    text-align: center;
+    margin-left: 30rpx;
+}
+
+.icon {
+    display: inline-block;
+}
+
+.icon-image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.icon-warn-full {
+    margin-bottom: 20rpx;
+}

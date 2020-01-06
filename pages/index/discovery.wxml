@@ -1,0 +1,101 @@
+<template name="activityCard">
+    <view class="subject-box">
+        <userHeader userInfo="{{userHeaderInfo}}"></userHeader>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid activity-subject-con" data-url="{{navigateUrl}}">
+            <button formType="submit" type="default"></button>
+            <view class="activity-subject-content">
+                <text class="text-con" space="nbsp">{{content}}</text>
+            </view>
+            <view class="activity-img-con">
+                <image class="activity-subject-img" mode="aspectFill " src="{{activityImg}}"></image>
+                <view class="activity-label" style="background:{{activityTypeColor}}">{{activityType}}</view>
+            </view>
+            <view class="activity-footer-info">
+                <view class="activity-subject-title">
+                    <text class="text-con" space="nbsp">{{activityTitle}}</text>
+                </view>
+                <view class="activity-time">{{activityTimeInterval}}</view>
+            </view>
+        </form>
+    </view>
+</template>
+<template name="attentionCard">
+    <view class="subject-box">
+        <userHeader userInfo="{{userHeaderInfo}}"></userHeader>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid subject-con" data-url="{{navigateUrl}}">
+            <button formType="submit" type="default"></button>
+            <view class="subject-content">
+                <text class="text-con" space="nbsp">{{content}}</text>
+            </view>
+            <view class="subject-img-list">
+                <view class="img-con {{imageUrlList.length===1?'auto-subject-img':''}}" wx:for="{{imageUrlList}}" wx:key="{{item}}">
+                    <image class="subject-img" mode="{{imageUrlList.length===1?'widthFix':'aspectFill'}}" src="{{item}}"></image>
+                    <view class="more-img" wx:if="{{moreImgLength>0&&index===2}}">+{{moreImgLength}}</view>
+                </view>
+            </view>
+        </form>
+        <view class="subject-footer clearfix">
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid subject-footer-comment clearfix" data-url="{{navigateUrl}}">
+                <button formType="submit" type="default"></button>
+                <text class="comment-text" wx:if="{{commentCountStr!=='0'}}">{{commentCountStr}}</text>
+                <i class="icon-comment-box">
+                    <i class="icon icon-comment">
+                        <image src="/static/icon-comment.svg"></image>
+                    </i>
+                </i>
+            </form>
+            <likeCard id="likeCard" isLike="{{isLike}}" likeCountStr="{{likeCountStr}}" likeId="{{id}}" pageType="discovery" type="subject"></likeCard>
+        </view>
+    </view>
+</template>
+<view class="main-content {{blur?'blur':''}}">
+    <view class="fixed-header">
+        <view class="switch-btn-con">
+            <view bindtap="swichNav" class="switch-btn {{currentTab===0?'select':''}}" data-current="0">
+                <text class="{{hasNewAttention?'tab-text':''}}">关注</text>
+            </view>
+            <view bindtap="swichNav" class="switch-btn {{currentTab===1?'select':''}}" data-current="1">
+                <text>最新</text>
+            </view>
+        </view>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid form-box" data-url="/pages/index/search?pageType=subject">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-search">
+                <image src="/static/icon-search.svg"></image>
+            </i>
+        </form>
+    </view>
+    <swiper bindchange="bindListChange" class="swiper-con" current="{{currentTab}}">
+        <swiper-item class="swiper-item">
+            <view class="subject-list">
+                <view class="data-list" wx:if="{{attentionList.length!==0}}">
+                    <view wx:for="{{attentionList}}" wx:key="{{index}}">
+                        <view class="subject-item clearfix" wx:for="{{item}}" wx:for-index="dataIndex" wx:for-item="dataItem" wx:key="{{dataIndex}}">
+                            <template is="attentionCard" data="{{...dataItem}}" wx:if="{{dataItem.objectType==='NORMAL'}}"></template>
+                            <template is="activityCard" data="{{...dataItem}}" wx:elif="{{dataItem.objectType==='ACTIVITY'}}"></template>
+                        </view>
+                    </view>
+                </view>
+                <view class="no-data-content" wx:if="{{attentionList[0].length===0}}">
+                    <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+                    <view class="no-data-text">暂无动态</view>
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <view class="subject-list">
+                <view class="data-list">
+                    <subjectCard bindnavigate="navigate" id="newSubjectCard" noData="暂无动态"></subjectCard>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+    <view class="loading-con" wx:if="{{currentTab===1||currentTab===0&&attentionList.length>0}}">
+        <view class="loading-item loading-item1"></view>
+        <view class="loading-item loading-item2"></view>
+        <view class="loading-item loading-item3"></view>
+        <view class="loading-item loading-item4"></view>
+        <view class="loading-item loading-item5"></view>
+    </view>
+</view>
+<publishNav bindnavigate="navigate"></publishNav>

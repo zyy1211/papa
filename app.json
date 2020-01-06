@@ -1,0 +1,153 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/search",
+    "pages/index/address",
+    "pages/index/city",
+    "pages/info/infoDetail",
+    "pages/user/userInfo",
+    "pages/user/userAuthorize",
+    "pages/index/myIndex",
+    "pages/index/discovery"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "PAPA报名",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#00CD91",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/icon-tab-near.png",
+        "selectedIconPath": "static/icon-tab-near-active.png"
+      },
+      {
+        "pagePath": "pages/index/discovery",
+        "text": "发现",
+        "iconPath": "static/icon-tab-discovery.png",
+        "selectedIconPath": "static/icon-tab-discovery-active.png"
+      },
+      {
+        "pagePath": "pages/index/myIndex",
+        "text": "我的",
+        "iconPath": "static/icon-tab-my.png",
+        "selectedIconPath": "static/icon-tab-my-active.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "subPackages": [{
+      "root": "pages/package-my/",
+      "pages": [
+        "myActivity",
+        "myActivityData",
+        "myAccountDetail",
+        "myContact",
+        "myFootMark",
+        "myPointData",
+        "pointDetail",
+        "myDownloadApp",
+        "myInfo",
+        "homePage",
+        "attentionList"
+      ]
+    },
+    {
+      "root": "pages/package-club/",
+      "pages": [
+        "clubDetail"
+      ]
+    },
+    {
+      "root": "pages/package-specialRace/",
+      "pages": [
+        "specialRaceDetail",
+        "groupRank",
+        "knockoutMatch",
+        "specialRaceList",
+        "createTeam",
+        "teamDetail",
+        "userEnter",
+        "raceItemList"
+      ]
+    },
+    {
+      "root": "pages/package-hnRace/",
+      "pages": [
+        "hnRaceList",
+        "hnRaceIndex",
+        "createTeam",
+        "downloadCertificate",
+        "userEnter",
+        "teamDetail"
+      ]
+    },
+    {
+      "root": "pages/package-activity/",
+      "pages": [
+        "activityEvent",
+        "activityDetail",
+        "activityTemplate",
+        "activityEnter",
+        "activityEnterList",
+        "activityType"
+      ]
+    },
+    {
+      "root": "pages/package-race/",
+      "pages": [
+        "raceEvent",
+        "raceDetail",
+        "raceEnter",
+        "raceReport",
+        "raceEliminationSchdule",
+        "raceGroupResult",
+        "raceTemplate"
+      ]
+    },
+    {
+      "root": "pages/package-template/",
+      "pages": [
+        "uploadImage",
+        "activityRules",
+        "signUp",
+        "joinerSignUp",
+        "uploadHeader"
+      ]
+    },
+    {
+      "root": "pages/package-bill/",
+      "pages": [
+        "billEvent",
+        "billDetail"
+      ]
+    },
+    {
+      "root": "pages/letter/",
+      "pages": [
+        "inviteLetter"
+      ]
+    },
+    {
+      "root": "pages/package-subject/",
+      "pages": [
+        "subjectDetail",
+        "comments"
+      ]
+    }
+  ],
+  "debug": true,
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+}

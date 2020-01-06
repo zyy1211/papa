@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "groupDetailCard": "/components/hnRace/groupDetailCard",
+        "detailFooter": "/components/detailFooter",
+        "authorize": "/components/authorize",
+        "createQrCode": "/components/createQrCode"
+    }
+}

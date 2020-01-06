@@ -1,0 +1,2 @@
+<flexbleForm bindformSubmit="onFormSubmit" entry="team" id="flexbleForm" sectionList="{{createFormList}}" wx:if="{{createFormList.length}}"></flexbleForm>
+<raceFooter bindonSubmit="onBtnClick" footerData="{{footerData}}"></raceFooter>

@@ -1,0 +1,101 @@
+<view class="main-content">
+    <view class="header-box">
+        <view class="header">
+            <view class="clearfix">
+                <view class="nick-name-box">
+                    <view class="nick-name text-overflow">{{userInfo.nickName}}</view>
+                    <view class="nick-name-memo">
+                        <i class="icon icon-sex" wx:if="{{userInfo.sex==='M'}}">
+                            <image src="/static/icon-my-man.svg"></image>
+                        </i>
+                        <i class="icon icon-sex" wx:else>
+                            <image src="/static/icon-my-woman.svg"></image>
+                        </i>
+                        <form reportSubmit bindsubmit="navigate" class="form-for-formid icon icon-badminton {{userInfo.joinMatch?'':'hide'}}" data-url="/pages/package-my/myPointData?id={{userId}}">
+                            <button formType="submit" type="default"></button>
+                            <image src="/static/icon-badminton.svg"></image>
+                        </form>
+                    </view>
+                </view>
+                <form reportSubmit bindsubmit="previewImage" class="form-for-formid user-logo-box">
+                    <button formType="submit" type="default"></button>
+                    <image class="user-logo" src="{{userInfo.userLogoUrl}}"></image>
+                </form>
+            </view>
+            <view class="header-description">{{userInfo.description}}</view>
+            <view class="header-memo">
+        {{userInfo.memo}}
+      </view>
+            <view class="header-link-con">
+                <form reportSubmit bindsubmit="navigate" class="header-form-item" data-url="{{userInfo.attentionListUrl}}">
+                    <button formType="submit" type="default"></button>
+                    <view class="header-link-count">{{userInfo.subscribeCount}}</view>
+                    <view>关注</view>
+                </form>
+                <form reportSubmit bindsubmit="navigate" class="header-form-item" data-url="{{userInfo.fansListUrl}}">
+                    <button formType="submit" type="default"></button>
+                    <view class="header-link-count">{{userInfo.fansCount}}</view>
+                    <view>粉丝</view>
+                </form>
+                <form reportSubmit bindsubmit="openClub" class="header-form-item">
+                    <button formType="submit" type="default"></button>
+                    <view class="header-link-count">{{userInfo.userClubCount}}</view>
+                    <view>俱乐部</view>
+                </form>
+                <form reportSubmit bindsubmit="navigate" class="header-form-item edit-form" data-url="/pages/package-my/myInfo" wx:if="{{authedUserId===userId}}">
+                    <button formType="submit" type="default"></button>
+                    <i class="icon icon-edit">
+                        <image src="/static/icon-edit.svg"></image>
+                    </i>
+                </form>
+                <form reportSubmit bindsubmit="changeAttention" class="attention-form" wx:else>
+                    <button class="attention-btn" formType="submit" type="default"></button>
+                    <view class="attention-btn-con {{attentionBtnText!=='关注'?'has-attention':''}}">{{attentionBtnText==='关注'?'+ 关注':attentionBtnText}}</view>
+                </form>
+            </view>
+        </view>
+    </view>
+    <view class="my-data-box {{isIpx?'fix-iphonex':''}}">
+        <view class="switch-tab">
+            <view bindtap="swichNav" class="form-for-formid switch-tab-list switch-tab-list-0 {{currentTab===0?'on':''}}" data-current="0">
+        组织活动<text class="tab-list-memo">{{userInfo.userCreateActivityCount}}</text>
+                <i catchtap="showHelpToast" class="icon icon-help">
+                    <image src="/static/icon-help-gray.svg"></image>
+                </i>
+                <i class="tab-bottom-line"></i>
+            </view>
+            <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===1?'on':''}}" data-current="1">
+                <button formType="submit" type="default"></button>
+        动态<view class="tab-list-memo">{{userInfo.userSubjectCount}}</view>
+                <i class="tab-bottom-line"></i>
+            </form>
+            <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===2?'on':''}}" data-current="2">
+                <button formType="submit" type="default"></button>
+        赞过<view class="tab-list-memo">{{userInfo.likeObjectCount}}</view>
+                <i class="tab-bottom-line"></i>
+            </form>
+        </view>
+        <view class="">
+            <view class="{{currentTab===0?'':'hide'}}">
+                <activityCard bindnavigate="navigate" id="activityCard" noData="暂无活动"></activityCard>
+            </view>
+            <view class="{{currentTab===1?'':'hide'}}">
+                <subjectCard bindnavigate="navigate" id="subjectCard" noData="暂无动态"></subjectCard>
+            </view>
+            <view class="{{currentTab===2?'':'hide'}}">
+                <subjectCard bindnavigate="navigate" id="likeSubjectCard"></subjectCard>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{modalHidden}}">
+    <view class="mask"></view>
+    <form bindsubmit="submitModal" class="content">
+        <view class="header">确定不再关注吗？</view>
+        <view class="footer">
+            <button bindtap="hideModal" class="cancel" type="default">取消</button>
+            <button class="confirm" formType="submit" type="default">确定</button>
+        </view>
+    </form>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

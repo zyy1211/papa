@@ -1,0 +1,160 @@
+<view class="list-no-data" wx:if="{{nodata}}">
+    <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+    <view class="no-data-text">暂无数据</view>
+</view>
+<view class="content {{isIpx?'fix-iphonex':''}}" wx:else>
+    <view class="registration-list {{currentTab===0?'':'hide'}}">
+        <view class="registration-title">当前共有{{enterCount}}人报名<block wx:if="{{queueCount}}">,{{queueCount}}人排队</block>
+            <block wx:if="{{cancelEnterCount}}">,{{cancelEnterCount}}人取消报名</block>
+        </view>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid list-item" data-url="{{item.homePageUrl}}" wx:for="{{joinerBaseList}}">
+            <button formType="submit" type="default"></button>
+            <view class="list-item-content">
+                <view class="list-header clearfix">
+                    <image class="list-img" src="{{item.imageUrl}}"></image>
+                    <view class="list-header-content-box">
+                        <view class="list-header-content">
+                            <view class="list-uerinfo">
+                                <text class="list-userinfo-text">{{item.weixinName}}</text>
+                                <i class="icon icon-male" wx:if="{{item.sex==='M'}}">
+                                    <image src="/static/icon-male-active.svg"></image>
+                                </i>
+                                <i class="icon icon-female" wx:if="{{item.sex==='W'}}">
+                                    <image src="/static/icon-female-active.svg"></image>
+                                </i>
+                            </view>
+                            <view class="list-width-people" wx:if="{{item.withOther}}">
+                带  <i wx:if="{{item.withWoman}}">
+                                    <i class="icon icon-woman">
+                                        <image src="/static/icon-woman.svg"></image>
+                                    </i>
+                                    <i class="icon icon-multiply">
+                                        <image src="/static/icon-delete.svg"></image>
+                                    </i>{{item.withWoman}}
+                  </i>
+                                <i wx:if="{{item.withBoth}}"> ; </i>
+                                <i wx:if="{{item.withMan}}">
+                                    <i class="icon icon-man">
+                                        <image src="/static/icon-man.svg"></image>
+                                    </i>
+                                    <i class="icon icon-multiply">
+                                        <image src="/static/icon-delete.svg"></image>
+                                    </i>{{item.withMan}}
+                </i>
+                            </view>
+                        </view>
+                        <view class="list-nickname">{{item.fixName}}</view>
+                        <view class="list-other-info">
+                            <view class="list-time-info">
+                                <view>{{item.gmtCreate}}</view>
+                                <view class="list-cancel-time" wx:if="{{item.isCancel}}">已取消 {{item.gmtModified}}</view>
+                            </view>
+                            <view wx:if="{{item.same}}">共同参与过活动</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="list-content clearfix">
+                    <view class="list-content-info">
+                        <view class="list-content-item">
+                            <view class="list-content-title">手机号</view>
+                            <form reportSubmit bindsubmit="bindCallPhone" class="form-for-call" data-phone="{{item.fixCell}}">
+                                <button formType="submit" type="default"></button>
+                                <text>{{item.fixCell}}</text>
+                                <view class="phone-con">
+                                    <image class="phone-icon" src="/static/icon-phone.svg"></image>
+                                </view>
+                            </form>
+                        </view>
+                        <view class="icon-list-queue" wx:if="{{item.queue}}">排队中</view>
+                    </view>
+                    <view class="list-content-info">
+                        <view class="list-content-item">
+                            <view class="list-content-title">备注</view>
+                            <text class="list-content-text">{{item.memo}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="list-item-count">
+                <view class="list-count-info">
+                    <image class="icon-list-count" src="/static/icon-selected.svg"></image>
+                    <view>参加活动总次数<text class="list-count">{{item.joinCount}}</text>
+                    </view>
+                </view>
+                <view class="list-count-info">
+                    <image class="icon-list-count" src="/static/cancel-activity.png"></image>
+                    <view>取消报名总次数<text class="list-count">{{item.cancelCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </form>
+        <form reportSubmit bindsubmit="bindExcelList" class="form-for-formid registration-footer {{isIpx?'fix-iphonex':''}}">
+            <button formType="submit" type="default">导出Excel表</button>
+        </form>
+    </view>
+    <view class="registration-list registration-list-joiner {{currentTab===1?'':'hide'}}">
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid list-item" data-url="{{item.homePageUrl}}" wx:if="{{!item.isCancel}}" wx:for="{{joinerBaseList1}}">
+            <button formType="submit" type="default"></button>
+            <view class="list-item-content">
+                <view class="list-header clearfix">
+                    <image class="list-img" src="{{item.imageUrl}}"></image>
+                    <view class="list-header-content-box">
+                        <view class="list-header-content">
+                            <view class="list-uerinfo">
+                                <text class="list-userinfo-text">{{item.weixinName}}</text>
+                                <i class="icon icon-male" wx:if="{{item.sex==='M'}}">
+                                    <image src="/static/icon-male-active.svg"></image>
+                                </i>
+                                <i class="icon icon-female" wx:if="{{item.sex==='W'}}">
+                                    <image src="/static/icon-female-active.svg"></image>
+                                </i>
+                            </view>
+                            <view class="list-width-people" wx:if="{{item.withOther}}">
+                带  <i wx:if="{{item.withWoman}}">
+                                    <i class="icon icon-woman">
+                                        <image src="/static/icon-woman.svg"></image>
+                                    </i>
+                                    <i class="icon icon-multiply">
+                                        <image src="/static/icon-delete.svg"></image>
+                                    </i>{{item.withWoman}}
+                  </i>
+                                <i wx:if="{{item.withBoth}}"> ; </i>
+                                <i wx:if="{{item.withMan}}">
+                                    <i class="icon icon-man">
+                                        <image src="/static/icon-man.svg"></image>
+                                    </i>
+                                    <i class="icon icon-multiply">
+                                        <image src="/static/icon-delete.svg"></image>
+                                    </i>{{item.withMan}}
+                </i>
+                            </view>
+                        </view>
+                        <view class="list-nickname">{{item.fixName}}</view>
+                        <view class="list-other-info">
+                            <view class="list-time-info">
+                                <view>{{item.gmtCreate}}</view>
+                                <view class="list-cancel-time" wx:if="{{item.isCancel}}">已取消 {{item.gmtModified}}</view>
+                            </view>
+                            <view wx:if="{{item.same}}">共同参与过活动</view>
+                            <view class="icon-list-queue" wx:if="{{item.queue}}">排队中</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>
+<view class="wxapp-modal" hidden="{{modalHidden}}">
+    <view class="mask"></view>
+    <form bindsubmit="submitModal" class="modal-content">
+        <view class="header">{{callPhone}}</view>
+        <view class="footer">
+            <button bindtap="hideModal" class="cancel" type="default">取消</button>
+            <button class="confirm" formType="submit" type="default">呼叫</button>
+        </view>
+    </form>
+</view>

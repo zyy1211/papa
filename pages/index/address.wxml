@@ -1,0 +1,66 @@
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <view class="form-header clearfix">
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid form-map" data-url="/pages/index/city?cityName={{cityName}}">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-address">
+                <image src="/static/icon-address.svg"></image>
+            </i>
+            <view class="form-address-input text-overflow">{{cityName}}</view>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+        <view class="form-search">
+            <i class="icon icon-search">
+                <image src="/static/icon-search.svg"></image>
+            </i>
+            <i bindtap="deleteSearchInput" class="icon icon-delete" wx:if="{{showDelete}}">
+                <image src="/static/icon-delete-circle.svg"></image>
+            </i>
+            <input bindconfirm="getSearchData" bindinput="bindAddressInput" class="form-search-input" placeholder="请输入地址" placeholderStyle="color: #9E9E9E;" type="text" value="{{searchAddress}}"></input>
+        </view>
+    </view>
+    <view class="location-box search-location-box" wx:if="{{searchDatalist.length!==0||searchDatalistEmpty}}">
+        <view class="no-data-content" wx:if="{{searchDatalistEmpty}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+            <view class="no-data-text">暂无数据</view>
+        </view>
+        <block wx:else>
+            <form reportSubmit bindsubmit="chooseLocation" class="form-for-formid location-item text-overflow" data-location="{{item.location}}" data-title="{{item.title}}" wx:for="{{searchDatalist}}">
+                <button formType="submit" type="default"></button>
+                <view class="location-item-name">{{item.title}}</view>
+                <view class="location-item-memo text-overflow">{{item.address}}</view>
+                <view class="location-item-distance">{{item.distance}}</view>
+            </form>
+        </block>
+    </view>
+    <block wx:else>
+        <view class="form-location-box clearfix">
+            <view class="form-location-border">
+                <view class="form-location text-overflow">{{addressDescribe}}</view>
+                <form reportSubmit bindsubmit="getFixedLocation" class="form-for-formid form-get-location">
+                    <button formType="submit" type="default"></button>
+                    <i class="icon icon-get-location">
+                        <image src="/static/icon-get-location.svg"></image>
+                    </i>
+                    <text>重新定位</text>
+                </form>
+            </view>
+        </view>
+        <view class="location-box" wx:if="{{locationDatalist.length!==0}}">
+            <view class="location-box-title">
+                <i class="icon icon-address">
+                    <image src="/static/icon-address-gray.svg"></image>
+                </i>附近地址
+      </view>
+            <form reportSubmit bindsubmit="chooseLocation" class="form-for-formid location-item text-overflow" data-location="{{item.location}}" data-title="{{item.title}}" wx:for="{{locationDatalist}}">
+                <button formType="submit" type="default"></button>{{item.title}}
+      </form>
+        </view>
+    </block>
+</view>
+<authorize id="authorize"></authorize>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

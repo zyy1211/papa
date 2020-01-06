@@ -1,0 +1,137 @@
+@import "authorize.wxss";
+
+.footer-app {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 101;
+    width: 100%;
+    height: 100rpx;
+    border-top: 2rpx solid #f3f3f3;
+    background: #fff;
+}
+
+.footer-app-left {
+    float: left;
+    height: 90rpx;
+}
+
+.footer-app-left image {
+    width: 70rpx;
+    height: 70rpx;
+    margin: 15rpx 30rpx;
+    border-radius: 8rpx;
+    box-shadow: 0 0 10rpx #c3c5c2;
+    vertical-align: middle;
+}
+
+.footer-app-left text {
+    color: #b1aeae;
+    font-style: italic;
+    font-size: 28rpx;
+}
+
+.footer-app-button {
+    float: right;
+    width: 140rpx;
+    height: 60rpx;
+    margin: 20rpx 80rpx 0;
+    border-radius: 8rpx;
+}
+
+.footer-app-button button {
+    height: 60rpx;
+    padding: 0 10rpx;
+    background: #00cd91;
+    color: #fff;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 26rpx;
+}
+
+.footer-app-button button::after {
+    border: none;
+}
+
+.icon-close-box {
+    position: absolute;
+    right: 15rpx;
+    top: -22rpx;
+    width: 42rpx;
+    height: 42rpx;
+    background: #fff;
+    border: 4rpx solid #c3c5c2;
+    border-radius: 50%;
+}
+
+.icon-close {
+    position: absolute;
+    left: 7rpx;
+    top: 7rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.icon {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+
+.form-for-formid button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.form-for-formid button::after {
+    border: none;
+}
+
+.open-app-box {
+    position: fixed;
+    bottom: 300rpx;
+    right: 20rpx;
+    z-index: 997;
+    width: 100rpx;
+    height: 110rpx;
+    background: #fff;
+    box-shadow: 0 0 13px 0 rgba(178,177,177,0.4);
+    border-radius: 20rpx;
+}
+
+.open-app-img {
+    display: block;
+    width: 60rpx;
+    height: 60rpx;
+    margin: 10rpx auto 0;
+}
+
+.open-app-text {
+    color: #00CD91;
+    font-style: italic;
+    font-size: 22rpx;
+    text-align: center;
+}
+
+.button-to-index {
+    position: fixed;
+    z-index: 997;
+    width: 75rpx;
+    height: 75rpx;
+    bottom: 180rpx;
+    right: 20rpx;
+    padding-right: 10rpx;
+}
+
+.button-to-index image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

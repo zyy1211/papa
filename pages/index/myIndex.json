@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#00CD91",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "publishNav": "/components/publishNav"
+    }
+}

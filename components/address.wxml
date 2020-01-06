@@ -1,0 +1,43 @@
+<view class="wxapp-modal {{showCityModal?'':'hide'}}">
+    <view class="mask"></view>
+    <view class="modal-content">
+        <view class="modal-header">
+            <view class="modal-title">请选择</view>
+            <view class="modal-steps-box clearfix {{showCity?'':'hide'}}">
+                <block wx:if="{{showCity}}">
+                    <view bindtap="initProvince" class="modal-steps-wrap clearfix" data-id="{{provinceId}}">
+                        <view class="modal-steps-left steps-item active" style="margin-top:27rpx;"></view>
+                        <view class="modal-steps-item {{steps===0?'on':''}}">{{provinceName}}</view>
+                    </view>
+                    <view bindtap="initCity" class="modal-steps-wrap clearfix" data-id="{{cityId}}">
+                        <view class="modal-steps-left" style="margin-top:-25rpx;">
+                            <view class="steps-item-line"></view>
+                            <view class="steps-item {{cityId===''?'':'active'}}"></view>
+                        </view>
+                        <view class="modal-steps-item {{steps===1?'on':''}}">{{cityName}}</view>
+                    </view>
+                </block>
+                <view bindtap="initCounty" class="modal-steps-wrap clearfix" data-id="{{countyId}}" wx:if="{{showCounty}}">
+                    <view class="modal-steps-left" style="margin-top:-25rpx;">
+                        <view class="steps-item-line"></view>
+                        <view class="steps-item-county"></view>
+                    </view>
+                    <view class="modal-steps-item {{steps===2?'on':''}}">{{countyName}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="city-content {{showCity?'showCity':''}} {{showCounty?'showCounty':''}}">
+            <view class="list-city-box">
+                <form reportSubmit bindsubmit="changeCity" class="form-for-formid list-city-item {{steps===0&&provinceId===item.id?'on':''}}  {{steps===1&&cityId===item.id?'on':''}}" data-id="{{item.id}}" data-name="{{item.areaName}}" wx:for="{{dataList}}">
+                    <button formType="submit" type="default"></button>
+                    <view class="list-letter-name" wx:if="{{item.letterName}}">{{item.letterName}}</view>
+                    <image class="list-active" mode="widthFix" src="/static/icon-selected.svg"></image>
+                    <view class="list-area-name">{{item.areaName}}</view>
+                </form>
+            </view>
+        </view>
+        <form reportSubmit bindsubmit="hideCityModal" class="form-for-formid modal-footer">
+            <button formType="submit" type="default"></button>取消
+    </form>
+    </view>
+</view>

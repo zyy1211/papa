@@ -1,0 +1,49 @@
+<view class="my-info">
+    <view class="info-con">
+        <view bindtap="navigateToUploadImage" class="info-item-con">
+            <text class="info-item-title">更换头像</text>
+            <image class="info-hedaer" src="{{userInfo.userLogoUrl}}"></image>
+        </view>
+        <view bindtap="showNickNameModal" class="info-item-con">
+            <text class="info-item-title">昵称</text>
+            <view class="info-item-right">
+                <text class="info-input">{{userInfo.nickName}}</text>
+                <i class="icon icon-link"></i>
+            </view>
+        </view>
+        <view class="info-item-con">
+            <text class="info-item-title">性别</text>
+            <text class="info-text">{{userInfo.sex.message}}</text>
+        </view>
+        <view bindtap="showCityModal" class="info-item-con">
+            <text class="info-item-title">所在城市</text>
+            <view class="info-item-right">
+                <text class="info-input">{{address}}</text>
+                <i class="icon icon-link"></i>
+            </view>
+        </view>
+        <view class="info-item-con" style="border: none;">
+            <view class="info-item-title">个人简介</view>
+        </view>
+        <view bindtap="showDescriptionModal" class="info-item-description">
+            <view wx:if="{{description&&description!==''}}">
+                <text space="nbsp">{{description}}</text>
+            </view>
+            <view style="color:#B9B9B9;" wx:else>请简单介绍一下您自己</view>
+        </view>
+    </view>
+    <view class="wxapp-modal" hidden="{{modalHidden}}">
+        <view class="mask"></view>
+        <form bindsubmit="submitModal" class="content">
+            <view class="header">{{modalTitle}}</view>
+            <view class="body">
+                <input bindconfirm="submitModal" bindinput="getChangeText" class="add-modle-input" maxlength="{{maxlength}}" name="changeText" value="{{changeText}}"></input>
+            </view>
+            <view class="footer">
+                <button bindtap="hideModal" class="cancel" type="default">取消</button>
+                <button class="confirm" formType="submit" type="default">确定</button>
+            </view>
+        </form>
+    </view>
+</view>
+<address binddoCityModal="doCityModal" bindhideCityModal="hideCityModal" id="cityModal" showCityModal="{{cityModalVisible}}"></address>

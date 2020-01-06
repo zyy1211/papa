@@ -1,0 +1,38 @@
+<import src="../../template/template.wxml"></import>
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <view class="content-list">
+        <view class="no-data-content {{isDataEmpty?'':'hide'}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">暂无数据！</view>
+        </view>
+        <view class="themes-list {{isDataEmpty?'hide':''}}">
+            <view class="themes-list-box  {{item.className}} clearfix" wx:for="{{dataList}}">
+                <template is="activityList" data="{{...item}}"></template>
+            </view>
+        </view>
+    </view>
+    <view class="switch-tab">
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{navData.currentTab===0?'on':''}}" data-current="0">
+            <button formType="submit" type="default"></button>
+      全部<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{navData.currentTab===1?'on':''}}" data-current="1">
+            <button formType="submit" type="default"></button>
+      活动<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{navData.currentTab===2?'on':''}}" data-current="2">
+            <button formType="submit" type="default"></button>
+      赛事<i class="tab-bottom-line"></i>
+        </form>
+    </view>
+    <view class="switch-list clearfix">
+        <view class="switch-list-content" style="width:500%;">
+            <view bindtap="swichStatus" class="switch-list-item {{navData.status=='all'?'on':''}}" data-status="all">全部</view>
+            <view bindtap="swichStatus" class="switch-list-item {{navData.status==item.name?'on':''}}" data-status="{{item.name}}" wx:for="{{navData.myStatusList}}">{{item.message}}</view>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

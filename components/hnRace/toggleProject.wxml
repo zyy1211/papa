@@ -1,0 +1,21 @@
+<view class="toogle-con" wx:if="{{projectList.length>1}}">
+    <view class="race-header">
+        <view class="race-title">{{projectName}}</view>
+        <view class="toggle-project" wx:if="{{projectList.length>1}}">
+            <view class="project-list {{hasBorder&&'project-list-border'}}" style="max-height:600rpx;height:{{projectTop}}rpx ; transition:.4s">
+                <view bindtap="chooseProject" class="project-item" data-project="{{item}}" wx:for="{{projectList}}" wx:key="{{item.id}}">{{item.name}}</view>
+            </view>
+            <view class="button-area" style="top:{{buttonTop}}rpx;transition:.4s">
+                <view bindtap="toggleProject" class="toggle-button">
+        {{toggleText}}
+        <i class="arrow-top-area">
+                        <image class="{{arrowTransition?'arrow-top':'arrow-top arrow-transition'}}" src="/static/arrow-top.png"></image>
+                    </i>
+                </view>
+            </view>
+        </view>
+        <view class="blank"></view>
+        <view class="devide"></view>
+    </view>
+    <view bindtap="closeList" catchtouchmove="ture" class="toggle-mask {{!hideMask&&'opcitat'}}" wx:if="{{hasMask}}"></view>
+</view>

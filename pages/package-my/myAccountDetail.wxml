@@ -1,0 +1,54 @@
+<view class="content-box {{isIpx?'fix-iphonex':''}}">
+    <view class="header clearfix">
+        <view class="header-account">
+            <view class="account-text">待结算金额 (元)</view>
+            <view class="account-money">{{waitingSettlementAmount}}</view>
+        </view>
+        <view class="header-account">
+            <view class="account-text">已结算金额 (元)</view>
+            <view class="account-money">{{settlementAmount}}</view>
+        </view>
+        <form reportSubmit bindsubmit="showHelpModal" class="form-for-formid header-help">
+            <button formType="submit" type="default"></button>
+            <image class="icon-help" src="/static/icon-help.svg"></image>
+        </form>
+    </view>
+    <view class="list-box">
+        <view class="no-data-content" wx:if="{{recordList.length===0}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">暂无数据</view>
+        </view>
+        <view class="list-item {{recordList.length===0?'hide':''}}" wx:for="{{recordList}}">
+            <view class="list-item-box">
+                <view>
+                    <text class="list-item-header">{{item.title}}</text>
+                    <text class="list-item-memo" wx:if="{{item.memo}}">(结算至微信钱包)</text>
+                </view>
+                <view class="list-item-title">[{{item.activityTitle}}]</view>
+                <view class="list-item-time">{{item.gmtCreate}}</view>
+            </view>
+            <view class="list-item-money {{item.fundType==='PAY'?'add':'minus'}}">{{item.amount}}</view>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{helpModalHidden}}">
+    <view bindtap="closeHelpModal" class="mask"></view>
+    <view class="content" style="top:10%">
+        <view class="modal-header">说明</view>
+        <view class="body">
+            <view class="help-content">
+                <view style="margin-bottom:20rpx;">报名时收取的费用未到账时，处于被冻结状态。在活动结束后结算至发起者微信账户，被冻结的总金额记为“待结算金额”，到账的总金额记为“已结算金额”</view>
+                <view>
+                    <text>付款：</text>"+xx元"代表用户报名（修改报名）时付款金额</view>
+                <view>
+                    <text>退款：</text>"-xx元"代表用户取消（修改）报名或组队失败时退款金额</view>
+                <view>
+                    <text>结算：</text>"-xx元"代表活动结束后结算至用户微信账户金额</view>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeHelpModal" class="confirm" style="width:100%;" type="default">确定</button>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

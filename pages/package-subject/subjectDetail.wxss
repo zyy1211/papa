@@ -1,0 +1,223 @@
+page {
+    background: #fff;
+    font-size: 24rpx;
+}
+
+.main-content {
+    padding-bottom: 100rpx;
+}
+
+.main-content.fix-iphonex {
+    padding-bottom: 168rpx;
+}
+
+.image-swiper-box {
+    position: relative;
+    width: 750rpx;
+}
+
+.image-swiper {
+    width: 100%;
+}
+
+.subject-detail {
+    width: 710rpx;
+    margin: 20rpx auto 0;
+}
+
+.subject-content {
+    margin-top: 20rpx;
+    font-size: 30rpx;
+    color: #333;
+    line-height: 50rpx;
+    word-break: break-all;
+    text-align: justify;
+}
+
+.activity-list {
+    margin-top: 10rpx;
+}
+
+.activity-list-item {
+    display: block;
+    width: 710rpx;
+    height: 170rpx;
+    margin-top: 24rpx;
+    box-shadow: 0px 3px 13px 0px rgba(178,177,177,0.4);
+    border-radius: 8rpx;
+}
+
+.activity-info {
+    float: left;
+    width: 450rpx;
+    margin: 20rpx 0 0 20rpx;
+    line-height: 45rpx;
+}
+
+.activity-title {
+    width: 100%;
+    height: 90rpx;
+    -webkit-line-clamp: 2;
+    font-size: 28rpx;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.activity-image-box {
+    float: left;
+    width: 190rpx;
+    height: 130rpx;
+    margin: 20rpx 0 0 20rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+.activity-image-url {
+    width: 402rpx;
+    height: 100%;
+    margin-left: -106rpx;
+}
+
+.activity-type {
+    position: absolute;
+    top: 8rpx;
+    right: -10rpx;
+    height: 35rpx;
+    padding: 0 10rpx;
+    line-height: 35rpx;
+    border-radius: 5rpx;
+    box-shadow: 0 0 10rpx rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 20rpx;
+}
+
+.subject-club {
+    display: block;
+    margin-top: 25rpx;
+}
+
+.subject-address {
+    margin-top: 35rpx;
+}
+
+.icon-address,.icon-club {
+    width: 25rpx;
+    height: 25rpx;
+    margin: 0 20rpx;
+    border-radius: 50%;
+}
+
+.icon-club {
+    width: 35rpx;
+    height: 35rpx;
+    vertical-align: middle;
+}
+
+.comments {
+    width: 710rpx;
+    margin: 25rpx auto 0;
+    padding-top: 25rpx;
+    line-height: 50rpx;
+    border-top: 2rpx solid #f3f3f3;
+    font-size: 28rpx;
+}
+
+.comments-title {
+    position: relative;
+    padding-left: 25rpx;
+    font-weight: bold;
+}
+
+.comments-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11rpx;
+    width: 8rpx;
+    height: 30rpx;
+    background: #00CD91;
+}
+
+.main-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    height: 60rpx;
+    padding: 15rpx 0;
+    background: #fff;
+    box-shadow: 0px -5px 9px 0px rgba(179,179,179,0.19);
+}
+
+.main-footer.fix-iphonex {
+    bottom: 68rpx;
+}
+
+.footer-comment-button {
+    float: left;
+    width: 478rpx;
+    height: 60rpx;
+    margin-left: 20rpx;
+    padding-left: 20rpx;
+    background: #f3f3f3;
+    border-radius: 30rpx;
+    color: #999;
+    font-size: 28rpx;
+    line-height: 60rpx;
+}
+
+.footer-like {
+    margin-top: 6rpx;
+}
+
+.footer-share {
+    float: right;
+    width: 82rpx;
+    height: 60rpx;
+    margin-right: 8rpx;
+    line-height: 60rpx;
+}
+
+.icon-share-box {
+    float: left;
+    padding-top: 18rpx;
+}
+
+.icon-share {
+    display: block;
+    float: left;
+    width: 26rpx;
+    height: 26rpx;
+    margin-right: 8rpx;
+    vertical-align: middle;
+}
+
+.share-text {
+    display: block;
+    float: left;
+}
+
+.footer-share button {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: 24rpx;
+    color: #666;
+    line-height: 60rpx;
+}
+
+.footer-share button::after {
+    background: none;
+    border: none;
+}
+
+.my-canvas {
+    position: fixed;
+    top: -300px;
+    left: -300px;
+    width: 250px;
+    height: 200px;
+}

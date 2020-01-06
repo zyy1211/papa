@@ -1,0 +1,168 @@
+<template name="nearActivityList">
+    <form reportSubmit bindsubmit="navigate" class="form-for-formid clearfix" data-url="{{navigateUrl}}">
+        <button formType="submit" type="default"></button>
+        <image class="themes-list-join" src="/static/icon-has-join.png" wx:if="{{hasJoin}}"></image>
+        <view class="theme-list-leftcon" style="background:{{iconBack}}">
+            <image class="themes-list-left {{clubUrl!==''?'themes-list-left-club':''}}" mode="widthFix" src="{{iconUrl}}"></image>
+        </view>
+        <view class="themes-list-main">
+            <view class="themes-list-name text-overflow">{{activityTitle}}</view>
+            <view class="themes-list-labels" wx:if="{{activityLabels[0]!==''}}">
+                <view class="labels-item" wx:for="{{activityLabels}}">
+                    <i>{{item}}</i>
+                </view>
+            </view>
+            <view class="themes-list-address clearfix">
+                <view class="list-address-describe">
+                    <i class="icon icon-address">
+                        <image src="/static/icon-address.svg"></image>
+                    </i>
+                    <text class="text-overflow">{{addressDescribe}}</text>
+                </view>
+                <view class="list-address-distance">{{distance}}</view>
+            </view>
+            <view class="themes-list-time">
+                <i class="icon icon-time">
+                    <image src="/static/icon-time.svg"></image>
+                </i>{{activityTimeInterval}}
+      </view>
+            <view class="themes-list-people">
+                <i class="icon icon-people">
+                    <image src="/static/icon-joiner.svg"></image>
+                </i>{{joinerNum}}/{{limitNum}} 已报名
+        <view class="themes-user-count" wx:if="{{userCount}}">有{{userCount}}位一起参加过活动</view>
+                <view class="themes-list-fee" wx:if="{{chargeFeeType.name==='FREE'}}">免费</view>
+            </view>
+            <view class="themes-list-club" wx:if="{{clubUrl!==''}}">
+                <i class="icon icon-club">
+                    <image src="{{clubUrl}}"></image>
+                </i>
+                <text>{{clubName}}</text>
+                <i class="icon icon-arrow-club">
+                    <image src="/static/icon-arrow.svg"></image>
+                </i>
+            </view>
+        </view>
+    </form>
+</template>
+<template name="templateActivityList">
+    <form reportSubmit bindsubmit="navigate" class="form-for-formid" data-url="{{navigateUrl}}">
+        <button formType="submit" type="default"></button>
+        <view class="template-themes-list-memo">
+            <i class="themes-list-text">选择模板</i>
+        </view>
+        <view class="themes-list-main">
+            <view class="themes-list-name text-overflow">{{activityTitle}}</view>
+            <view class="themes-list-labels" wx:if="{{activityLabels[0]!==''}}">
+                <view class="labels-item" wx:for="{{activityLabels}}">
+                    <i>{{item}}</i>
+                </view>
+            </view>
+            <view class="themes-list-address">
+                <i class="icon icon-address">
+                    <image src="/static/icon-address.svg"></image>
+                </i>
+                <text class="text-overflow">{{addressDescribe}}</text>
+            </view>
+            <view class="themes-list-time">
+                <i class="icon icon-time">
+                    <image src="/static/icon-time.svg"></image>
+                </i>{{activityTimeInterval}}
+      </view>
+        </view>
+    </form>
+</template>
+<template name="activityList">
+    <form reportSubmit bindsubmit="navigate" class="form-for-formid" data-url="{{navigateUrl}}">
+        <button formType="submit" type="default"></button>
+        <view class="themes-list-memo {{className}}">
+            <i class="themes-list-type" style="background:{{typeBack}}">{{typeName}}</i>
+            <image class="themes-list-memo-img" lazyLoad="{{true}}" src="{{imageUrl}}"></image>
+            <view class="themes-list-labels" wx:if="{{activityLabels[0]!==''}}">
+                <view class="labels-item" wx:for="{{activityLabels}}">
+                    <i>{{item}}</i>
+                </view>
+            </view>
+            <block wx:if="{{className}}">
+                <view class="themes-list-mask"></view>
+                <i class="icon icon-status">
+                    <image src="{{iconUrl}}"></image>
+                </i>
+                <view class="themes-status-end">{{iconMessage}}</view>
+            </block>
+        </view>
+        <view class="themes-list-main">
+            <view class="themes-list-name text-overflow">{{activityTitle}}</view>
+            <view class="themes-list-organizer text-overflow" wx:if="{{activeType.name==='race'}}">举办方：{{organizer}}</view>
+            <view class="themes-list-address text-overflow">
+                <i class="icon icon-address">
+                    <image src="/static/icon-address.svg"></image>
+                </i>{{addressDescribe}}
+      </view>
+            <view class="themes-list-time">
+                <i class="icon icon-time">
+                    <image src="/static/icon-time.svg"></image>
+                </i>{{activityTimeInterval}}
+      </view>
+            <view class="themes-list-people">
+                <i class="icon icon-people">
+                    <image src="/static/icon-joiner.svg"></image>
+                </i>{{joinerNum}}/{{limitNum}}已报名
+        <view class="themes-list-fee" wx:if="{{chargeFee}}">
+                    <i class="icon icon-fee">
+                        <image src="/static/icon-fee.svg"></image>
+                    </i>{{chargeFee}}
+        </view>
+            </view>
+            <view class="themes-list-club" wx:if="{{clubUrl!==''}}">
+                <i class="icon icon-club">
+                    <image src="{{clubUrl}}"></image>
+                </i>
+                <text>{{clubName}}</text>
+                <i class="icon icon-arrow-club">
+                    <image src="/static/icon-arrow.svg"></image>
+                </i>
+            </view>
+            <i class="icon icon-status" wx:elif="{{!className}}">
+                <image src="{{iconUrl}}"></image>
+            </i>
+        </view>
+    </form>
+    <form reportSubmit bindsubmit="navigate" class="form-for-formid themes-list-sign-up" data-url="{{signUpUrl}}" wx:if="{{canSignUp}}">
+        <button formType="submit" type="default"></button>签到
+  </form>
+</template>
+<template name="applicantList">
+    <image class="applicant-img" src="{{imageUrl}}"></image>
+    <view class="applicant-info">
+        <view class="applicant-name">{{fixName}}
+      <i class="icon icon-male" wx:if="{{fixSex==='m'}}">
+                <image src="/static/icon-male-active.svg"></image>
+            </i>
+            <i class="icon icon-female" wx:if="{{fixSex==='w'}}">
+                <image src="/static/icon-female-active.svg"></image>
+            </i>
+        </view>
+        <view class="applicant-same-active" wx:if="{{isJoinSameActive}}">共同参与过活动</view>
+        <view class="applicant-queue-active" wx:if="{{isQueue}}">排队中</view>
+        <view class="applicant-width-people" wx:if="{{withOther}}">
+      带  <i wx:if="{{withMan}}">
+                <i class="icon icon-man">
+                    <image src="/static/icon-man.svg"></image>
+                </i>
+                <i class="icon icon-multiply">
+                    <image src="/static/icon-delete.svg"></image>
+                </i>{{withMan}}
+        </i>
+            <i wx:if="{{withBoth}}"> ; </i>
+            <i wx:if="{{withWoman}}">
+                <i class="icon icon-woman">
+                    <image src="/static/icon-woman.svg"></image>
+                </i>
+                <i class="icon icon-multiply">
+                    <image src="/static/icon-delete.svg"></image>
+                </i>{{withWoman}}
+    </i>
+        </view>
+    </view>
+</template>

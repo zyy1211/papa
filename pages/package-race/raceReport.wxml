@@ -1,0 +1,11 @@
+<loading hidden="{{hidden}}">
+    加载中...
+</loading>
+<view class="content {{isIpx?'fix-iphonex':''}}">
+    <image bindlongpress="saveImage" class="content-image" mode="widthFix" src="{{imageSrc}}"></image>
+    <canvas canvasId="myCanvas" class="my-canvas" disableScroll="true" style="width: {{canvasWidth}}px;height: {{canvasHeight}}px"></canvas>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

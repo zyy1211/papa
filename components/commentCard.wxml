@@ -1,0 +1,51 @@
+<view class="" wx:for="{{dataList}}">
+    <view class="list-item {{type==='comment'?'comment-item':''}} {{type==='reply'?'reply-item':''}}">
+        <view class="clearfix">
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid user-header clearfix" data-url="{{item.homePageUrl}}" data-url-type="needLogin">
+                <button formType="submit" type="default"></button>
+                <image class="user-logo" src="{{item.userLogoUrl}}"></image>
+                <view class="user-name-box clearfix">
+                    <view class="user-name text-overflow">{{item.nickName}}</view>
+                    <view class="user-time">{{item.gmt}}</view>
+                </view>
+            </form>
+            <view class="user-operation-box clearfix">
+                <likeCard id="likeCard" isLike="{{item.isLike}}" likeCountStr="{{item.likeCountStr}}" likeId="{{item.id}}" pageType="{{pageType}}" type="{{type}}"></likeCard>
+                <form reportSubmit bindsubmit="showActionSheet" class="form-for-formid user-operation clearfix" data-operation="{{item}}">
+                    <button formType="submit" type="default"></button>
+                    <i class="icon icon-operation">...</i>
+                </form>
+            </view>
+        </view>
+        <view class="form-for-formid" style="display:block;">
+            <view class="comments-content">
+                <block wx:if="{{item.parentNickName}}">回复 <text catchtap="navigate" class="replay-user-name" data-url="{{item.parentHomePageUrl}}" data-url-type="needLogin">{{item.parentNickName}}</text>：</block>{{item.content}}</view>
+            <view bindtap="navigate" class="reply-list" data-url="{{item.commentPageUrl}}" data-url-type="noLogin" wx:if="{{item.replyList&&item.replyList.length!==0}}">
+                <view class="reply-item" wx:for="{{item.replyList}}" wx:for-item="replyItem">
+                    <view class="reply-content">
+                        <text catchtap="navigate" class="replay-user-name" data-url="{{replyItem.homePageUrl}}" data-url-type="needLogin">{{replyItem.nickName}}</text>
+                        <block wx:if="{{replyItem.parentNickName}}"> 回复 <text catchtap="navigate" class="replay-user-name" data-url="{{replyItem.parentHomePageUrl}}" data-url-type="needLogin">{{replyItem.parentNickName}}</text>
+                        </block>：{{replyItem.content}}</view>
+                </view>
+                <view class="more-reply-button" wx:if="{{item.showReplyCount}}">查看{{item.replyCount}}条回复</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="no-data" wx:if="{{dataList.length===0&&pageType==='subjectDetail'}}">
+    <image class="no-data-img" mode="widthFix" src="/static/no-comment.png" style="width:350rpx;"></image>
+    <view class="no-data-text" style="margin:0;">暂无评论，快来说说你的感受呗！</view>
+</view>
+<action-sheet bindchange="showActionSheet" class="user-sheet" hidden="{{actionSheetHidden}}">
+    <action-sheet-item bindtap="bindReply" class="item">回复评论</action-sheet-item>
+    <action-sheet-item bindtap="bindCopy" class="item">复制评论</action-sheet-item>
+    <action-sheet-item bindtap="bindDelete" class="item {{operation.canDelete?'':'hide'}}">删除评论</action-sheet-item>
+    <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>
+<view class="wxapp-modal main-footer-modal clearfix {{commentFocus?'':'hide'}}">
+    <view class="mask"></view>
+    <form reportSubmit class="footer-modal-form">
+        <input adjustPosition="{{false}}" bindblur="bindCommentBlur" bindconfirm="getInputContent" bindfocus="bindCommentFocus" bindinput="bindCommentInput" class="footer-modal-input" cursorSpacing="10rpx" focus="{{commentFocus}}" maxlength="150" placeholder="{{placeholderContent}}" placeholderStyle="color: #bec7ca;" style="margin-bottom:{{inputHeight}}px" type="text" value="{{inputContent}}"></input>
+        <text bindtap="getInputContent" class="footer-modal-submit" style="color:{{disabledSubmit?'':'#00CD91'}}" type="default">发布</text>
+    </form>
+</view>

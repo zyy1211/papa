@@ -1,0 +1,79 @@
+<form class="form-box">
+    <view class="form-header">
+        <view class="{{item.type==='image'?'img-section':'section'}}" wx:for="{{sectionList}}" wx:key="{{item.label}}">
+            <view class="section-title {{item.type==='image'&&'image-title'}}">
+        {{item.label}}
+        <view class="section-title-tip" wx:if="{{item.type==='image'}}">({{item.placeholder}})</view>
+            </view>
+            <view class="img-form-item" wx:if="{{item.type==='image'}}">
+                <view class="img-list">
+                    <view class="img-item" wx:for="{{formData[item.name]}}" wx:for-item="imgItem" wx:key="{{key}}">
+                        <image bindtap="showFullImage" class="item-image" data-src="{{imgItem.imageSrc}}" src="{{imgItem.imageSrc}}"></image>
+                        <view bindtap="deleteImage" class="delete-box" data-imageId="{{imgItem.imageId}}" data-name="{{item.name}}" wx:if="{{item.canModify}}">
+                            <i class="icon icon-delete">
+                                <image class="icon-image" src="/static/icon-delete.svg"></image>
+                            </i>
+                        </view>
+                    </view>
+                    <view bindtap="chooseImage" class="img-item img-item-add {{imageItem.value.length<MAX_IMAGE_COUNT?'show':'hide'}}" data-name="{{item.name}}" wx:if="{{item.canModify&&formData[item.name].length<MAX_IMAGE_COUNT}}">
+                        <image class="item-image img-item-add-image" src="/static/icon-add.svg"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="section-form-item" wx:else>
+                <input bindchange="onInputType" class="section-input" data-name="{{item.name}}" disabled="{{!item.canModify}}" maxlength="{{item.validate.max}}" placeholder="{{item.placeholder}}" placeholderClass="section-placeholder" type="{{item.inputType}}" value="{{item.value}}" wx:if="{{item.type==='input'&&item.validate.max}}"></input>
+                <input bindchange="onInputType" class="section-input" data-name="{{item.name}}" disabled="{{!item.canModify}}" placeholder="{{item.placeholder}}" placeholderClass="section-placeholder" type="{{item.inputType}}" value="{{item.value}}" wx:elif="{{item.type==='input'}}"></input>
+                <picker bindchange="bindPickerChange" class="section-down-picker" data-name="{{item.name}}" data-options="{{item.options}}" range="{{item.options}}" rangeKey="name" value="{{defaultValue}}" wx:elif="{{item.type==='select'&&item.canModify}}">
+                    <view class="picker">{{initOptions.initOptions(item.options)[defaultValue]}}</view>
+                    <i class="picker-down-icon"></i>
+                </picker>
+                <text wx:elif="{{item.type==='select'&&!item.canModify}}">{{initOptions.initOptions(item.options)[defaultValue]}}</text>
+                <block wx:elif="{{item.type==='sex-select'}}">
+                    <view class="sex-select" wx:if="{{item.canModify}}">
+                        <view bindtap="selectSex" class="sex-select-item" data-index="{{index}}" data-sex="M">
+                            <i class="icon icon-male">
+                                <image class="icon-image" src="/static/{{formData.sex==='M'?'icon-male-active.svg':'icon-male.svg'}}"></image>
+                            </i>
+                            <sapn class="sex-text {{formData.sex==='M'&&'male-text'}}">男</sapn>
+                        </view>
+                        <view bindtap="selectSex" class="sex-select-item" data-sex="W">
+                            <i class="icon icon-female">
+                                <image class="icon-image" src="/static/{{formData.sex==='W'?'icon-female-active.svg':'icon-female.svg'}}"></image>
+                            </i>
+                            <sapn class="sex-text {{formData.sex==='W'&&'female-text'}}">女</sapn>
+                        </view>
+                    </view>
+                    <block wx:else>
+                        <view class="only-show-select" wx:if="{{formData.sex==='M'}}">
+                            <i class="icon icon-male">
+                                <image class="icon-image" src="/static/icon-male-active.svg"></image>
+                            </i>
+                            <text class="show-sex-text male-text">男</text>
+                        </view>
+                        <view class="only-show-select" wx:elif="{{formData.sex==='W'}}">
+                            <i class="icon icon-female">
+                                <image class="icon-image" src="/static/icon-female-active.svg"></image>
+                            </i>
+                            <text class="show-sex-text female-text">女</text>
+                        </view>
+                    </block>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view bindtap="hideFullSizeImg" class="full-size-img-wrapper" wx:if="{{showFullSizeImg}}">
+        <view class="full-size-img">
+            <image mode="widthFix" src="{{currentSelectImg}}"></image>
+        </view>
+    </view>
+</form>
+<wxs module="initOptions">
+var initOptions = (function(options, index) {
+    return (options.map((function(item) {
+        return (item.name)
+    })))
+});
+module.exports = ({
+    initOptions: initOptions,
+});
+</wxs>

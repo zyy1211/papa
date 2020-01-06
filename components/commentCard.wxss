@@ -1,0 +1,115 @@
+@import "authorize.wxss";
+
+.list-item {
+    margin-top: 20rpx;
+}
+
+.comment-item {
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #E4E4E4;
+}
+
+.user-operation-box {
+    float: left;
+    width: 190rpx;
+}
+
+.user-operation {
+    float: right;
+    width: 50rpx;
+    height: 40rpx;
+    color: #C9C9C9;
+    font-size: 60rpx;
+    line-height: 10rpx;
+}
+
+.icon-operation {
+    position: absolute;
+    display: block;
+    top: 0;
+}
+
+.comments-content {
+    width: 600rpx;
+    margin-left: 110rpx;
+    word-break: break-all;
+}
+
+.reply-list {
+    width: 580rpx;
+    margin: 10rpx 0 0 110rpx;
+    padding: 10rpx;
+    background: #F4F4F4;
+    border-radius: 8rpx;
+    font-size: 24rpx;
+}
+
+.reply-content {
+    word-break: break-all;
+}
+
+.more-reply-button {
+    color: #00CD91;
+    text-align: center;
+}
+
+.replay-user-name {
+    font-weight: bold;
+}
+
+.reply-item .user-logo {
+    width: 70rpx;
+    height: 70rpx;
+}
+
+.reply-item .user-name {
+    width: 430rpx;
+}
+
+.reply-item .comments-content {
+    margin-left: 90rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #E4E4E4;
+}
+
+.reply-item .comments-content:last-child {
+    border: none;
+}
+
+.footer-modal-form {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20rpx;
+    background: #fff;
+    line-height: 60rpx;
+    font-size: 28rpx;
+}
+
+.footer-modal-input {
+    float: left;
+    width: 590rpx;
+    height: 60rpx;
+    margin: 0 0 20rpx 20rpx;
+    padding-left: 20rpx;
+    background: #f3f3f3;
+    border-radius: 30rpx;
+    color: #333;
+    line-height: 60rpx;
+}
+
+.footer-modal-submit {
+    float: left;
+    width: 70rpx;
+    height: 60rpx;
+    margin-left: 20rpx;
+    padding: 0 10rpx;
+    color: #999;
+}
+
+.no-data {
+    color: #999;
+    text-align: center;
+    line-height: 80rpx;
+}

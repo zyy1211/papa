@@ -1,0 +1,33 @@
+<view class="race-live-list  {{isIpx?'is-ipx':''}}">
+    <toggleProject bindchooseProject="chooseProject" id="toggleProject" projectList="{{projectList}}"></toggleProject>
+    <view class="group-rank-con" wx:if="{{teamList.length>0&&resultType==='GRADE_RESULT'}}">
+        <view class="rank-header">
+            <view class="ranking"></view>
+            <view class="team-name">队伍</view>
+            <view class="win-nums">胜次</view>
+            <view class="sessions">胜场</view>
+            <view class="allSessions">净胜局</view>
+            <view class="scores">净胜分</view>
+        </view>
+        <view class="rank-item" wx:for="{{teamList}}" wx:key="{{index}}">
+            <view class="team-info">
+                <view class="ranking">{{showResultSequence?item.resultSequence:item.resultName.name==='TOP_ONE'?'':item.resultName.name==='TOP_TWO'?'':item.resultName.name==='TOP_THREE'?'':item.resultName.message}}</view>
+                <view class="team-name">{{item.teamName}}</view>
+                <view class="win-nums">{{item.resultInfo.winTimes}}</view>
+                <view class="sessions">{{item.resultInfo.winScheduleCount}}</view>
+                <view class="allSessions">{{item.resultInfo.netWinMatchCount}}</view>
+                <view class="scores">{{item.resultInfo.netWinScore}}</view>
+            </view>
+            <i class="icon-advance" wx:if="{{!showResultSequence&&(item.resultName.name==='TOP_ONE'||'TOP_TWO'||'TOP_THREE')}}">
+                <image mode="widthFix" src="{{item.resultName.name==='TOP_ONE'?'/static/icon-result1.png':item.resultName.name==='TOP_TWO'?'/static/icon-result2.png':item.resultName.name==='TOP_THREE'?'/static/icon-result3.png':''}}"></image>
+            </i>
+        </view>
+    </view>
+    <view class="group-rank-con" wx:if="{{pictureResultList.length>0&&resultType==='PICTURE_RESULT'}}">
+        <image class="result-img" mode="widthFix" src="{{item}}" wx:for="{{pictureResultList}}" wx:key="{{index}}"></image>
+    </view>
+    <view class="no-data-con" wx:if="{{teamList.length<=0&&resultType==='GRADE_RESULT'||pictureResultList.length<=0&&resultType==='PICTURE_RESULT'||resultType===''}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无赛果！</view>
+    </view>
+</view>

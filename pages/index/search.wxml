@@ -1,0 +1,62 @@
+<import src="../../template/template.wxml"></import>
+
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <form reportSubmit bindsubmit="bindSearch" class="form-box clearfix">
+        <i class="icon icon-search">
+            <image src="/static/icon-search.svg"></image>
+        </i>
+        <i bindtap="deleteSearchInput" class="icon icon-delete" wx:if="{{showDelete}}">
+            <image src="/static/icon-delete-circle.svg"></image>
+        </i>
+        <input bindconfirm="bindSearch" bindfocus="bindInputFocus" bindinput="bindActivityInput" class="form-input" placeholder="搜索活动,动态,用户" placeholderStyle="color: #9E9E9E;" type="text" value="{{keyWord}}"></input>
+        <button class="form-submit {{showDelete?'':'disabled'}}" formType="submit">搜索</button>
+    </form>
+    <view class="history-search {{showHistory?'':'hide'}}">
+        <view class="history-search-title">历史搜索
+      <form reportSubmit bindsubmit="bindDeleteHistory" class="form-for-formid icon icon-delete-history">
+                <button formType="submit" type="default"></button>
+                <image src="/static/icon-trash.svg"></image>
+            </form>
+        </view>
+        <view class="themes-list-labels">
+            <form reportSubmit bindsubmit="bindSearchHistory" class="form-for-formid labels-item text-overflow" data-data="{{item}}" wx:for="{{historyList}}">
+                <button formType="submit" type="default"></button>
+        {{item}}
+      </form>
+        </view>
+    </view>
+    <view class="{{showHistory?'hide':''}}">
+        <view class="switch-tab clearfix">
+            <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===0?'on':''}}" data-current="0">
+                <button formType="submit" type="default"></button>
+        活动<i class="tab-bottom-line"></i>
+            </form>
+            <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===1?'on':''}}" data-current="1">
+                <button formType="submit" type="default"></button>
+        动态<i class="tab-bottom-line"></i>
+            </form>
+            <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===2?'on':''}}" data-current="2">
+                <button formType="submit" type="default"></button>
+        用户<i class="tab-bottom-line"></i>
+            </form>
+        </view>
+        <view class="content-box {{currentTab===0?'':'hide'}}">
+            <activityCard bindnavigate="navigate" id="activityCard" noData="暂无搜索结果！"></activityCard>
+        </view>
+        <view class="content-box {{currentTab===1?'':'hide'}}">
+            <subjectCard bindnavigate="navigate" id="subjectCard" noData="暂无搜索结果！"></subjectCard>
+        </view>
+        <view class="content-box {{currentTab===2?'':'hide'}}">
+            <view class="data-list-con">
+                <view class="data-item-con" wx:if="{{userList.length>0}}" wx:for="{{userList}}" wx:key="{{item.userId}}">
+                    <userHeader userInfo="{{item}}"></userHeader>
+                </view>
+            </view>
+            <view class="no-fans-con" wx:if="{{userList.length===0}}">
+                <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+                <view class="no-data-text">暂无搜索结果！</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

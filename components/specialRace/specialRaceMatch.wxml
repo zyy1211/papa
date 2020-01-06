@@ -1,0 +1,40 @@
+<view class="match-con {{isIpx?'is-ipx':''}} {{tabList[tabIndex].roundName==='小组赛'&&matchList.length>0||tabList[tabIndex].roundName!=='小组赛'&&allowViewEliminationTable?'has-footer-btn':''}}">
+    <toggleProject bindchooseProject="chooseProject" id="toggleProject" projectList="{{projectList}}"></toggleProject>
+    <view class="tab-list" wx:if="{{tabList.length>0}}">
+        <view bindtap="switchPrevTab" class="switch-prev">
+            <i class="icon icon-left">
+                <image src="/static/icon-left.svg"></image>
+            </i>
+        </view>
+        <view bindtap="openSelectModal" class="tab-index">{{tabList[tabIndex].roundName}}</view>
+        <view bindtap="switchNextTab" class="switch-next">
+            <i class="icon icon-right">
+                <image src="/static/icon-left.svg"></image>
+            </i>
+        </view>
+    </view>
+    <view class="group-list" hidden="{{tabList[tabIndex].roundName!=='小组赛'}}">
+        <view bindtap="changeGroupIndex" class="group-item {{groupIndex===index?'active':''}}" data-group-index="{{index}}" wx:for="{{groupList}}" wx:key="{{index}}">{{item.groupName}}</view>
+    </view>
+    <view class="match-list" wx:if="{{matchList.length>0}}">
+        <matchCard authedUserId="{{authedUserId}}" class="matchCard" confirmOutlineSideIds="{{confirmOutlineSideIds}}" matchInfo="{{item}}" teamIdAndTeamName="{{teamIdAndTeamName}}" wx:for="{{matchList}}" wx:key="{{index}}"></matchCard>
+    </view>
+    <view class="no-data-con" wx:if="{{matchList.length===0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无对阵！</view>
+    </view>
+    <view bindtap="navigateMatchInfo" class="match-footer-btn {{isIpx?'is-ipx':''}}" wx:if="{{tabList[tabIndex].roundName==='小组赛'&&matchList.length>0||tabList[tabIndex].roundName!=='小组赛'&&allowViewEliminationTable}}">{{tabList[tabIndex].roundName==='小组赛'?'查看小组排名':'查看淘汰赛对阵表'}}</view>
+    <view class="select-modal" hidden="{{hiddenModalStatus}}">
+        <view bindtap="closeModal" class="mask"></view>
+        <view class="select-con">
+            <view class="modal-title">请选择轮次</view>
+            <view class="modal-con">
+                <view bindtap="selectTab" class="select-item {{selectTabIndex===index?'active':''}} " data-index="{{index}}" wx:for="{{tabList}}" wx:key="{{ index }}">{{item.roundName}}</view>
+            </view>
+            <view class="modal-footer">
+                <button bindtap="closeModal" class="cancel" type="default">取消</button>
+                <button bindtap="submitSelectTab" class="confirm" type="default">确定</button>
+            </view>
+        </view>
+    </view>
+</view>

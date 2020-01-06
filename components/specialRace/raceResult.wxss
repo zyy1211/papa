@@ -1,0 +1,110 @@
+.race-live-list {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.race-live-list.is-ipx {
+    margin-bottom: 68rpx;
+}
+
+.group-rank-con {
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    border-top: 18rpx solid #f3f3f3;
+    padding: 0 28rpx;
+}
+
+.result-img {
+    width: 100%;
+}
+
+.rank-header {
+    width: 100%;
+    height: 68rpx;
+    display: flex;
+    align-items: center;
+    font-size: 22rpx;
+    color: #333;
+    border-bottom: 2rpx solid #F3F3F3;
+}
+
+.ranking {
+    width: 60rpx;
+    margin-right: 15rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #999999;
+    font-weight: bold;
+    font-size: 24rpx;
+}
+
+.team-name,.win-nums,.sessions,.allSessions,.scores {
+    width: 225rpx;
+    margin: 0 15rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.win-nums {
+    width: 44rpx;
+}
+
+.sessions,.allSessions,.scores {
+    width: 68rpx;
+}
+
+.rank-item {
+    width: 100%;
+    border-bottom: 2rpx solid #F3F3F3;
+    position: relative;
+}
+
+.team-info {
+    width: 100%;
+    min-height: 100rpx;
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #333;
+    padding: 21rpx 0;
+}
+
+.icon-advance {
+    position: absolute;
+    width: 60rpx;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-advance image {
+    width: 44rpx;
+}
+
+.no-data-con {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+    margin-top: 150rpx;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+}

@@ -1,0 +1,67 @@
+page {
+    background: #29313f;
+}
+
+.content {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.content-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.content-image {
+    position: absolute;
+    left: 0;
+    top: 300rpx;
+    width: 200rpx;
+    margin-left: 275rpx;
+}
+
+.button-box {
+}
+
+.content-button {
+    position: absolute;
+    left: 75rpx;
+    top: 700rpx;
+    width: 600rpx;
+    height: 96rpx;
+    border-radius: 47rpx;
+}
+
+.content-button-bg,.content-button text {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.content-button text {
+    width: 540rpx;
+    padding-left: 60rpx;
+}
+
+.content-button-phone text {
+    padding-left: 80rpx;
+}
+
+.content-button-weixin {
+    position: absolute;
+    left: 190rpx;
+    top: 25rpx;
+    width: 50rpx;
+}
+
+.content-memo {
+    margin-top: 300rpx;
+    text-align: center;
+    color: #fff;
+}

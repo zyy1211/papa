@@ -1,0 +1,13 @@
+<canvas canvasId="shareImage" class="canvas-none" style="width: 750px;height: 600px;"></canvas>
+<canvas canvasId="logoQRCode" class="canvas-none" style="width: 550rpx;height: 550rpx;background:#f1f1f1;"></canvas>
+<view class="container-box {{showCanvasContainer?'show':'hide'}}">
+    <view bindtap="hideCanvasContainer" class="mask"></view>
+    <view class="container-content">
+        <canvas bindtouchend="touchEnd" bindtouchmove="touchMove" bindtouchstart="touchStart" canvasId="myCanvas" class="my-canvas" disableScroll="true" style="width: 606rpx;height: 870rpx;"></canvas>
+        <view bindtap="bindDownloadQrcode" class="save-button">
+            <i class="icon icon-download">
+                <image mode="widthFix" src="/static/icon-download.svg"></image>
+            </i>保存到本地
+    </view>
+    </view>
+</view>

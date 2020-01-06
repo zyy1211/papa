@@ -1,0 +1,17 @@
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <view class="comment-content clearfix">
+        <commentCard bindaddReplyCount="addReplyCount" bindcreateReply="createReply" binddeleteComment="deleteComment" binddeleteReply="deleteReply" bindnavigate="navigate" dataList="{{commentList}}" id="commentCard" pageType="comment" subjectId="{{subjectId}}" type="comment" userLogoUrl="{{userLogoUrl}}" userNickName="{{userNickName}}"></commentCard>
+    </view>
+    <view class="reply-list {{dataList.length===0?'hide':''}}">
+        <commentCard bindaddReplyCount="addReplyCount" bindcreateReply="createReply" binddeleteReply="deleteReply" bindminusReplyCount="minusReplyCount" bindnavigate="navigate" commentId="{{id}}" dataList="{{dataList}}" id="commentReplyCard" pageType="comment" subjectId="{{subjectId}}" type="reply" userLogoUrl="{{userLogoUrl}}" userNickName="{{userNickName}}"></commentCard>
+    </view>
+    <view class="no-data-memo">
+        <i class="icon-line icon-line-1"></i>
+        <i class="icon-line icon-line-2"></i>
+        <text>难受，没有了</text>
+    </view>
+    <view class="main-footer clearfix {{isIpx?'fix-iphonex':''}} {{hideFooter?'hide':''}}">
+        <view bindtap="getCommentFocus" class="footer-comment-button">评论一下吧 </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

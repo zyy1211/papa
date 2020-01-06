@@ -1,0 +1,173 @@
+page {
+    background: #fff;
+}
+
+.fix-ipx-content {
+    position: fixed;
+    width: 100%;
+    height: 68rpx;
+    bottom: 0;
+    background: #fff;
+}
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.has-ruling {
+    width: 100%;
+    height: 46rpx;
+    line-height: 46rpx;
+    background: #FEF8C7;
+    font-size: 24rpx;
+    color: #C59D57;
+    padding: 0 20rpx;
+}
+
+.group-list {
+    height: 85rpx;
+    border-bottom: 21rpx solid #f3f3f3;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    padding: 0 25rpx;
+}
+
+.group-item {
+    height: 41rpx;
+    font-size: 26rpx;
+    color: #333;
+    padding: 0 25rpx;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-item.active {
+    background: #00CD91;
+    border-radius: 20rpx;
+    color: #FEFFFF;
+}
+
+.warn-status {
+    box-sizing: border-box;
+    width: 22rpx;
+    height: 22rpx;
+    border-radius: 50%;
+    border: 2rpx solid #F06969;
+    color: #F06969;
+    font-size: 15rpx;
+    margin-left: 6rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.group-rank-con {
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-top: 106rpx;
+    padding: 0 22rpx;
+}
+
+.group-rank-con.is-ipx {
+    padding-bottom: 68rpx;
+}
+
+.group-rank-con.is-ruling {
+    margin-top: 152rpx;
+}
+
+.rank-header {
+    width: 100%;
+    height: 68rpx;
+    display: flex;
+    align-items: center;
+    font-size: 22rpx;
+    color: #333;
+    border-bottom: 2rpx solid #F3F3F3;
+}
+
+.ranking {
+    width: 60rpx;
+    font-size: 30rpx;
+    margin-right: 15rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.team-name,.win-nums,.sessions,.allSessions,.scores {
+    width: 225rpx;
+    margin: 0 15rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.win-nums {
+    width: 44rpx;
+}
+
+.sessions,.allSessions,.scores {
+    width: 68rpx;
+}
+
+.rank-item {
+    width: 100%;
+    min-height: 100rpx;
+    border-bottom: 2rpx solid #F3F3F3;
+    position: relative;
+}
+
+.team-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    color: #333;
+    padding: 21rpx 0;
+}
+
+.icon-advance {
+    position: absolute;
+    width: 60rpx;
+    height: 60rpx;
+    top: 0;
+    left: 0;
+}
+
+.icon-advance image {
+    width: 100%;
+    height: 100%;
+}
+
+.no-data-con {
+    width: 100%;
+    height: 600rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150rpx;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+}

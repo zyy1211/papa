@@ -1,0 +1,77 @@
+page {
+    background: #fff;
+}
+
+.comment-content {
+    width: 710rpx;
+    margin: 30rpx auto 0;
+}
+
+.main-content {
+    padding-bottom: 100rpx;
+    font-size: 28rpx;
+}
+
+.main-content.fix-iphonex {
+    padding-bottom: 168rpx;
+}
+
+.reply-list {
+    width: 710rpx;
+    padding: 20rpx;
+    background: #F4F4F4;
+}
+
+.no-data-memo {
+    position: relative;
+    width: 410rpx;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 22rpx;
+    color: #999;
+}
+
+.icon-line {
+    position: absolute;
+    top: 26rpx;
+    width: 100rpx;
+    height: 0;
+    border-top: 2rpx solid #F3F3F3;
+}
+
+.icon-line-1 {
+    left: 0;
+}
+
+.icon-line-2 {
+    right: 0;
+}
+
+.main-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    height: 60rpx;
+    padding: 15rpx 0;
+    background: #fff;
+    box-shadow: 0px -5px 9px 0px rgba(179,179,179,0.19);
+}
+
+.main-footer.fix-iphonex {
+    bottom: 68rpx;
+}
+
+.footer-comment-button {
+    width: 680rpx;
+    height: 60rpx;
+    margin: 0 auto;
+    padding-left: 20rpx;
+    background: #f3f3f3;
+    border-radius: 30rpx;
+    color: #999;
+    font-size: 28rpx;
+    line-height: 60rpx;
+}

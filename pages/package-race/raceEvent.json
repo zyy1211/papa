@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "赛事发布",
+    "usingComponents": {
+        "authorize": "/components/authorize"
+    }
+}

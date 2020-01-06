@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "邀请函",
+    "usingComponents": {
+        "appFooter": "/components/appFooter"
+    }
+}

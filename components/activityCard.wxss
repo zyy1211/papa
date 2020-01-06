@@ -1,0 +1,217 @@
+@import "authorize.wxss";
+
+.activity-list {
+    padding-bottom: 20rpx;
+}
+
+.activity-list-item {
+    position: relative;
+    width: 710rpx;
+    margin: 35rpx auto 0;
+}
+
+.activity-list-item form {
+    display: block;
+}
+
+.index-list-box .form-for-formid {
+    display: flex;
+    align-items: center;
+    margin-top: 35rpx;
+}
+
+.themes-list-memo {
+    position: relative;
+    width: 100%;
+    height: 275rpx;
+    color: #fff;
+    border-radius: 15rpx;
+}
+
+.themes-list-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background: rgba(0,0,0,0.4);
+    border-radius: 15rpx;
+}
+
+.themes-list-memo-end .icon-status {
+    left: 50%;
+    top: 50%;
+    z-index: 30;
+    width: 70rpx;
+    height: 70rpx;
+    margin: -60rpx 0 0 -20rpx;
+}
+
+.themes-status-end {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 30;
+    width: 104rpx;
+    margin: 18rpx 0 0 -40rpx;
+    text-align: center;
+    font-size: 34rpx;
+}
+
+.themes-list-memo-img {
+    position: relative;
+    width: 100%;
+    height: 275rpx;
+    border-radius: 15rpx;
+}
+
+.themes-list-type {
+    position: absolute;
+    left: 20rpx;
+    top: 20rpx;
+    z-index: 10;
+    padding: 0 10rpx;
+    height: 36rpx;
+    background: #00CD91;
+    text-align: center;
+    line-height: 36rpx;
+    color: #fff;
+    font-size: 24rpx;
+    border-radius: 7rpx;
+}
+
+.themes-list-type-race {
+    background: #FFA918;
+}
+
+.themes-list-labels {
+    position: absolute;
+    left: 20rpx;
+    width: 670rpx;
+    overflow-x: auto;
+    font-size: 22rpx;
+    color: #646364;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.labels-item {
+    display: inline-block;
+    margin: 10rpx 8rpx 0 0;
+    padding: 5rpx 10rpx 3rpx;
+    background: rgba(255,255,255,0.76);
+    border-radius: 20rpx;
+    line-height: 32rpx;
+}
+
+.themes-list-main {
+    position: relative;
+    font-size: 24rpx;
+    color: #55666d;
+    line-height: 50rpx;
+}
+
+.themes-list-name {
+    width: 710rpx;
+    margin-top: 12rpx;
+    line-height: 50rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333;
+}
+
+.themes-list-address text {
+    display: inline-block;
+    width: 550rpx;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.list-address-distance {
+    float: right;
+    width: 100rpx;
+    margin-right: 20rpx;
+    text-align: right;
+}
+
+.themes-list-people {
+    position: relative;
+    margin-bottom: 10rpx;
+}
+
+.themes-list-fee {
+    position: absolute;
+    right: 20rpx;
+    bottom: 0;
+    color: #FFA918;
+}
+
+.themes-list-sign-up {
+    width: 100%;
+    height: 60rpx;
+    margin-top: 5rpx;
+    background: #00CD91;
+    color: #fff;
+    text-align: center;
+    line-height: 60rpx;
+    letter-spacing: 20rpx;
+    font-size: 30rpx;
+    border-radius: 6rpx;
+}
+
+.icon-address,.icon-time,.icon-people {
+    width: 25rpx;
+    height: 25rpx;
+    vertical-align: middle;
+    margin-top: -2rpx;
+}
+
+.icon-status {
+    position: absolute;
+    right: 5rpx;
+    bottom: 12rpx;
+    width: 80rpx;
+    height: 24rpx;
+}
+
+.icon-fee {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+
+.themes-user-count {
+    display: inline-block;
+    padding: 0 12rpx 2rpx;
+    margin-left: 14rpx;
+    border-radius: 8rpx;
+    background: #f2f3f5;
+    color: #9fa0a1;
+}
+
+.themes-list-club {
+    position: relative;
+    margin-top: 10rpx;
+    padding-top: 15rpx;
+    border-top: 2rpx solid #f3f3f3;
+    line-height: 36rpx;
+}
+
+.icon-club {
+    width: 36rpx;
+    height: 36rpx;
+    overflow: hidden;
+    vertical-align: text-bottom;
+}
+
+.icon-club image {
+    border-radius: 50%;
+}
+
+.icon-arrow-club {
+    position: absolute;
+    right: 0;
+    top: 26rpx;
+    transform: rotate(-90deg);
+}

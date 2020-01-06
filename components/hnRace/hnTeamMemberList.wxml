@@ -1,0 +1,20 @@
+<view class="team-member-list">
+    <toggleProject bind:chooseProject="getGroupId" projectList="{{groupList}}"></toggleProject>
+    <view class="list-content">
+        <view class="team-list" wx:if="{{groupTypeName==='SINGLE_GROUP'&&enterTypeName==='TEAM_ENTER'}}">
+            <raceTeam isHnRace="{{true}}" teamIndex="{{index}}" teamInfo="{{item}}" wx:for="{{teamList}}" wx:key="{{index}}"></raceTeam>
+        </view>
+        <view class="member-list" wx:else>
+            <view class="member-item" wx:for="{{memberList}}" wx:key="{{index}}">
+                <view class="member-info">
+                    <text class="member-num">{{index+1}}</text>
+                    <text class="member-name">{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="no-data-con" wx:if="{{teamList.length===0&&memberList.length===0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无数据！</view>
+    </view>
+</view>

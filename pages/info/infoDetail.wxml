@@ -1,0 +1,8 @@
+<view class="info-box {{isIpx?'fix-iphonex':''}}">
+    <view class="info-title">{{info.title}}</view>
+    <view class="info-content">
+        <text>{{info.content}}</text>
+    </view>
+</view>
+<web-view bindmessage="getWebViewMessage" src="{{webUrl}}" wx:if="{{webUrl}}"></web-view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

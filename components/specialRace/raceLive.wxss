@@ -1,0 +1,216 @@
+.race-live-list {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.race-live-list.is-ipx {
+    margin-bottom: 68rpx;
+}
+
+.live-item {
+    box-sizing: border-box;
+    width: 100%;
+    border-top: 30rpx solid #f3f3f3;
+    border-left: 28rpx solid #f3f3f3;
+    border-right: 28rpx solid #f3f3f3;
+}
+
+.live-item:last-child {
+    border-bottom: 30rpx solid #f3f3f3;
+}
+
+.live-team {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    border-radius: 10rpx;
+}
+
+.live-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+
+.live-team-con {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14rpx 20rpx 0;
+    z-index: 2;
+    border-radius: 10rpx;
+}
+
+.team-site-info {
+    width: 100%;
+    height: 43rpx;
+    background: rgba(190,218,238,.29);
+    box-shadow: 0 -2rpx 2rpx 0 rgba(34,33,83,0.13);
+    border-radius: 7rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 22rpx;
+    color: #00CD91;
+}
+
+.race-type {
+    width: 150rpx;
+    color: #7A7979;
+    text-align: right;
+}
+
+.race-name {
+    width: 150rpx;
+    text-align: center;
+}
+
+.race-site {
+    width: 150rpx;
+    text-align: left;
+}
+
+.team-info {
+    width: 100%;
+    padding: 40rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.team-name {
+    width: 200rpx;
+    flex-shrink: 0;
+    padding-left: 45rpx;
+    font-size: 24rpx;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+}
+
+.team-name.right-name {
+    text-align: left;
+    padding-right: 45rpx;
+    padding-left: 0;
+}
+
+.score-text {
+    width: 168rpx;
+    flex-shrink: 0;
+    font-size: 32rpx;
+    color: #F06969;
+    font-weight: bold;
+    text-align: center;
+}
+
+.live-member {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0 30rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    border-top: 5rpx solid #f3f3f3;
+    font-size: 24rpx;
+    color: #333333;
+}
+
+.member-item {
+    width: 100%;
+    border-bottom: 2rpx solid #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.member-item:last-child {
+    border-bottom: none;
+}
+
+.member-info {
+    width: 100%;
+    padding: 30rpx 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.member-name {
+    width: 200rpx;
+    flex-shrink: 0;
+    height: 90rpx;
+    text-align: right;
+    font-size: 24rpx;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.member-name.right-name {
+    text-align: left;
+}
+
+.member-name-con {
+    height: 30rpx;
+    line-height: 30rpx;
+    overflow: hidden;
+}
+
+.member-score-text {
+    width: 168rpx;
+    flex-shrink: 0;
+    font-size: 32rpx;
+    color: #72D565;
+    font-weight: bold;
+    text-align: center;
+}
+
+.race-time {
+    font-size: 20rpx;
+    color: #9D9B9A;
+}
+
+.end-race-score {
+    padding: 0 72rpx;
+    height: 40rpx;
+    background: #F3F3F3;
+    color: #BEBEBE;
+    font-size: 24rpx;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}
+
+.end-race-score view {
+    margin-right: 30rpx;
+}
+
+.end-race-score view:last-child {
+    margin-right: 0;
+}
+
+.no-data-con {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+    margin-top: 150rpx;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+}

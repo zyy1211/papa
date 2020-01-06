@@ -1,0 +1,33 @@
+.enter-page-wrapper {
+    padding-bottom: 200rpx;
+}
+
+.reject-reason {
+    width: 560rpx;
+    height: 68rpx;
+    margin: 20rpx auto 0;
+    line-height: 68rpx;
+    border-radius: 34rpx;
+    font-size: 30rpx;
+    color: #fff;
+    background-color: #F06969;
+    text-align: center;
+    box-shadow: 0 6rpx 0 #FECECE;
+}
+
+.section-down-picker {
+    position: relative;
+    display: inline-block;
+    width: 180rpx;
+    height: 57rpx;
+    text-align: left;
+    margin-right: 20rpx;
+    padding: 0 10rpx;
+    border: 2rpx solid #eaeaea;
+    line-height: 57rpx;
+    border-radius: 5rpx;
+}
+
+.icon-warning {
+    margin-right: 0;
+}

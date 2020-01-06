@@ -1,0 +1,11 @@
+page {
+    background: #f3f3f3;
+}
+
+.switch-tab {
+    z-index: 998;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #fff!important;
+}

@@ -1,0 +1,29 @@
+<view class="user-header-con">
+    <form reportSubmit bindsubmit="navigate" class="user-header-form" data-url="{{userInfo.homePageUrl}}">
+        <button class="form-button" formType="submit" type="default"></button>
+        <view class="user-info-con">
+            <image class="user-haeder" lazyLoad="{{true}}" src="{{userInfo.userLogoUrl}}"></image>
+            <view class="user-main-info">
+                <view class="user-name-con">
+                    <view class="name-text">{{userInfo.createUserName}}</view>
+                    <image class="sex-img" src="{{userInfo.userSex==='M'?'/static/icon-male-active.svg':'/static/icon-female-active.svg'}}" wx:if="{{userInfo.userSex}}"></image>
+                </view>
+                <view class="user-sub-info" wx:if="{{userInfo.contactName||userInfo.time}}">{{userInfo.contactName||userInfo.time}}</view>
+            </view>
+        </view>
+    </form>
+    <form reportSubmit bindsubmit="changeAttention" class="attention-form" wx:if="{{userInfo.showAttentionButton}}">
+        <button class="attention-btn" formType="submit" type="default"></button>
+        <view class="attention-btn-con {{attentionBtnText!=='关注'?'has-attention':''}}">{{attentionBtnText==='关注'?'+ 关注':attentionBtnText}}</view>
+    </form>
+</view>
+<view class="wxapp-modal" hidden="{{modalHidden}}">
+    <view class="mask"></view>
+    <form bindsubmit="submitModal" class="content">
+        <view class="header">确定不再关注吗？</view>
+        <view class="footer">
+            <button bindtap="hideModal" class="cancel" type="default">取消</button>
+            <button class="confirm" formType="submit" type="default">确定</button>
+        </view>
+    </form>
+</view>

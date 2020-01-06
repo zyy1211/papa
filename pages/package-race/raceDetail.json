@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "赛事详情",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "detailFooter": "/components/detailFooter",
+        "authorize": "/components/authorize",
+        "appFooter": "/components/appFooter",
+        "createQrCode": "/components/createQrCode",
+        "userHeader": "/components/subject/userHeader"
+    }
+}

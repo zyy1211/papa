@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "下载电子证书",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "authorize": "/components/authorize"
+    }
+}

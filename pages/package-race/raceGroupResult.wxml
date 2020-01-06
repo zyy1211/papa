@@ -1,0 +1,50 @@
+<loading hidden="{{hidden}}">
+    加载中...
+</loading>
+<view class="main-content">
+    <view class="main-title hide">有队伍排名一样，等待抽签进入淘汰赛</view>
+    <view class="against-content {{isIpx?'fix-iphonex':''}}">
+        <view class="against-side">
+            <view bindtap="switchMatchGroup" class="against-side-item {{againstSideTab==index?'on':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{groupList}}">
+      {{item.groupName}}
+      <i class="side-item-line"></i>
+                <i class="icon icon-need-draw" wx:if="{{item.needDraw}}">
+                    <image src="/static/icon-need-draw.svg"></image>
+                </i>
+            </view>
+        </view>
+        <view class="right-box">
+            <view class="right-box-title clearfix">
+                <view class="td td-index"></view>
+                <view class="td td-nick-name">人员</view>
+                <view class="td td-victory-count">胜场</view>
+                <view class="td td-total-count">总场次</view>
+                <view class="td td-net-victory-score">净胜分</view>
+            </view>
+            <view class="no-data-content" wx:if="{{groupResultListNone}}">
+                <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+                <view class="no-data-text">暂无数据！</view>
+            </view>
+            <view class="against-list" wx:else>
+                <view class="against-list-item clearfix {{item.className}}" wx:for="{{groupResultList}}">
+                    <i class="icon icon-enter-next" wx:if="{{item.enterNextStage}}">
+                        <image src="/static/icon-enter-next.png"></image>
+                    </i>
+                    <view class="td td-index">{{item.index}}</view>
+                    <view class="td td-nick-name">
+                        <view class="text-overflow" style="line-height:{{item.lineHeight}}rpx" wx:for="{{item.nameList}}">
+              {{item.nickName}}
+            </view>
+                    </view>
+                    <view class="td td-victory-count">{{item.victoryCount}}</view>
+                    <view class="td td-total-count">{{item.totalCount}}</view>
+                    <view class="td td-net-victory-score">{{item.netVictoryScore}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

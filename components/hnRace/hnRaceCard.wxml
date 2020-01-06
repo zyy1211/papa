@@ -1,0 +1,29 @@
+<form reportSubmit bindsubmit="navigate" class="form-special-race" data-url="{{raceInfo.pageUrl}}">
+    <button class="form-btn" formType="submit" type="default"></button>
+    <view class="special-race-header">
+        <image class="special-race-img" lazyLoad="{{true}}" src="{{raceInfo.homeImgUrl}}"></image>
+        <view class="end-mask" wx:if="{{raceInfo.status.name==='CANCEL'}}">
+            <i class="icon-race-end">
+                <image class="race-end-img" mode="aspectFit" src="/static/special-race-smallend.png"></image>
+            </i>
+            <view class="end-text">已取消</view>
+        </view>
+    </view>
+    <view class="special-race-info">
+        <view class="race-title">{{raceInfo.name}}</view>
+        <view class="info-item">
+            <view class="left-info">
+                <i class="icon icon-item">
+                    <image class="icon-img" src="/static/icon-address.svg"></image>
+                </i>{{raceInfo.addressDescribe}}
+      </view>
+        </view>
+        <view class="info-item">
+            <view class="left-info">
+                <i class="icon icon-item">
+                    <image class="icon-img" src="/static/icon-time.svg"></image>
+                </i>{{raceInfo.timeInterval}}
+      </view>
+        </view>
+    </view>
+</form>

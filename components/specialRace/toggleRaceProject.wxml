@@ -1,0 +1,16 @@
+<view class="toggle-con" wx:if="{{projectList.length>0}}">
+    <view class="project-con {{isToggle?'toggle':''}}">
+        <view class="selectd-con">{{projectName}}</view>
+        <view class="project-toggle-list {{isToggle?'toggle':''}}">
+            <view class="project-list {{isToggle?'toggle':''}}">
+                <view bindtap="chooseProject" class="project-item" data-project="{{item}}" wx:for="{{projectList}}" wx:key="{{item.id}}">{{item.name}}</view>
+            </view>
+            <view class="toggle-btn-con">
+                <view bindtap="toggle" class="toggle-btn">{{isToggle?'收起':'切换项目'}}<i class="icon-toggle {{isToggle?'toggle':''}}"></i>
+                </view>
+            </view>
+        </view>
+        <view class="border-placeholder" hidden="{{isToggle}}"></view>
+    </view>
+    <view bindtap="closeToggle" catchtouchmove="ture" class="toggle-mask" hidden="{{!isToggle}}"></view>
+</view>

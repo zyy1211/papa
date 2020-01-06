@@ -1,0 +1,124 @@
+<view class="box-warning">
+    <i class="icon icon-warning">
+        <image src="/static/icon-warning.svg"></image>
+    </i>
+    <text class="text-warning">{{gmtModifyRegisterEnd}}前可修改/取消报名</text>
+</view>
+<form reportSubmit bindsubmit="bindFormSubmit" class="form-box">
+    <view class="form-header">
+        <view class="section section-name">
+            <view class="section-title">报名昵称</view>
+            <input bindinput="bindNameInput" class="section-input" name="name" placeholder="仅用于本次活动的昵称（非必填）" placeholderClass="section-placeholder" value="{{fixName}}"></input>
+        </view>
+        <view class="section section-phone">
+            <view class="section-title">手机号</view>
+            <input bindinput="bindPhoneInput" class="section-input" maxlength="11" name="number" placeholder="该电话仅活动发起者可见" placeholderClass="section-placeholder" type="number" value="{{fixCell}}"></input>
+        </view>
+        <view class="section section-remark">
+            <view class="section-title">备注</view>
+            <input bindinput="bindRemarkInput" class="section-input" maxlength="32" name="remark" placeholder="请输入备注信息（非必填）" placeholderClass="section-placeholder" value="{{memo}}"></input>
+        </view>
+    </view>
+    <view class="section section-with clearfix" wx:if="{{allowCarry}}">
+        <view class="section-with-title">带人</view>
+        <view class="section-with-box">
+            <view class="">
+                <i class="icon icon-man">
+                    <image src="/static/icon-man.svg"></image>
+                </i>
+                <view class="count-box">
+                    <i bindtap="manMinusOne" class="count-box-change count-box-minus {{isManMinusDisable?'count-box-disabled':''}}">-</i>
+                    <input autocomplete="off" bindinput="bindKeyInput" class="count-box-input" data-type="man" name="manCount" type="number" value="{{manInputValue}}"></input>
+                    <i bindtap="manAddOne" class="count-box-change count-box-add {{isManAddDisable?'count-box-disabled':''}}">+</i>
+                </view>
+            </view>
+            <view class="">
+                <i class="icon icon-woman">
+                    <image src="/static/icon-woman.svg"></image>
+                </i>
+                <view class="count-box">
+                    <i bindtap="womanMinusOne" class="count-box-change count-box-minus {{isWomanMinusDisable?'count-box-disabled':''}}">-</i>
+                    <input autocomplete="off" bindinput="bindKeyInput" class="count-box-input" data-type="woman" name="womanCount" type="number" value="{{womanInputValue}}"></input>
+                    <i bindtap="womanAddOne" class="count-box-change count-box-add {{isWomanAddDisable?'count-box-disabled':''}}">+</i>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="protocol-box" style="margin-top: 20rpx; ">
+        <checkbox-group bindchange="checkboxChange" style="float:left;">
+            <label class="checkbox">
+                <checkbox checked="true" color="#00CD91" value="true"></checkbox>
+            </label>
+        </checkbox-group>
+        <view style="padding-top:4rpx;">我已阅读《<i catchtap="showProtocolModal" class="protocol-button">用户参与及付款协议</i>》《<i catchtap="showReliefModal" class="protocol-button">活动免责协议</i>》</view>
+    </view>
+    <block wx:if="{{enterType==='QUEUE'}}">
+        <view class="form-footer {{isIpx?'fix-iphonex-button':''}}" wx:if="{{isModify}}">
+            <block wx:if="{{isCanJoin}}">
+                <button class="form-footer-button {{disabledSubmit?'disabled-button':''}}" formType="submit" type="primary">提交修改({{reFeeResult}}元)</button>
+                <button bindtap="bindCancelEnter" class="form-footer-button {{disabledSubmit?'disabled-button':''}}" type="default">取消排队</button>
+            </block>
+        </view>
+        <view class="form-footer {{isIpx?'fix-iphonex-button':''}}" wx:else>
+            <button class="form-footer-button {{disabledSubmit?'disabled-button':''}}" formType="submit" type="primary" wx:if="{{isCanJoin}}">排队(共{{feeResult}}元)</button>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="form-footer {{isIpx?'fix-iphonex-button':''}}" wx:if="{{isModify}}">
+            <view class="form-footer-memo">
+                <view>{{countResultMemo}}</view>
+            </view>
+            <view class="form-footer-fee">报名费：{{organizerPriceFee}} + {{countResultFee}} = {{feeResult}}</view>
+            <block wx:if="{{isCanJoin}}">
+                <button class="form-footer-button {{disabledSubmit?'disabled-button':''}}" formType="submit" type="primary">提交修改({{reFeeResult}}元)</button>
+                <button bindtap="bindCancelEnter" class="form-footer-button {{disabledSubmit?'disabled-button':''}}" type="default">取消报名</button>
+            </block>
+        </view>
+        <view class="form-footer {{isIpx?'fix-iphonex-button':''}}" wx:else>
+            <view class="form-footer-fee">报名费：{{organizerPriceFee}} + {{countResultFee}} = {{feeResult}}</view>
+            <button class="form-footer-button {{disabledSubmit?'disabled-button':''}}" formType="submit" type="primary" wx:if="{{isCanJoin}}">报名(共{{feeResult}}元)</button>
+        </view>
+    </block>
+</form>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>
+<view class="wxapp-modal" hidden="{{protocolModalHidden}}">
+    <view bindtap="closeProtocolModal" class="mask"></view>
+    <view class="content" style="top:10%">
+        <view class="header">用户参与及付款协议</view>
+        <view class="body">
+            <view class="protocol-content">
+                <view>1.1 平台上的活动均隶属第三方活动发起者，与PAPA报名小程序平台无关；</view>
+                <view>1.2 支付前请先确认您的支付项目，以及付款金额；</view>
+                <view>1.3 当您使用本服务时，如您未遵守法律法规、本协议及相关操作提示和业务规则，由此造成的风险和损失由您自行承担，本公司不向您承担任何风险和损失。</view>
+                <view>1.4 您使用本服务时，应当仔细确认交易及其金额后进行支付。本公司有权根据您的指令扣划资金给收款人，届时您不应以未在交易单据中签名、签名不符、非本人意愿交易等原因要求本公司退款或承担其他责任。</view>
+                <view>1.5 如活动参与中遇到问题无法解决，可及时联系客服进行协调 客服微信号：ilovebadmintonpapaai</view>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeProtocolModal" class="confirm" style="width:100%;" type="default">我同意</button>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{reliefModalHidden}}">
+    <view bindtap="closeReliefModal" class="mask"></view>
+    <view class="content" style="top:10%">
+        <view class="header">活动免责协议</view>
+        <view class="body">
+            <view class="protocol-content">
+                <view>1.1 本次活动（包括但不限于羽毛球运动）具有潜在的危险性和不可预知性，参加者须对自身的安全和行为负责。</view>
+                <view>1.2 报名参加本次活动者应当对自身的身体条件进行全面了解，并科学评估是否适宜参加本次活动。若因参加此次活动（包括途中）和在活动中剧烈运动、激烈对抗等方式而导致伤残、死亡等严重伤害，由侵害人或参加者本人承担后果，平台和组织者不承担保障参加者安全的义务。</view>
+                <view>1.3 报名参加本次活动者即被视为年满18周岁的完全民事行为能力人，未满18周岁的限制民事行为能力人和无民事行为能力人应当在其监护人的陪同下参加。</view>
+                <view>1.4 参加者在本次活动中（包括来往活动场地的途中）遭受人身损害或造成他人人身损害的，由侵害人或参加者本人承担法律后果。</view>
+                <view>1.5 参加者应当妥善管理其财物，不应轻信他人，包括其他活动参加者。平台和组织者不承担保管参加者财物的义务，若发生财物失窃、损毁等情形，其损失由参加者本人自行承担。</view>
+                <view>1.6 平台和组织者对上述条款规定的人身和财产损失概不承担任何法律责任。</view>
+                <view>1.7 但凡报名参加本次活动者将视为已知晓并服从上述条款。</view>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeReliefModal" class="confirm" style="width:100%;" type="default">我同意</button>
+        </view>
+    </view>
+</view>

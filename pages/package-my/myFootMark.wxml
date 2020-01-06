@@ -1,0 +1,9 @@
+<import src="../../template/template.wxml"></import>
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <map showLocation bindmarkertap="markertap" bindregionchange="regionchange" class="map" id="map" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" scale="{{scale}}"></map>
+</view>
+<authorize id="authorize"></authorize>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

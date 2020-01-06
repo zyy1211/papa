@@ -1,0 +1,49 @@
+<view class="enter-page-wrapper">
+    <enterTimeTitle wx:if="{{showEnterTime}}"></enterTimeTitle>
+    <view bindtap="showErrorInfo" class="reject-reason" wx:if="{{rejected.rejected(idAndFailReasonMap)&&groupType==='SINGLE_GROUP'}}">
+        点击查看驳回理由
+    </view>
+    <multiGroupSelect allSubjects="{{groupList}}" bindgroupCheck="onGroupCheck" bindremoveGroup="removeGroup" bindshowErrorInfo="showErrorInfo" multiSelectTitle="{{multiSelectTitle}}" wx:if="{{groupList.length&&currentRoleType!=='LEADER'&&currentRoleType!=='COACH'}}"></multiGroupSelect>
+    <flexbleForm bindformSubmit="onFormSubmit" bindonPickerChange="onPickerChange" defaultRoleType="{{currentRoleType}}" entry="enter" id="flexbleForm" sectionList="{{sectionList}}" wx:if="{{sectionList.length}}"></flexbleForm>
+    <hnRaceFooter bind:onSubmit="onBtnClick" bindcheckboxChange="checkboxChange" footerData="{{footerData}}"></hnRaceFooter>
+    <modal bindcancel="onSettingCancel" bindconfirm="onSettingConfirm" cancelText="取消" confirmText="确定" hidden="{{hideModal}}" title="移除领队，同时将队员设置为队员兼领队的角色" wx:if="{{memberList.length}}">
+        <view style="width: 100%;text-align: center">
+            <picker bindchange="bindMemberPickerChange" class="section-down-picker" range="{{filterLeader.filterLeader(memberList,leaderMember.id)}}" rangeKey="name" value="{{defaultValue}}">
+                <view class="picker">
+                    {{filterLeaderName.filterLeaderName(memberList,leaderMember.id)[defaultValue]}}
+                </view>
+                <i class="picker-down-icon"></i>
+            </picker>
+        </view>
+    </modal>
+</view>
+<wxs module="rejected">
+function rejected(data) {
+    return (JSON.stringify(data) !== '{}')
+};
+module.exports = ({
+    rejected: rejected,
+});
+</wxs>
+<wxs module="filterLeaderName">
+var filterLeaderName = (function(memberList, leaderId) {
+    return (memberList.filter((function(item) {
+        return (item.id !== leaderId)
+    })).map((function(item) {
+        return (item.name)
+    })))
+});
+module.exports = ({
+    filterLeaderName: filterLeaderName,
+});
+</wxs>
+<wxs module="filterLeader">
+var filterLeader = (function(memberList, leaderId) {
+    return (memberList.filter((function(item) {
+        return (item.id !== leaderId)
+    })))
+});
+module.exports = ({
+    filterLeader: filterLeader,
+});
+</wxs>

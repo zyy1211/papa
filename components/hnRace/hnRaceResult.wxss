@@ -1,0 +1,152 @@
+.race-live-list {
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+}
+
+.race-live-list.is-ipx {
+    margin-bottom: 68rpx;
+}
+
+.race-live-list.has-download {
+    margin-bottom: 92rpx;
+}
+
+.race-live-list.is-ipx.has-download {
+    margin-bottom: 160rpx;
+}
+
+.group-rank-con {
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 0 28rpx;
+}
+
+.rank-header {
+    width: 100%;
+    height: 68rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22rpx;
+    color: #333;
+    border-bottom: 2rpx solid #F3F3F3;
+}
+
+.ranking,.team-name,.scores {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #333333;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.ranking {
+    width: 110rpx;
+}
+
+.team-name {
+    width: 224rpx;
+    padding: 0 74rpx;
+    line-height: 45rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.scores {
+    width: 194rpx;
+}
+
+.rank-item {
+    width: 100%;
+    border-bottom: 2rpx solid #F3F3F3;
+    position: relative;
+}
+
+.team-info {
+    width: 100%;
+    min-height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: #333;
+    padding: 21rpx 0;
+}
+
+.icon-advance {
+    position: absolute;
+    width: 110rpx;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-advance-image {
+    width: 44rpx;
+}
+
+.result-img {
+    width: 100%;
+}
+
+.no-data-con {
+    width: 100%;
+    height: 600rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 18rpx solid #f3f3f3;
+    background: #f3f3f3;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.down-btn-con {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 92rpx;
+    background: #00CD91;
+}
+
+.down-btn-con.is-ipx {
+    bottom: 68rpx;
+}
+
+.footer-item-download {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-item-download .download-btn {
+    width: 100%;
+    height: 100%;
+    background: #00CD91;
+    font-size: 36rpx;
+    color: #fff;
+}
+
+.footer-item-download .download-btn::after {
+    border: none;
+}

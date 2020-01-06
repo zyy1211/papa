@@ -1,0 +1,328 @@
+page {
+    background: #f3f3f3;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.text-overhidden {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text-row-ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.wxapp-modal {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.modal-header {
+    padding-top: 20rpx;
+}
+
+.modal-content .modal-body {
+    padding: 30rpx;
+    font-size: 28rpx;
+    color: #adb2bb;
+}
+
+.wxapp-modal .content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    z-index: 1000;
+    width: 80%;
+    margin: 0 0 0 -40%;
+    background: #fff;
+    text-align: center;
+    border-radius: 10rpx;
+}
+
+.wxapp-modal .content .header {
+    margin: auto;
+    width: 100%;
+    height: 100rpx;
+    font-weight: bold;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.wxapp-modal .content .body {
+    margin: auto;
+    width: 100%;
+    padding: 0 0 40rpx 0;
+}
+
+.wxapp-modal .content .footer {
+    margin: auto;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-top: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer button {
+    display: inline-block;
+    width: 49%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #fff;
+    border-radius: 0;
+}
+
+.wxapp-modal .content .footer button::after {
+    border: none;
+}
+
+.wxapp-modal .content .footer .cancel {
+    color: #000;
+    border-right: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer .confirm {
+    color: #00CD91;
+}
+
+.wxapp-modal .mask,.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.clearfix:after {
+    content: " ";
+    display: table;
+    clear: both;
+}
+
+.show {
+    display: block!important;
+}
+
+.hide {
+    display: none!important;
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    width: 20rpx;
+    height: 20rpx;
+    margin-right: 15rpx;
+}
+
+.icon image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.no-data-content {
+    width: 100%;
+    margin: 205rpx auto 0;
+    text-align: center;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+    margin: 0 auto;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #aeb2b8;
+}
+
+.form-for-formid {
+    position: relative;
+}
+
+.form-for-formid button[type="default"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.form-for-formid button[type="default"]::after {
+    border: none;
+}
+
+.user-header {
+    display: block;
+    font-size: 28rpx;
+}
+
+.user-logo {
+    float: left;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+}
+
+.user-name-box {
+    float: left;
+    margin-left: 20rpx;
+    margin-top: 5rpx;
+    line-height: 40rpx;
+}
+
+.user-name {
+    width: 460rpx;
+    word-break: break-all;
+    font-weight: bold;
+}
+
+.user-time {
+    color: #999999;
+    font-size: 24rpx;
+}
+
+.image-swiper-nav {
+    position: absolute;
+    right: 30rpx;
+    bottom: 30rpx;
+    height: 34rpx;
+    padding: 0 17rpx;
+    background: rgba(0,0,0,0.3);
+    border-radius: 20rpx;
+    line-height: 34rpx;
+    color: #fff;
+    font-size: 26rpx;
+}
+
+.wetoast__bd {
+    opacity: 0;
+    position: fixed;
+    z-index: 5000;
+    max-width: 90%;
+    top: 25%;
+    left: 50%;
+    padding: 10rpx;
+    transform: translateX(-50%);
+    background: rgba(40,40,40,0.75);
+    border-radius: 10rpx;
+    color: #fff;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: 30rpx;
+}
+
+.wetoast__bd.bottom {
+    top: auto;
+    bottom: 40rpx;
+}
+
+.switch-tab {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 92rpx;
+    line-height: 92rpx;
+    color: #333;
+    border-bottom: 2rpx solid #efefef;
+    background: #fff;
+}
+
+.switch-tab-list {
+    width: 50%;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.on {
+    position: relative;
+    color: #00CD91;
+    font-weight: bold;
+}
+
+.on .tab-bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100rpx;
+    border-bottom: 6rpx solid #00CD91;
+    margin-left: -50rpx;
+}
+
+.icon-warning {
+    width: 35rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-right: 15rpx;
+    margin-top: -7rpx;
+}
+
+.modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.fix-iphonex-button {
+    bottom: 68rpx!important;
+    z-index: 1001;
+}
+
+.fix-iphonex-button.has-footer-app {
+    bottom: 168rpx!important;
+}
+
+.fix-iphonex-button::after {
+    content: ' ';
+    position: fixed;
+    bottom: 0!important;
+    height: 68rpx!important;
+    width: 100%;
+    background: #fff;
+    z-index: 1000;
+}
+
+.fix-iphonex-content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100%;
+    height: 68rpx;
+    background: #fff;
+}
+
+.blur {
+    filter: blur(7rpx);
+}

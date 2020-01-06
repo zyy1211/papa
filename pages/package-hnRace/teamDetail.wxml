@@ -1,0 +1,168 @@
+<enterTimeTitle></enterTimeTitle>
+<view class="team-detail">
+    <view class="team-detail-header">
+        <view class="header-operations">
+            <view class="operation-item">
+                <i class="icon icon-team-avatar">
+                    <image class="icon-image" src="/static/icon-team-avatar.svg"></image>
+                </i>
+                <text class="header-text">队伍名</text>
+            </view>
+            <view bindtap="addMember" class="operation-item" wx:if="{{!enter}}">
+                <i class="icon icon-plus-white">
+                    <image class="icon-image" src="/static/icon-plus-white.svg"></image>
+                </i>
+                <text class="header-text">添加队员</text>
+            </view>
+        </view>
+        <view class="team-name">{{teamName}}</view>
+    </view>
+    <view class="info-wrap leader-list">
+        <view class="info-wrap-title">
+            <i class="icon-border"></i>
+            领队
+        </view>
+        <view class="member-list-item">
+            <block wx:if="{{leaderMember}}">
+                <view class="basic-info">
+                    <text class="rank">1</text>
+                    <text class="member-name">{{leaderMember.name}}</text>
+                    <i class="icon" wx:if="{{leaderMember.sex==='M'}}">
+                        <image class="icon-image" src="/static/icon-male-active.svg"></image>
+                    </i>
+                    <i class="icon" wx:else>
+                        <image class="icon-image" src="/static/icon-female-active.svg"></image>
+                    </i>
+                </view>
+                <view class="member-operations">
+                    <i bindtap="queryMember" class="icon icon-info-rejected" data-memberid="{{leaderMember.id}}" wx:if="{{rejected.isRejected(leaderMember.id,auditFailMemberIds)}}">
+                        <image class="icon-image" src="/static/icon-info-rejected.svg"></image>
+                    </i>
+                    <i bindtap="queryMember" class="icon icon-member-info" data-memberid="{{leaderMember.id}}" wx:else>
+                        <image class="icon-image" src="/static/icon-member-info.svg"></image>
+                    </i>
+                    <i bind:tap="deleteMember" class="icon icon-remove-member" data-memberid="{{leaderMember.id}}" wx:if="{{!enter}}">
+                        <image class="icon-image" src="/static/icon-remove-member.svg"></image>
+                    </i>
+                </view>
+            </block>
+            <text class="member-empty" wx:else>暂无</text>
+        </view>
+    </view>
+    <view class="info-wrap coach-list" wx:if="{{hasCoach.hasCoach(roleTypeList)}}">
+        <view class="info-wrap-title">
+            <i class="icon-border"></i>
+            教练
+        </view>
+        <view class="member-list-item" wx:if="{{coachMember}}">
+            <view class="basic-info">
+                <text class="rank">1</text>
+                <text class="member-name">{{coachMember.name}}</text>
+                <i class="icon" wx:if="{{coachMember.sex==='M'}}">
+                    <image class="icon-image" src="/static/icon-male-active.svg"></image>
+                </i>
+                <i class="icon" wx:else>
+                    <image class="icon-image" src="/static/icon-female-active.svg"></image>
+                </i>
+            </view>
+            <view class="member-operations">
+                <i bindtap="queryMember" class="icon icon-info-rejected" data-memberid="{{coachMember.id}}" wx:if="{{rejected.isRejected(coachMember.id,auditFailMemberIds)}}">
+                    <image class="icon-image" src="/static/icon-info-rejected.svg"></image>
+                </i>
+                <i bindtap="queryMember" class="icon icon-member-info" data-memberid="{{coachMember.id}}" wx:else>
+                    <image class="icon-image" src="/static/icon-member-info.svg"></image>
+                </i>
+                <i bind:tap="deleteMember" class="icon icon-remove-member" data-memberid="{{coachMember.id}}" wx:if="{{!enter}}">
+                    <image class="icon-image" src="/static/icon-remove-member.svg"></image>
+                </i>
+            </view>
+        </view>
+        <text class="member-empty" wx:else>暂无</text>
+    </view>
+    <view class="info-wrap member-list">
+        <view class="info-wrap-title">
+            <i class="icon-border"></i>
+            队员
+        </view>
+        <block wx:if="{{memberList.length}}">
+            <view class="member-list-item" wx:for="{{memberList}}" wx:key="{{item.id}}">
+                <view class="basic-info">
+                    <text class="rank">{{index+1}}</text>
+                    <text class="member-name">{{item.name}}</text>
+                    <i class="icon" wx:if="{{item.sex==='M'}}">
+                        <image class="icon-image" src="/static/icon-male-active.svg"></image>
+                    </i>
+                    <i class="icon" wx:else>
+                        <image class="icon-image" src="/static/icon-female-active.svg"></image>
+                    </i>
+                </view>
+                <view class="member-operations">
+                    <i bindtap="queryMember" class="icon icon-info-rejected" data-memberid="{{item.id}}" wx:if="{{rejected.isRejected(item.id,auditFailMemberIds)}}">
+                        <image class="icon-image" src="/static/icon-info-rejected.svg"></image>
+                    </i>
+                    <i bindtap="queryMember" class="icon icon-member-info" data-memberid="{{item.id}}" wx:else>
+                        <image class="icon-image" src="/static/icon-member-info.svg"></image>
+                    </i>
+                    <i bind:tap="needResetLeader" class="icon icon-remove-member" data-memberid="{{item.id}}" wx:if="{{!enter||groupType==='SINGLE_GROUP'&&rejected.isRejected(item.id,auditFailMemberIds)}}">
+                        <image class="icon-image" src="/static/icon-remove-member.svg"></image>
+                    </i>
+                </view>
+            </view>
+        </block>
+        <text class="member-empty" wx:else>暂无</text>
+    </view>
+    <modal bindcancel="onSettingCancel" bindconfirm="onSettingConfirm" cancelText="取消" confirmText="确定" hidden="{{hideModal}}" title="移除领队，同时将队员设置为队员兼领队的角色" wx:if="{{memberList.length}}">
+        <view style="width: 100%;text-align: center">
+            <picker bindchange="bindPickerChange" class="section-down-picker" range="{{filterLeader.filterLeader(memberList,leaderMember.id)}}" rangeKey="name" value="{{defaultValue}}">
+                <view class="picker">
+                    {{filterLeaderName.filterLeaderName(memberList,leaderMember.id)[defaultValue]}}
+                </view>
+                <i class="picker-down-icon"></i>
+            </picker>
+        </view>
+    </modal>
+    <view class="guide-mask" wx:if="{{firstEnterTeam}}">
+        <image alt="" class="guide-logo" src="/static/guide-logo.png"></image>
+    </view>
+    <view bindtap="onClickGuide" class="mask-hover" wx:if="{{firstEnterTeam}}"></view>
+</view>
+<hnRaceFooter bind:onSubmit="onBtnClick" bindcheckboxChange="checkboxChange" footerData="{{footerData}}"></hnRaceFooter>
+<wxs module="hasCoach">
+var hasCoach = (function(roleTypeList) {
+    if (!roleTypeList) return (false);;
+    return (roleTypeList.indexOf('COACH') > -1)
+});
+module.exports = ({
+    hasCoach: hasCoach,
+});
+</wxs>
+<wxs module="rejected">
+var isRejected = (function(id, auditFailMemberIds) {
+    return (auditFailMemberIds.indexOf(id) > -1)
+});
+module.exports = ({
+    isRejected: isRejected,
+});
+</wxs>
+<wxs module="filterLeaderName">
+var filterLeaderName = (function(memberList, leaderId) {
+    return (memberList.filter((function(item) {
+        return (item.id !== leaderId)
+    })).map((function(item) {
+        return (item.name)
+    })))
+});
+module.exports = ({
+    filterLeaderName: filterLeaderName,
+});
+</wxs>
+<wxs module="filterLeader">
+var filterLeader = (function(memberList, leaderId) {
+    return (memberList.filter((function(item) {
+        return (item.id !== leaderId)
+    })))
+});
+module.exports = ({
+    filterLeader: filterLeader,
+});
+</wxs>

@@ -1,0 +1,52 @@
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <view class="no-data-content" wx:if="{{dataList.length===0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+        <view class="no-data-text">暂无数据！</view>
+    </view>
+    <view class="list" wx:else>
+        <view class="item-box clearfix {{fightModel==='SINGLE'?'single':''}}" wx:for="{{dataList}}">
+            <view class="item item-side">
+                <view class="item-name-none" wx:if="{{item.sideListName.length===0}}">轮空</view>
+                <view class="item-name-box" wx:for="{{item.sideListName}}">
+                    <image class="item-name-url" src="{{item.logoUrl}}"></image>
+                    <view class="item-name text-overflow">{{item.name}}</view>
+                </view>
+            </view>
+            <view class="item item-result-box">
+                <view class="item-result">{{item.result}}
+          <i bindtap="showAbnormalModal" class="icon icon-abnormal" data-id="{{item.id}}" wx:if="{{item.status&&item.status.name==='ABNORMAL_END'}}">
+                        <image src="/static/icon-abnormal.svg"></image>
+                    </i>
+                </view>
+                <view class="item-match-result">{{item.matchResult}}</view>
+            </view>
+            <view class="item item-otherside">
+                <view class="item-name-none" wx:if="{{item.otherSideListName.length===0}}">轮空</view>
+                <view class="item-name-box" wx:for="{{item.otherSideListName}}">
+                    <view class="item-name text-overflow" wx:if="{{fightModel!=='SINGLE'}}">{{item.name}}</view>
+                    <image class="item-name-url" src="{{item.logoUrl}}"></image>
+                    <view class="item-name text-overflow" wx:if="{{fightModel==='SINGLE'}}">{{item.name}}</view>
+                </view>
+            </view>
+            <text class="item item-point {{item.isAdd?'add':''}}">{{item.point}}</text>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{abnormalModalHidden}}">
+    <view bindtap="hideAbnormalModal" class="mask"></view>
+    <view class="modal-content content">
+        <view class="modal-header">提示</view>
+        <view class="modal-body clearfix">
+            <view class="">
+                <block wx:if="{{winSideNames!=='双方弃权'}}">胜方：</block>{{winSideNames}}</view>
+            <view class="">原因：{{abnormalMemo}}</view>
+        </view>
+        <view class="footer">
+            <button bindtap="hideAbnormalModal" class="confirm" type="default">确认</button>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

@@ -1,0 +1,166 @@
+@import "../../__wuBaseWxss__/1.wxss";
+
+page {
+    background: #fff;
+}
+
+.main-content {
+    padding: 0 0 20rpx 0;
+    background: #fff;
+    color: #333;
+}
+
+.main-content.fix-iphonex {
+    padding-bottom: 88rpx;
+}
+
+.content-box {
+    margin-top: 20rpx;
+}
+
+.switch-tab {
+    width: 100%;
+    margin-top: 60rpx;
+}
+
+.form-box {
+    position: fixed;
+    display: block;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 710rpx;
+    height: 60rpx;
+    padding: 0 20rpx 20rpx;
+    background: #fff;
+}
+
+.form-input {
+    float: left;
+    width: 500rpx;
+    height: 100%;
+    padding: 0 50rpx 0 60rpx;
+    background: #F4F4F4;
+    line-height: 60rpx;
+    font-size: 26rpx;
+    border-radius: 30rpx;
+}
+
+.form-submit {
+    float: left;
+    width: 100rpx;
+    height: 100%;
+    padding: 0;
+    background: none;
+    color: #00CD91;
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 60rpx;
+}
+
+.form-submit.disabled {
+    color: #999;
+}
+
+.form-submit::after {
+    border: none;
+}
+
+.icon-search {
+    position: absolute;
+    left: 37rpx;
+    top: 17rpx;
+    width: 27rpx;
+    height: 27rpx;
+}
+
+.icon-delete {
+    position: absolute;
+    right: 125rpx;
+    top: 15rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.icon-delete-history {
+    position: absolute;
+    right: 8rpx;
+    top: 25rpx;
+    width: 28rpx;
+    height: 28rpx;
+}
+
+.history-search {
+    width: 710rpx;
+    margin: 60rpx auto 0;
+}
+
+.history-search-title {
+    position: relative;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.history-search .themes-list-labels {
+    position: relative;
+    left: 0;
+    max-height: 215rpx;
+    margin-top: 10rpx;
+    font-size: 26rpx;
+    white-space: inherit;
+    overflow: hidden;
+}
+
+.themes-list .themes-list-labels {
+    bottom: 10rpx;
+}
+
+.history-search .labels-item {
+    display: inline-block;
+    max-width: 602rpx;
+    margin: 15rpx 25rpx 0 0;
+    padding: 12rpx 35rpx;
+    background: #F5F6F8;
+    border-radius: 40rpx;
+}
+
+.data-list-con {
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    padding: 0 27rpx;
+    margin-bottom: 0;
+}
+
+.data-item-con {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30rpx 14rpx;
+    border-bottom: 2rpx solid #F3F3F3;
+}
+
+.data-item-con:last-child {
+    border: none;
+}
+
+.no-fans-con {
+    margin-top: 205rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+}
+
+.no-data-img {
+    width: 277rpx;
+    height: 165rpx;
+}
+
+.no-data-text {
+    margin-top: 35rpx;
+    font-size: 28rpx;
+    color: #aeb2b8;
+}

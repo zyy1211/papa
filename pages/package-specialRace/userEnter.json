@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "添加队员",
+    "usingComponents": {
+        "flexbleForm": "/components/specialRace/flexbleForm",
+        "raceFooter": "/components/specialRace/raceFooter"
+    }
+}

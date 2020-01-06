@@ -1,0 +1,10 @@
+<view class="enter-page-wrapper">
+    <view bindtap="showRejectReason" class="reject-reason" wx:if="{{showAuditReason}}">
+        <i class="icon icon-warning">
+            <image class="icon-image" src="/static/icon-warning-white.svg"></image>
+        </i>
+    审核未通过（点击查看未通过原因)
+  </view>
+    <flexbleForm bindonPickerChange="onPickerChange" defaultRoleType="{{currentRoleType}}" entry="enter" id="flexbleForm" sectionList="{{sectionList}}" wx:if="{{sectionList.length}}"></flexbleForm>
+    <raceFooter bindcheckboxChange="checkboxChange" bindonSubmit="onBtnClick" footerData="{{footerData}}"></raceFooter>
+</view>

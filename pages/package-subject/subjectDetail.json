@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "动态详情",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "subjectCard": "/components/subjectCard",
+        "commentCard": "/components/commentCard",
+        "likeCard": "/components/likeCard",
+        "appFooter": "/components/appFooter",
+        "userHeader": "/components/subject/userHeader"
+    }
+}

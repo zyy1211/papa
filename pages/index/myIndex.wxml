@@ -1,0 +1,97 @@
+<import src="../../template/template.wxml"></import>
+<view class="content {{blur?'blur':''}}">
+    <view class="content-header">
+        <form bindtap="navigate" class="form-for-formid header-name-box" data-url="{{userHomePageUrl}}">
+            <button formType="submit" type="default"></button>
+            <view class="header-con">
+                <image class="header-avater" src="{{userLogoUrl}}"></image>
+                <text class="header-name text-overflow">{{nickName}}</text>
+            </view>
+            <i class="icon icon-link">
+                <image src="/static/icon-arrow-white.svg"></image>
+            </i>
+        </form>
+        <view class="header-data-box clearfix">
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid header-data-item" data-url="/pages/package-my/myActivity?activeSearchType=JOINE">
+                <button formType="submit" type="default"></button>
+                <view class="header-data-memo">我参加的</view>
+                <view class="header-data-account">{{joinActivityCount}}</view>
+            </form>
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid header-data-item" data-url="/pages/package-my/myActivity?activeSearchType=CREATE">
+                <button formType="submit" type="default"></button>
+                <view class="header-data-memo">我发起的</view>
+                <view class="header-data-account">{{createActivityCount}}</view>
+            </form>
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid header-data-item" data-url="/pages/package-my/myAccountDetail">
+                <button formType="submit" type="default"></button>
+                <view class="header-data-memo">待结算资金</view>
+                <view class="header-data-account">￥{{waitingSettlementAmount}}</view>
+            </form>
+        </view>
+    </view>
+    <view class="content-box">
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid content-box-item" data-url="/pages/package-my/myActivityData">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-memo">
+                <image src="/static/icon-activity-data.svg"></image>
+            </i>
+            <text>活动数据</text>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid content-box-item" data-url="/pages/package-my/myFootMark">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-memo">
+                <image src="/static/icon-foot-mark.svg"></image>
+            </i>
+            <text>我的足迹</text>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid content-box-item" data-url="/pages/package-my/myContact">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-memo">
+                <image src="/static/icon-contact.svg"></image>
+            </i>
+            <text>联系客服</text>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid content-box-item content-box-border-none" data-url="/pages/package-my/myDownloadApp">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-logo">
+                <image src="/static/icon-logo.svg"></image>
+            </i>
+            <text>下载APP</text>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+    </view>
+    <view class="content-box2">
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid content-box-item" data-url="/pages/package-my/myPointData">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-memo">
+                <image src="/static/my-badminton.svg"></image>
+            </i>
+            <text>羽球积分</text>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid content-box-item content-box-border-none" data-url="/pages/package-hnRace/hnRaceList?pageType=myHnRace">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-memo">
+                <image src="/static/icon-my-hnrace.png"></image>
+            </i>
+            <text>毅行大会</text>
+            <i class="icon icon-arrow">
+                <image src="/static/icon-arrow.svg"></image>
+            </i>
+        </form>
+    </view>
+</view>
+<publishNav bindnavigate="navigate"></publishNav>

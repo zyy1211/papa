@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "groupDetailCard": "/components/hnRace/groupDetailCard"
+    }
+}

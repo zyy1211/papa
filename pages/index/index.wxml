@@ -1,0 +1,183 @@
+<import src="../../template/template.wxml"></import>
+
+<view>
+    <!-- <view>
+    <view style="width:690rpx;height:300rpx;border:1px solid red;"></view>
+</view> -->
+    <view catchtouchmove="{{activeSort===null?'':'stopMove'}}"
+        class="form-box {{blur?'blur':''}} {{activeSort!==null?'active-mask':''}}">
+        <view class="info-box clearfix" wx:if="{{infoList.length!==0}}">
+            <view class="info-memo">公告</view>
+            <swiper autoplay="{{true}}" class="info-swiper" indicatorDots="{{false}}" interval="3000"
+                vertical="{{true}}">
+                <swiper-item wx:for="{{infoList}}">
+                    <form reportSubmit bindsubmit="navigateToInfo" class="form-for-formid info-box-form"
+                        data-id="{{item.id}}" data-infotype="{{item.infoType.name}}" data-linkurl="{{item.linkUrl}}">
+                        <button formType="submit" type="default"></button>
+                        <text class="info-item-title text-overflow">{{item.title}}</text>
+                    </form>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view class="banner-box clearfix" wx:if="{{bannerList.length!==0}}">
+            <swiper autoplay="{{true}}" bindchange="bindSwiperChange" circular="{{true}}" class="banner-swiper"
+                indicatorDots="{{false}}" interval="3000">
+                <swiper-item wx:for="{{bannerList}}">
+                    <form reportSubmit bindsubmit="navigateToBanner" class="form-for-formid banner-item"
+                        data-linkid="{{item.id}}">
+                        <button formType="submit" type="default"></button>
+                        <image class="banner-item-image" src="{{item.imageUrl}}"></image>
+                    </form>
+                </swiper-item>
+            </swiper>
+            <view class="image-swiper-nav">{{bannerCurrent}}/{{bannerList.length}}</view>
+        </view>
+        <view class="special-race-box">
+            <view class="special-race-header">
+                <view class="special-race-title">
+                    <i class="icon icon-special-race">
+                        <image src="/static/icon-special-race.png"></image>
+                    </i>精彩赛事
+                </view>
+                <form reportSubmit bindsubmit="navigate" class="form-special-more"
+                    data-url="/pages/package-specialRace/specialRaceList">
+                    <button formType="submit" type="default"></button>
+                    <view class="special-race-more">
+                        更多<i class="more-link"></i>
+                    </view>
+                </form>
+            </view>
+            <view class="race-list-box">
+                <view class="race-list clearfix">
+                    <form reportSubmit bindsubmit="navigate" class="form-for-formid race-list-item"
+                        data-url="/pages/package-hnRace/hnRaceList?pageType=allHnRace"
+                        wx:if="{{hnRaceEntranceShowSwitch}}">
+                        <button formType="submit" type="default"></button>
+                        <image class="harace-index-img" src="/static/home-index-hn.png"></image>
+                    </form>
+                    <form reportSubmit bindsubmit="navigate" class="form-for-formid race-list-item"
+                        data-url="{{item.navigateUrl}}" wx:for="{{specialRaceList}}">
+                        <button formType="submit" type="default"></button>
+                        <i class="icon icon-race-status">
+                            <image src="{{item.statusUrl}}"></image>
+                        </i>
+                        <i class="icon race-list-bg {{item.status.name==='END'?'end-status':''}}">
+                            <image src="{{item.statusBgUrl}}"></image>
+                        </i>
+                        <view class="race-list-title">{{item.title}}</view>
+                    </form>
+                </view>
+            </view>
+
+        </view>
+    </view>
+    <view catchtouchmove="stopMove"
+        class="form-header {{infoList.length===0&&bannerList.length===0?'form-header-height':''}} {{blur?'changeZindex':''}}">
+        <!-- 分类 -->
+        <view class="form-header-sort">
+            <view catchtap="changeSort" class="sort-item" data-id="{{index}}" wx:for="{{sorts}}" wx:key="{{index}}">
+                <view class="sort-name">{{item}}</view>
+                <i class="icon icon-select"></i>
+            </view>
+        </view>
+
+        <view class="form-active-sort" hidden="{{activeSort===null}}">
+            <view class="active-sort">
+                <view>{{sorts[activeSort]||''}}</view>
+                <i bindtap="closeMask" class="icon-close-con">
+                    <image class="sort-close" src="/static/icon-close.svg"></image>
+                </i>
+            </view>
+            <scroll-view scrollY class="active-sort-content">
+                <!-- 日期 -->
+                <block wx:if="{{activeSort!==2}}">
+                    <view wx:for="{{activeSortList}}" wx:key="{{index}}">
+                        <view class="sort-title">{{item.title}}</view>
+                        <view class="sort-content">
+                            <view bindtap="selectSort"
+                                class="sort-name-content {{activeSortId[activeSort]===''&&index===0?'active':''}}"
+                                data-id="" data-type="" data-val="" wx:if="{{index===0}}">全部</view>
+                            <view bindtap="selectSort"
+                                class="sort-name-content {{activeSortId[activeSort]===sortName.id?'active':''}}"
+                                data-id="{{sortName.id}}" data-type="{{sortName.type}}" data-val="{{sortName.name}}"
+                                wx:for="{{item.sortItem}}" wx:for-item="sortName" wx:key="{{sortName.id}}">
+                                {{sortName.name}}</view>
+                        </view>
+                    </view>
+                </block>
+                <!-- 其他 -->
+                <block wx:else>
+                    <view wx:for="{{activeSortList}}" wx:key="{{index}}">
+                        <view class="sort-title">{{item.title}}</view>
+                        <view class="sort-date-content">
+                            <view bindtap="selectSort"
+                                class="sort-date-all {{activeSortId[activeSort]===''&&index===0?'active':''}}"
+                                data-id="" data-type="" data-val="" wx:if="{{index===0}}">
+                                <i class="icon-date-all">
+                                    <image mode="aspectFit"
+                                        src="{{activeSortId[activeSort]===''&&index===0?'/static/date-all-active.png':'/static/date-all.png'}}">
+                                    </image>
+                                </i>
+                                <view class="date-all-text">全部</view>
+                            </view>
+                            <scroll-view scrollX class="date-item-scrollcon">
+                                <view class="date-item-con">
+                                    <view bindtap="selectSort"
+                                        class="sort-date-item {{activeSortId[activeSort]===sortName.id?'active':''}}"
+                                        data-id="{{sortName.id}}" data-type="{{sortName.type}}"
+                                        data-val="{{sortName.name}}" wx:for="{{item.sortItem}}" wx:for-item="sortName"
+                                        wx:key="{{sortName.id}}">
+                                        <view class="sort-date-week">{{sortName.name}}</view>
+                                        <view class="sort-date-time">{{sortName.time}}</view>
+                                    </view>
+                                </view>
+                            </scroll-view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="no-data-content" wx:if="{{dataList.length===0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+        <view class="no-data-text">暂无活动，快去发起活动吧！</view>
+    </view>
+
+    <view class="themes-list {{blur?'blur':''}}" wx:else>
+        <view class="themes-list-box index-list-box clearfix" wx:for="{{dataList}}" wx:key="{{index}}">
+            <view class="themes-list-date">{{item.dateTitle}}</view>
+            <view class="theme-list-con" wx:for="{{item.list}}" wx:for-index="listIndex" wx:for-item="listItem"
+                wx:key="{{listIndex}}">
+                <template is="nearActivityList" data="{{...listItem}}"></template>
+            </view>
+        </view>
+    </view>
+    <view catchtap="closeMask" catchtouchmove="closeMask" class="mask" hidden="{{activeSort===null}}"></view>
+</view>
+
+<view catchtouchmove="stopMove" class="form-box {{blur?'blur':''}} {{activeSort!==null?'active-mask':''}}">
+    <view class="section-header clearfix">
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid section-map"
+            data-url="/pages/index/address?address={{addressDescribe}}">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-map-address">
+                <image src="/static/icon-address-active.svg"></image>
+            </i>
+            <view class="section-address-input text-overflow">{{addressDescribe}}</view>
+            <i class="icon icon-arrow"></i>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid section-search"
+            data-url="/pages/index/search?pageType=activity">
+            <button formType="submit" type="default"></button>
+            <i class="icon icon-search">
+                <image src="/static/icon-search.svg"></image>
+            </i>
+            搜索活动、动态、用户
+        </form>
+    </view>
+</view>
+
+
+
+<publishNav bindnavigate="navigate"></publishNav>
+<authorize id="authorize"></authorize>

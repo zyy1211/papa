@@ -1,0 +1,24 @@
+<form reportSubmit bindsubmit="redirectToIndex" class="form-for-formid button-to-index" wx:if="{{showToIndex}}">
+    <button formType="submit" type="default"></button>
+    <image mode="widthFix" src="/static/icon-to-index.svg"></image>
+</form>
+<view class="form-for-formid open-app-box clearfix" wx:if="{{pageType!=='billDetail'&&pageType==='subject'&&showAppButton}}">
+    <button appParameter="{{pageType}},{{pageId}}" binderror="launchAppError" openType="launchApp" type="default"></button>
+    <image class="open-app-img" src="/static/icon-logo.svg"></image>
+    <view class="open-app-text">打开app</view>
+</view>
+<view class="footer-app clearfix {{isIpx?'fix-iphonex-button':''}}" wx:if="{{pageType!=='billDetail'&&pageType!=='subject'&&showAppButton&&(currentTab==0||currentTab==3)}}">
+    <form reportSubmit bindsubmit="closeApp" class="form-for-formid icon-close-box">
+        <button formType="submit" type="default"></button>
+        <i class="icon icon-close">
+            <image src="/static/icon-delete.svg"></image>
+        </i>
+    </form>
+    <view class="footer-app-left">
+        <image src="/static/logo.jpg"></image>
+        <text>PaPa体育</text>
+    </view>
+    <view class="footer-app-button">
+        <button appParameter="{{pageType}},{{pageId}}" binderror="launchAppError" openType="launchApp">立即打开</button>
+    </view>
+</view>

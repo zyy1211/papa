@@ -1,0 +1,36 @@
+<view class="content">
+    <view bindtap="navigateToUploadImage" class="user-logo-box">
+        <image class="user-logo" mode="widthFix" src="{{userInfo.userLogoUrl}}"></image>
+        <view class="user-logo-memo">上传头像</view>
+    </view>
+    <view class="user-nick-name">
+        <input bindinput="bindNickNameinput" maxlength="16" name="nickName" type="text" value="{{nickName}}"></input>
+    </view>
+    <view class="user-sex-box">
+        <view class="user-sex-header">性别</view>
+        <view class="user-sex-memo">
+            <i class="icon icon-sex">
+                <image class="user-address-bg" mode="widthFix" src="/static/icon-warning-red.svg"></image>
+            </i>一旦选择不能变更</view>
+        <view class="clearfix">
+            <view class="user-sex-item-box">
+                <view bindtap="changeSex" class="user-sex-item {{userInfo.sex==='M'?'active':''}}" data-sex="M">男</view>
+            </view>
+            <view class="user-sex-item-box">
+                <view bindtap="changeSex" class="user-sex-item {{userInfo.sex==='F'?'active':''}}" data-sex="F">女</view>
+            </view>
+        </view>
+    </view>
+    <view class="user-address">
+        <i class="icon icon-address">
+            <image mode="widthFix" src="/static/icon-address-active.svg"></image>
+        </i>
+        <form reportSubmit bindsubmit="showCityModal" class="form-for-formid user-address-name">
+            <button formType="submit" type="default"></button>{{address}}
+    </form>
+        <address binddoCityModal="doCityModal" bindhideCityModal="hideCityModal" id="cityModal" showCityModal="{{cityModalVisible}}"></address>
+    </view>
+    <form reportSubmit bindsubmit="submitUserInfo" class="form-for-formid footer-button">
+        <button formType="submit" type="default"></button>确定
+  </form>
+</view>

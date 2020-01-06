@@ -1,0 +1,24 @@
+<view id="activity-tap">
+    <view class="sort-content">
+        <view class="sort-title">
+            <i class="sort-title-icon"></i>
+      {{hotList.title}}
+    </view>
+        <view class="sort-content-main">
+            <view bindtap="selectSort" class="hot-item" data-id="{{item.id}}" data-name="{{item.name}}" wx:for="{{hotList.subList}}" wx:key="{{index}}">
+                <image class="hot-item-img" src="{{item.img}}"></image>
+                <text class="hot-item-name">{{item.name}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="sort-content" wx:for="{{sortList}}" wx:key="{{index}}">
+        <view class="sort-title">
+            <i class="sort-title-icon"></i>
+      {{item.title}}
+    </view>
+        <view class="sort-content-main">
+            <view bindtap="selectSort" class="sort-item {{activeSort===sortItem.id?'active':''}}" data-id="{{sortItem.id}}" data-name="{{sortItem.name}}" wx:for="{{item.subList}}" wx:for-index="sortIndex" wx:for-item="sortItem" wx:key="{{sortIndex}}">{{sortItem.name}}</view>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>

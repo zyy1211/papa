@@ -1,0 +1,405 @@
+<import src="../../template/raceDetailTemplate.wxml"></import>
+<view class="switch-tab">
+    <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==0?'on':''}}" data-current="0">
+        <button formType="submit" type="default"></button>
+      详情<i class="tab-bottom-line"></i>
+    </form>
+    <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==1?'on':''}}" data-current="1">
+        <button formType="submit" type="default"></button>
+      对阵<i class="tab-bottom-line"></i>
+    </form>
+    <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==2?'on':''}}" data-current="2">
+        <button formType="submit" type="default"></button>
+      比分直播<i class="tab-bottom-line tab-bottom-line3"></i>
+    </form>
+    <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==3?'on':''}}" data-current="3">
+        <button formType="submit" type="default"></button>
+      名单<i class="tab-bottom-line"></i>
+    </form>
+    <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==4?'on':''}}" data-current="4">
+        <button formType="submit" type="default"></button>
+      赛果<i class="tab-bottom-line"></i>
+    </form>
+</view>
+<view class="main-content main-detail-content {{currentTab==0?'show':'hide'}} {{isIpx?'fix-iphonex':''}} {{footerData.showAppButton?'has-footer-app':''}}">
+    <view class="header">
+        <view class="header-bg">
+            <image class="header-bg-img" src="{{imageSrc}}"></image>
+            <view class="header-bg-limit">
+        {{activityInfo.groupTypeMsg}} {{activityInfo.limitMinAge}}-{{activityInfo.limitMaxAge}}岁
+        <block wx:if="{{activityInfo.sexLimit.name==='W'}}">
+                    <text class="text-opacity">|</text>
+                    <i class="icon icon-bg-female">
+                        <image src="/static/icon-female-white.svg"></image>
+                    </i>
+                </block>
+                <block wx:if="{{activityInfo.sexLimit.name==='M'}}">
+                    <text class="text-opacity">|</text>
+                    <i class="icon icon-bg-male">
+                        <image src="/static/icon-male-white.svg"></image>
+                    </i>
+                </block>
+                <i class="header-limit-bg"></i>
+            </view>
+        </view>
+        <view class="header-card">
+            <form reportSubmit bindsubmit="doDownloadApp" class="form-for-formid header-download-app" wx:if="{{footerData.creator}}">
+                <button formType="submit" type="default"></button>APP下载
+      </form>
+            <view class="header-title">
+                <text space="nbsp">{{activityInfo.activityTitle}}</text>
+            </view>
+            <view class="header-card-organizer">举办方：<text class="text-overflow">{{activityInfo.organizer}}</text>
+            </view>
+            <view class="clearfix">
+                <view class="header-card-fee" wx:if="{{activityInfo.chargeFeeType.name==='BEFORE_ACTIVITY'}}">
+                    <block wx:if="{{activityInfo.sexLimitName==='U'||activityInfo.sexLimitName==='MIX'}}">
+          男 <text class="text-bold">{{activityInfo.manFee}}</text>元/人
+            <text class="text-opacity">|</text> 女 <text class="text-bold">{{activityInfo.womanFee}}</text>元/人
+          </block>
+                    <block wx:if="{{activityInfo.sexLimitName==='M'}}">
+          男 <text class="text-bold">{{activityInfo.manFee}}</text>元/人
+          </block>
+                    <block wx:if="{{activityInfo.sexLimitName==='W'}}">
+          女 <text class="text-bold">{{activityInfo.womanFee}}</text>元/人
+          </block>
+                </view>
+                <view class="header-card-fee" wx:else>报名费用：{{activityInfo.chargeFeeType.message}}</view>
+                <view class="header-card-joinerNum">
+          已报名({{activityInfo.joinerNum}}/{{activityInfo.limitNum}})
+        </view>
+            </view>
+            <view class="themes-list-labels">
+                <view class="themes-list-labels-content">
+                    <view class="labels-item" wx:for="{{activityInfo.activityLabels}}">{{item}}</view>
+                </view>
+            </view>
+            <form reportSubmit bindsubmit="openClub" class="form-for-formid header-card-club" wx:if="{{activityInfo.clubName}}">
+                <button formType="submit" type="default"></button>
+                <image class="club-logo" src="{{activityInfo.clubUrl}}"></image>
+                <text class="club-name text-overflow">{{activityInfo.clubName}}</text>
+                <i class="icon icon-address">
+                    <image src="/static/icon-arrow.svg"></image>
+                </i>
+            </form>
+        </view>
+        <view class="header-box">
+            <form reportSubmit bindsubmit="openMap" class="form-for-formid header-card-address">
+                <button formType="submit" type="default"></button>
+                <i class="icon icon-item" style="margin-top:0;">
+                    <image src="/static/icon-address.svg"></image>
+                </i>
+                <text class="text-overflow">{{activityInfo.addressDescribe}}</text>
+                <i class="icon icon-address">
+                    <image src="/static/icon-arrow.svg"></image>
+                </i>
+            </form>
+            <view>
+                <i class="icon icon-item">
+                    <image src="/static/icon-time.svg"></image>
+                </i>{{activityInfo.timeInterval}}
+      </view>
+            <view>
+                <i class="icon icon-item">
+                    <image src="/static/icon-cancle.svg"></image>
+                </i>{{activityInfo.gmtModifyRegisterEnd}} 前可取消报名
+      </view>
+            <view>
+                <i class="icon icon-item">
+                    <image src="/static/icon-time-interval.svg"></image>
+                </i>
+                <block wx:if="{{activityInfo.timesToRegisterEnd}}">
+          距报名截止 {{activityInfo.timesToRegisterEnd}}
+        </block>
+                <block wx:else>
+          报名已截止
+        </block>
+            </view>
+        </view>
+        <view class="header-description clearfix">
+            <userHeader id="userHeader" userInfo="{{userHeaderInfo}}"></userHeader>
+            <view class="user-description" wx:if="{{activityInfo.description}}">
+                <text space="nbsp">{{activityInfo.description}}</text>
+            </view>
+            <view class="contact-group clearfix" wx:if="{{!footerData.creator}}">
+                <form reportSubmit bindsubmit="bindAddWeixin" class="form-for-formid contact-button" wx:if="{{activityInfo.creatorWeixinNo}}">
+                    <button formType="submit" type="default"></button>
+                    <i class="icon icon-weixin">
+                        <image src="/static/icon-weixin.svg"></image>
+                    </i>联系微信
+          <i class="contact-split"></i>
+                </form>
+                <form reportSubmit bindsubmit="bindCallPhone" class="form-for-formid contact-button" data-phone="{{activityInfo.contactCall}}">
+                    <button formType="submit" type="default"></button>
+                    <i class="icon icon-phone">
+                        <image src="/static/icon-phone.svg"></image>
+                    </i>拨打电话
+        </form>
+            </view>
+        </view>
+    </view>
+    <view class="info-wrap" wx:if="{{activityInfo.ruleDescribeId}}">
+        <view class="info-wrap-title">
+            <view class="info-left-title">
+                <i class="icon-border"></i>赛事详情<text>({{raceDetailMemo}})</text>
+            </view>
+        </view>
+        <view class="info-wrap-content" wx:if="{{describeType&&describeType.name==='TEXT'}}">
+            <text>{{describeText}}</text>
+        </view>
+        <view class="info-wrap-content" wx:else>
+            <image class="info-image-item" mode="widthFix" src="{{item.imageUrl}}" wx:for="{{describeImageList}}"></image>
+        </view>
+    </view>
+</view>
+<createQrCode bindgetPhotosAlbum="getPhotosAlbum" id="createQrCode" pageData="{{activityInfo}}" pageId="{{id}}" pageType="race"></createQrCode>
+<detailFooter bindcreateQrcode="bindCreateQrcode" bindnavigate="navigate" bindshowTeamMember="showTeamMember" footerData="{{footerData}}" pageId="{{id}}" pageType="race" wx:if="{{currentTab==0}}"></detailFooter>
+<appFooter currentTab="{{currentTab}}" id="appFooter" pageId="{{id}}" pageType="race"></appFooter>
+<authorize id="authorize"></authorize>
+<view class="wxapp-modal" hidden="{{successModalHidden}}">
+    <view bindtap="closeSuccessModal" class="mask"></view>
+    <view class="modal-content content success-content">
+        <view class="modal-header">发布成功</view>
+        <checkbox-group bindchange="changeWarn" class="modal-not-warn">
+            <label class="checkbox">
+                <checkbox checked="{{false}}" color="#00CD91" value="true"></checkbox>不再提醒
+      </label>
+        </checkbox-group>
+        <view class="modal-body" style="text-align:left;">
+            <view>1.	请配合使用PaPa体育app内的计分工具进行赛事编排和计分<text class="success-text">（入口：PaPa体育app->我的->计分工具）</text>
+            </view>
+            <view>2.	循环赛和八人转在报名截止后会自动生成对阵。</view>
+            <view>3.	循环赛淘汰赛和淘汰赛在报名截止后需自行抽签分组才能生成对阵。</view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeSuccessModal" class="confirm" type="default">我知道了</button>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{teamMemberModalHidden}}">
+    <view bindtap="closeTeamMemberModal" class="mask"></view>
+    <view class="modal-content content">
+        <view class="modal-header">查看好友</view>
+        <view class="modal-body">
+            <view class="body-member" wx:for="{{teamMemberList}}">
+                <image src="{{item.userLogoUrl}}"></image>
+                <text>{{item.nickName}}</text>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeTeamMemberModal" class="cancel" type="default">取消</button>
+            <button bindtap="closeTeamMemberModal" class="confirm" type="default">确定</button>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{matchRoundModalHidden}}">
+    <view bindtap="closeMatchRoundModal" class="mask"></view>
+    <view class="modal-content content">
+        <view class="modal-header">请选择轮次</view>
+        <view class="modal-body clearfix">
+            <view class="round-list-item" wx:for="{{roundList}}">
+                <text bindtap="switchMatchRoundModal" class="{{prevCurrentRoundId===item.id?'on':''}}" data-id="{{item.id}}">{{item.roundName}}</text>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeMatchRoundModal" class="cancel" type="default">取消</button>
+            <button bindtap="getMatchRoundModal" class="confirm" type="default">确定</button>
+        </view>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{abnormalModalHidden}}">
+    <view bindtap="hideAbnormalModal" class="mask"></view>
+    <view class="modal-content content">
+        <view class="modal-header">提示</view>
+        <view class="modal-body clearfix">
+            <view class="">
+                <block wx:if="{{winSideNames!=='双方弃权'}}">胜方：</block>{{winSideNames}}</view>
+            <view class="">原因：{{abnormalMemo}}</view>
+        </view>
+        <view class="footer">
+            <button bindtap="hideAbnormalModal" class="confirm" type="default">确认</button>
+        </view>
+    </view>
+</view>
+<view class="main-content {{currentTab==1?'show':'hide'}}">
+    <view class="against-header" wx:if="{{!roundListNone}}">
+        <view bindtap="switchPrevMatchRound" class="against-header-prev">
+            <i class="icon icon-left">
+                <image src="/static/icon-left.svg"></image>
+            </i>
+        </view>
+        <view bindtap="showMatchRoundModal" class="against-header-content">
+            <view class="against-header-item">
+      {{currentRoundName}}
+      </view>
+        </view>
+        <view bindtap="switchNextMatchRound" class="against-header-next">
+            <i class="icon icon-left">
+                <image src="/static/icon-left.svg"></image>
+            </i>
+        </view>
+    </view>
+    <view class="against-content {{isIpx?'fix-iphonex':''}} {{groupListNone&&allowViewEliminationTable||!groupListNone?'against-content-group':''}}" style="{{roundListNone?'top:94rpx;bottom:0;':''}}">
+        <view class="against-side" wx:if="{{!groupListNone}}">
+            <view bindtap="switchMatchGroup" class="against-side-item {{againstSideTab==index?'on':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:for="{{groupList}}">
+      {{item.groupName}}
+      <i class="side-item-line"></i>
+            </view>
+        </view>
+        <view class="no-data-content" style="{{groupListNone?'':'margin-left:100rpx;'}}" wx:if="{{againstListNone}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">暂无数据！</view>
+        </view>
+        <scroll-view scrollY bindscrolltolower="getMoreAgainstMatch" class="against-list {{groupListNone?'against-list-no-group':''}}" lowerThreshold="50" wx:else>
+            <view class="against-list-item clearfix {{item.className}}" wx:for="{{againstList}}">
+                <view class="against-list-site" wx:if="{{item.matchSiteNo}}">{{item.matchSiteNo}}号场</view>
+                <view class="against-list-side" style="line-height:{{item.sideLineHeight}}rpx;color:{{item.sideForceColor}}">
+                    <view class="text-overflow" wx:for="{{item.sideList}}">
+            {{item}}
+          </view>
+                </view>
+                <view class="against-list-vs">
+                    <view class="{{item.finalResult==='vs'?'against-list-final-vs':'against-list-final-result'}}" style="margin-top:{{item.scheduleResult?'0':'24'}}rpx">
+            {{item.finalResult}}
+            <i bindtap="showAbnormalModal" class="icon icon-abnormal" data-id="{{item.id}}" wx:if="{{item.status&&item.status.name==='ABNORMAL_END'}}">
+                            <image src="/static/icon-abnormal.svg"></image>
+                        </i>
+                    </view>
+                    <view class="against-list-schedule-result">{{item.scheduleResult}}</view>
+                </view>
+                <view class="against-list-otherside" style="line-height:{{item.othersideLineHeight}}rpx;color:{{item.othersideForceColor}}">
+                    <view class="text-overflow" wx:for="{{item.otherSideList}}">
+            {{item}}
+          </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="against-footer {{isIpx?'fix-iphonex':''}}" wx:if="{{!groupListNone}}">
+        <form reportSubmit bindsubmit="navigate" data-url="/pages/package-race/raceGroupResult?id={{firstGroupId}}">
+            <button formType="submit" type="default">查看小组排名</button>
+        </form>
+    </view>
+    <view class="against-footer {{isIpx?'fix-iphonex':''}}" wx:if="{{groupListNone&&allowViewEliminationTable}}">
+        <form reportSubmit bindsubmit="navigate" data-url="/pages/package-race/raceEliminationSchdule?id={{id}}">
+            <button formType="submit" type="default">查看淘汰赛对阵表</button>
+        </form>
+    </view>
+</view>
+<view class="main-content {{currentTab==2?'show':'hide'}}">
+    <view class="main-schdule-content {{isIpx?'fix-iphonex':''}}">
+        <view class="no-data-content" wx:if="{{schduleWorkingNoData}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">暂无数据！</view>
+        </view>
+        <scroll-view scrollY bindscrolltolower="getMoreSchduleMatch" class="schdule-list" lowerThreshold="50" wx:else>
+            <view wx:for="{{schduleWorkingList}}">
+                <block wx:if="{{scheduleTab==0}}">
+                    <view class="schdule-list-working-title {{item.show?'':'hide'}}" wx:if="{{item.roundName!==''}}">
+                        <i class="schdule-list-working-point"></i>
+            {{item.roundName}}
+            <text wx:if="{{item.groupName!==''}}">{{item.groupName}}</text>
+                        <text class="against-list-site" wx:if="{{item.matchSiteNo}}">{{item.matchSiteNo}}号场</text>
+                    </view>
+                </block>
+                <block wx:if="{{scheduleTab==1}}">
+                    <view bindtap="showSchduleRoundList" class="schdule-list-round-title" data-id="{{item.roundId}}" wx:if="{{item.roundName!==''}}">
+            {{item.roundName}}<i class="schdule-list-round-bg"></i>
+                        <i class="icon icon-arrow {{item.showSchduleRoundList?'up-fee-arrow':''}}">
+                            <image src="/static/icon-arrow-right.svg"></image>
+                        </i>
+                    </view>
+                    <view bindtap="showSchduleGroupList" class="schdule-list-group-title {{item.roundSpread?'show':'hide'}}" data-id="{{item.groupId}}" style="{{item.roundName===''?'border-top: 30rpx solid #f5f6f8;':''}}" wx:if="{{item.groupName&&item.groupName!==''}}">
+            {{item.groupName}}
+            <i class="icon icon-arrow {{item.showSchduleGroupList?'up-fee-arrow':''}}">
+                            <image src="/static/icon-arrow-right.svg"></image>
+                        </i>
+                    </view>
+                </block>
+                <view class="schdule-table-content clearfix {{item.roundSpread&&item.groupSpread&&item.show?'show':'hide'}}" style="{{scheduleTab==1?'border-bottom: 2rpx solid #eaeaea;':''}}">
+                    <view class="schdule-list-side">
+                        <view style="margin-top: {{item.marginTop}}rpx;" wx:for="{{item.leftList}}">
+                            <image class="schdule-list-img" src="{{item.userLogoUrl}}"></image>
+                            <view class="schdule-list-name text-overflow">{{item.nickName}}</view>
+                        </view>
+                    </view>
+                    <view class="schdule-list-vs">
+                        <view class="schdule-list-final-vs" wx:if="{{scheduleTab==1&&item.status&&item.status.name==='ABNORMAL_END'}}">
+              vs<i bindtap="showSchduleAbnormalModal" class="icon icon-abnormal" data-id="{{item.id}}">
+                                <image src="/static/icon-abnormal.svg"></image>
+                            </i>
+                        </view>
+                        <block wx:else>
+                            <view class="schdule-list-time {{scheduleTab==0?'':'hide'}}">{{item.minDiff}}</view>
+                            <view class="schdule-list-score {{scheduleTab==0?'':'schdule-list-end-score'}}">{{item.positionAndScore.LEFT}}:{{item.positionAndScore.RIGHT}}</view>
+                            <view class="schdule-list-score-his">{{item.scoreHisData}}</view>
+                        </block>
+                    </view>
+                    <view class="schdule-list-otherside">
+                        <view style="margin-top: {{item.marginTop}}rpx;" wx:for="{{item.rightList}}">
+                            <view class="schdule-list-name text-overflow">{{item.nickName}}</view>
+                            <image class="schdule-list-img" src="{{item.userLogoUrl}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
+<view class="main-content {{currentTab==3?'show':'hide'}}">
+    <view class="no-data-content" wx:if="{{joinerBaseList.length===0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无人员报名！</view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="getMoreRaceEnterList" class="users-list {{footerData.creator?'users-list-creator':''}} {{isIpx?'fix-iphonex':''}}" lowerThreshold="50" wx:else>
+        <view class="table clearfix {{item.className}}" wx:for="{{joinerBaseList}}">
+            <view class="td td-index" style="height:{{item.indexHeight}}rpx;line-height:{{item.indexHeight}}rpx;">
+        {{item.key}}
+      </view>
+            <view class="table-content">
+                <form reportSubmit bindsubmit="navigate" class="form-for-formid tr" data-url="{{item.homePageUrl}}" wx:for="{{item.list}}">
+                    <button formType="submit" type="default"></button>
+                    <view class="td td-img">
+                        <image src="{{item.logoUrl}}"></image>
+                    </view>
+                    <view class="td td-name">
+                        <text class="td-name-text">{{item.nickName}}</text>
+                        <i class="icon icon-male" wx:if="{{item.sex==='m'}}">
+                            <image src="/static/icon-male-active.svg"></image>
+                        </i>
+                        <i class="icon icon-female" wx:if="{{item.sex==='w'}}">
+                            <image src="/static/icon-female-active.svg"></image>
+                        </i>
+                    </view>
+                    <form reportSubmit bindsubmit="bindCallPhone" class="form-for-call" data-phone="{{item.cell}}">
+                        <button formType="submit" type="default"></button>
+                        <view class="td-cell" wx:if="{{footerData.creator}}">
+              {{item.cell}}
+              <i class="icon-phone">
+                                <image class="phone-img" src="/static/icon-phone.svg"></image>
+                            </i>
+                        </view>
+                    </form>
+                </form>
+            </view>
+        </view>
+    </scroll-view>
+    <form reportSubmit bindsubmit="bindExcelList" class="form-for-formid form-excel-box {{isIpx?'fix-iphonex':''}}" wx:if="{{footerData.creator}}">
+        <button formType="submit" type="default"></button>导出Excel表
+  </form>
+</view>
+<template is="raceResult" data="{{...raceResultData}}"></template>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>
+<view class="wxapp-modal" hidden="{{modalHidden}}">
+    <view class="mask"></view>
+    <form bindsubmit="submitModal" class="modal-content">
+        <view class="header">{{callPhone}}</view>
+        <view class="footer">
+            <button bindtap="hideModal" class="cancel" type="default">取消</button>
+            <button class="confirm" formType="submit" type="default">呼叫</button>
+        </view>
+    </form>
+</view>

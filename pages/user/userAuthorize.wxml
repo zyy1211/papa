@@ -1,0 +1,17 @@
+<view class="content">
+    <image class="content-bg" mode="widthFix" src="/static/user/user-bg.png"></image>
+    <view class="button-box" wx:if="{{canIUse}}">
+        <image class="content-image" mode="widthFix" src="/static/user/user-logo.png"></image>
+        <button bindgetuserinfo="bindGetUserInfo" class="content-button" openType="getUserInfo" type="primary" wx:if="{{!showBindPhone}}">
+            <image class="content-button-bg" mode="widthFix" src="/static/user/user-button-bg.png"></image>
+            <image class="content-button-weixin" mode="widthFix" src="/static/user/user-weixin.png"></image>
+            <text>微信登录</text>
+        </button>
+        <button bindgetphonenumber="bindGetPhone" class="content-button content-button-phone" openType="getPhoneNumber" type="primary" wx:else>
+            <image class="content-button-bg" mode="widthFix" src="/static/user/user-button-bg.png"></image>
+            <image class="content-button-weixin" mode="widthFix" src="/static/user/user-weixin.png"></image>
+            <text>绑定手机号</text>
+        </button>
+    </view>
+    <view class="content-memo" wx:else>请升级微信版本</view>
+</view>

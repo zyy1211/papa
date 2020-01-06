@@ -1,0 +1,56 @@
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <view class="header clearfix">
+        <form reportSubmit bindsubmit="switchNav" class="form-for-formid header-nav {{fightModel===doubleModel?'on':''}}" data-service="{{doubleModel}}">
+            <button formType="submit" type="default"></button>
+            <view class="header-memo">双打</view>
+            <view class="line"></view>
+        </form>
+        <form reportSubmit bindsubmit="switchNav" class="form-for-formid header-nav {{fightModel===singleModel?'on':''}}" data-service="{{singleModel}}">
+            <button formType="submit" type="default"></button>
+            <view class="header-memo">单打</view>
+            <view class="line"></view>
+        </form>
+        <form reportSubmit bindsubmit="showHelpModal" class="form-for-formid header-help">
+            <button formType="submit" type="default"></button>
+            <image class="icon-help" src="/static/icon-help.svg"></image>
+        </form>
+    </view>
+    <view class="content-data clearfix" wx:if="{{dataList.length!==0}}">
+        <image class="content-data-bg" mode="widthFix" src="/static/point-rank-bg.png"></image>
+        <view class="point-data">积分<text>{{myPoint}}</text>
+        </view>
+        <view class="line"></view>
+        <view class="rank-data">排名<text>{{myRank}}</text>
+        </view>
+    </view>
+    <view class="no-data-content" wx:if="{{dataList.length===0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无数据</view>
+    </view>
+    <view class="list" wx:else>
+        <form reportSubmit bindsubmit="navigate" class="form-for-formid item-box clearfix" data-url="/pages/package-my/pointDetail?id={{item.id}}&fightModel={{fightModel}}&userId={{userId}}" wx:for="{{dataList}}">
+            <button formType="submit" type="default"></button>
+            <view class="item-name text-overflow">{{item.name}}</view>
+            <view class="item-time">{{item.gmtStart}}</view>
+            <text class="item-point {{item.isAdd?'add':''}}">{{item.point}}</text>
+        </form>
+    </view>
+</view>
+<view class="wxapp-modal" hidden="{{helpModalHidden}}">
+    <view bindtap="closeHelpModal" class="mask"></view>
+    <view class="content" style="top:10%">
+        <view class="modal-header">积分说明</view>
+        <view class="body">
+            <view class="help-content">
+                <view style="margin-bottom:20rpx;">用户初始积分为1200分，当用户进行了一场积分赛并使用计分工具完成计分后，就会显示对应的积分。系统会根据每场比赛的结果来进行积分的计算（赢了会获取相应的积分，输了会扣除相应的积分）。</view>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeHelpModal" class="confirm" style="width:100%;" type="default">确定</button>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

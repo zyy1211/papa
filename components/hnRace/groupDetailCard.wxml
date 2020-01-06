@@ -1,0 +1,30 @@
+<view class="root-wrap">
+    <view wx:if="{{cardDetail.canSelect}}">
+        <checkbox bindtap="onCheck" checked="{{cardDetail.checked}}" class="item-checkbox" data-checked="{{cardDetail.checked}}" data-groupId="{{cardDetail.id}}" data-name="{{cardDetail.name}}" data-registered="{{cardDetail.registered}}" data-total="{{cardDetail.total}}" value="{{cardDetail.name}}"></checkbox>
+    </view>
+    <view class="register-subject">
+        <view class="register-subject-row" style="margin-bottom: 20rpx">
+            <text class="subject-name row-text">{{cardDetail.name}}</text>
+        </view>
+        <view class="register-subject-row" style="margin-bottom: 20rpx" wx:if="{{cardDetail.ageRequirement}}">
+            <text class="birth-range row-text">出生日期：{{cardDetail.ageRequirement}}</text>
+        </view>
+        <view class="register-subject-row">
+            <text class="registered-count row-text">
+        已报名 {{cardDetail.registered}}/{{cardDetail.total}}人
+      </text>
+            <view class="register-requirement" wx:if="{{cardDetail.sexRequirement!=='不限制'}}">
+                <view class="triangle"></view>
+                <view class="requirement-desc">{{cardDetail.sexRequirement}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="icon icon-group">
+        <i bindtap="showRejectInfo" class="icon icon-warn-full" data-id="{{cardDetail.id}}" wx:if="{{cardDetail.rejected}}">
+            <image class="icon-image" src="/static/icon-warn-full.svg"></image>
+        </i>
+        <i bindtap="onRemove" class="icon icon-remove-member" data-id="{{cardDetail.id}}" data-racememberid="{{cardDetail.raceMemberId}}" wx:if="{{cardDetail.rejected}}">
+            <image class="icon-image" src="/static/icon-remove-member.svg"></image>
+        </i>
+    </view>
+</view>

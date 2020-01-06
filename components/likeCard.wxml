@@ -1,0 +1,10 @@
+<form reportSubmit bindsubmit="getLikeStatus" class="form-for-formid user-like clearfix" data-id="{{likeId}}" data-like="{{isLike}}" data-type="{{type}}" style="{{pageType==='subject'&&type==='subject'?'width:130rpx;text-align:center;':''}}">
+    <button formType="submit" type="default"></button>
+    <i class="icon-like-box">
+        <i class="icon icon-like {{doLike?'is-like':''}}">
+            <image class="" src="/static/icon-like.svg" wx:if="{{!isLike}}"></image>
+            <image src="/static/icon-like-active.svg" wx:else></image>
+        </i>
+    </i>
+    <text class="like-text" wx:if="{{likeCountStr!=='0'}}">{{likeCountStr}}</text>
+</form>

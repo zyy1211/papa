@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "赛事",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "raceListCard": "/components/specialRace/raceListCard"
+    }
+}

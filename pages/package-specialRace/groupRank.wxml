@@ -1,0 +1,37 @@
+<view class="header-fixed" wx:if="{{groupList.length>0}}">
+    <view class="has-ruling" wx:if="{{hasRuling}}">有队伍待抽签决出胜负</view>
+    <view class="group-list">
+        <view bindtap="changeGroupIndex" class="group-item {{groupIndex===index?'active':''}}" data-group-index="{{index}}" wx:for="{{groupList}}" wx:key="{{index}}">
+            <view>{{item.groupName}}</view>
+            <view class="warn-status" wx:if="{{item.needDraw}}">!</view>
+        </view>
+    </view>
+</view>
+<view class="group-rank-con {{isIpx?'is-ipx':''}} {{hasRuling?'is-ruling':''}}" wx:if="{{teamList.length>0}}">
+    <view class="rank-header">
+        <view class="ranking"></view>
+        <view class="team-name">队伍</view>
+        <view class="win-nums">胜次</view>
+        <view class="sessions">净胜场</view>
+        <view class="allSessions">净胜局</view>
+        <view class="scores">净胜分</view>
+    </view>
+    <view class="rank-item" wx:for="{{teamList}}" wx:key="{{index}}">
+        <view class="team-info">
+            <view class="ranking">{{item.resultSequence}}</view>
+            <view class="team-name">{{item.teamName}}</view>
+            <view class="win-nums">{{item.resultInfo.winTimes}}</view>
+            <view class="sessions">{{item.resultInfo.netWinScheduleCount}}</view>
+            <view class="allSessions">{{item.resultInfo.netWinMatchCount}}</view>
+            <view class="scores">{{item.resultInfo.netWinScore}}</view>
+        </view>
+        <i class="icon-advance" wx:if="{{item.enterNextStage}}">
+            <image src="/static/icon-enter-next.png"></image>
+        </i>
+    </view>
+</view>
+<view class="no-data-con" wx:if="{{teamList.length<=0}}">
+    <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+    <view class="no-data-text">暂无数据！</view>
+</view>
+<view class="fix-ipx-content" wx:if="{{isIpx}}"></view>

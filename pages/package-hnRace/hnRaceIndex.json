@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "赛事详情",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "hnRaceDetail": "/components/hnRace/hnRaceDetail",
+        "hnRaceResult": "/components/hnRace/hnRaceResult",
+        "hnTeamMemberList": "/components/hnRace/hnTeamMemberList",
+        "detailFooter": "/components/detailFooter"
+    }
+}

@@ -1,0 +1,35 @@
+<view class="container-box {{showCanvasContainer?'show':'hide'}}">
+    <view bindtap="hideCanvasContainer" class="mask"></view>
+    <view class="container-content">
+        <view class="canvas-container-header">
+            <text>电子证书</text>
+            <image bindtap="hideCanvasContainer" class="icon-close" mode="widthFix" src="/static/icon-delete.svg"></image>
+        </view>
+        <view class="swiper-box">
+            <swiper class="certificate-swiper {{imgList.length>1?'has-dots':''}}" indicatorActiveColor="rgba(0,205,145,1)" indicatorColor="rgba(228,228,228,1)" indicatorDots="{{imgList.length>1}}">
+                <swiper-item wx:for="{{imgList}}" wx:key="{{index}}">
+                    <image alt="" class="img-item" mode="scaleToFill" src="{{item}}" wx:if="{{item}}"></image>
+                </swiper-item>
+            </swiper>
+        </view>
+        <view bindtap="bindDownloadQrcode" class="save-button">
+      保存图片
+    </view>
+    </view>
+</view>
+<form reportSubmit bindsubmit="bindFormSubmit" class="page-con {{isIpx?'is-ipx':''}}">
+    <text class="page-title">输入参赛运动员本人姓名身份证号下载电子证书</text>
+    <view class="info-con">
+        <view class="info-item">
+            <view class="info-title">姓名</view>
+            <input bindinput="bindUserNameInput" class="info-input" maxlength="15" name="userName" placeholder="请输入运动员姓名" placeholderStyle="color: #B9B9B9;text-align:right;" type="text" value="{{userName}}"></input>
+        </view>
+        <view class="info-item">
+            <view class="info-title">身份证</view>
+            <input bindinput="bindUserCardNoInput" class="info-input" maxlength="18" name="userCardNo" placeholder="请输入运动员身份证号" placeholderStyle="color: #B9B9B9;text-align:right;" type="text" value="{{userCardNo}}"></input>
+        </view>
+    </view>
+    <button class="form-button-submit {{disabledSubmit?'disabled-button':''}}" formType="submit" type="primary">确认</button>
+</form>
+<authorize id="authorize"></authorize>
+<view class="fix-ipx-content" wx:if="{{isIpx}}"></view>

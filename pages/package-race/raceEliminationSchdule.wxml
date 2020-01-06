@@ -1,0 +1,40 @@
+<loading hidden="{{hidden}}">
+    加载中...
+</loading>
+<view class="main">
+    <image class="scroll-view-bg" mode="widthFix" src="/static/race-elimination-schdule-bg.png"></image>
+    <view class="scroll-view" style="{{scduleListLong?'':'justify-content:center;'}}">
+        <view class="main-box">
+            <view class="against-list list-{{item.length}} list-{{item.direction}} list-{{item.dataType}} against-length-{{againstList.length}}" wx:for="{{againstList}}">
+                <view class="against-list-item" wx:for="{{item.data}}">
+                    <view class="against-box-side {{item.winSideId&&item.winSideId!==item.sideId?'against-box-lose':''}}">
+                        <view class="against-list-side" style="line-height:{{item.sideLineHeight}}rpx;">
+                            <view wx:for="{{item.sideList}}">
+              {{item}}
+            </view>
+                        </view>
+                        <view class="side-line"></view>
+                    </view>
+                    <view class="against-list-vs">
+                        <view class="against-list-final-vs">
+            {{item.finalResult}}
+          </view>
+                    </view>
+                    <view class="against-box-otherside clearfix {{item.winSideId&&item.winSideId!==item.otherSideId?'against-box-lose':''}}">
+                        <view class="side-line"></view>
+                        <view class="against-list-otherside" style="line-height:{{item.othersideLineHeight}}rpx;color:{{item.othersideForceColor}}">
+                            <view wx:for="{{item.otherSideList}}">
+              {{item}}
+            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="against-three" wx:if="{{item.dataType==='three'}}">三四名决赛</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

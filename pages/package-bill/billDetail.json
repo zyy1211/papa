@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "活动收款",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "appFooter": "/components/appFooter"
+    }
+}

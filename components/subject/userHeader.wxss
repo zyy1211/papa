@@ -1,0 +1,191 @@
+.user-header-con {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-header-form {
+    position: relative;
+    display: block;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.user-header-form .form-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: 10;
+}
+
+.form-button::after {
+    border: none;
+}
+
+.user-info-con {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.user-haeder {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+.user-main-info {
+    flex-grow: 1;
+    flex-shrink: 0;
+    max-width: 400rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-name-con {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.name-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sex-img {
+    flex-shrink: 0;
+    display: block;
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 14rpx;
+}
+
+.user-sub-info {
+    width: 100%;
+    font-size: 24rpx;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.attention-form {
+    display: block;
+    position: relative;
+}
+
+.attention-form .attention-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: none;
+    z-index: 10;
+}
+
+.attention-btn::after {
+    border: none;
+}
+
+.attention-btn-con {
+    height: 50rpx;
+    line-height: 50rpx;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 26rpx;
+    border-radius: 25rpx;
+    background: #F06969;
+    color: #fff;
+    font-size: 26rpx;
+    box-shadow: 0 4rpx 0 rgba(251,205,205,1);
+}
+
+.attention-btn-con.has-attention {
+    border: 2rpx solid rgba(233,233,233,1);
+    background: #fff;
+    box-shadow: 0 4rpx 0 rgba(233,233,233,1);
+    color: #F06969;
+}
+
+.wxapp-modal {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.wxapp-modal .content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    z-index: 1000;
+    width: 482rpx;
+    background: #fff;
+    text-align: center;
+    border-radius: 10rpx;
+    transform: translateX(-50%);
+}
+
+.wxapp-modal .content .header {
+    width: 100%;
+    height: 180rpx;
+    line-height: 180rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.wxapp-modal .content .footer {
+    width: 100%;
+    height: 92rpx;
+    line-height: 92rpx;
+    border-top: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer button {
+    display: inline-block;
+    width: 49%;
+    height: 92rpx;
+    line-height: 92rpx;
+    background: #fff;
+    border-radius: 0;
+}
+
+.wxapp-modal .content .footer button::after {
+    border: none;
+}
+
+.wxapp-modal .content .footer .cancel {
+    color: #000;
+    border-right: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer .confirm {
+    color: #00CD91;
+}
+
+.wxapp-modal .mask,.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+}

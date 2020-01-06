@@ -1,0 +1,386 @@
+@import "authorize.wxss";
+
+.form-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 90rpx;
+    background: #fff;
+    box-shadow: 0 0 2rpx #CBCBCB;
+}
+
+.form-footer.has-footer-app {
+    bottom: 100rpx;
+}
+
+.form-for-formid button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.footer-share {
+    float: left;
+    width: 100rpx;
+    line-height: 56rpx;
+    text-align: center;
+}
+
+.footer-share-image {
+    display: inline-block;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.footer-share-text {
+    margin-top: -15rpx;
+    color: #333;
+    font-size: 24rpx;
+}
+
+.footer-item {
+    float: left;
+    width: 425rpx;
+    height: 90rpx;
+    background: #00CD91;
+    line-height: 90rpx;
+    text-align: center;
+}
+
+.footer-item button {
+    background: #00CD91;
+    border-radius: 0;
+    color: #fff;
+}
+
+.footer-item button::after {
+    border-radius: 0;
+    border: none;
+}
+
+.footer-item-more {
+    width: 650rpx;
+}
+
+.footer-item.disabled {
+    background: gray;
+}
+
+.footer-item .disabled-button {
+    background: gray;
+}
+
+.footer-modify {
+    width: 225rpx;
+    background: #ffa918;
+}
+
+.footer-modify button {
+    background: #ffa918;
+}
+
+.footer-modify.disabled {
+    background: #666;
+}
+
+.footer-modify .disabled-button {
+    background: #666;
+}
+
+.modify-modal {
+    position: fixed;
+    right: 10rpx;
+    bottom: 120rpx;
+    width: 215rpx;
+    padding: 15rpx 0;
+    background: #fff;
+    border-radius: 25rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    z-index: 101;
+}
+
+.isActivity .modify-modal {
+    box-shadow: 0 3rpx 10rpx rgba(0,0,0,0.16);
+    right: 110rpx;
+}
+
+.isActivity .modify-modal.has-back-home {
+    right: 210rpx;
+}
+
+.modify-modal-box.isActivity .mask {
+    background: transparent;
+}
+
+.modify-modal-border {
+    position: absolute;
+    left: 90rpx;
+    bottom: -34rpx;
+    width: 0;
+    height: 0;
+    border: 20rpx solid #fff;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.isActivity .modify-modal-border {
+    z-index: 100;
+    border-width: 10rpx;
+    bottom: -10rpx;
+    transform: rotate(135deg);
+    border-right-color: #fff;
+    box-shadow: 3rpx -3rpx 3rpx rgba(0,0,0,0.16);
+}
+
+.modify-item {
+    display: block;
+}
+
+.modify-modal-box,.modify-modal-box .mask {
+    bottom: 90rpx;
+}
+
+.modify-modal-box.fix-iphonex,.modify-modal-box.fix-iphonex .mask {
+    bottom: 158rpx;
+}
+
+.modify-modal-box.has-open-app,.modify-modal-box.has-open-app .mask {
+    bottom: 190rpx;
+}
+
+.modify-modal-box.has-open-app.fix-iphonex,.modify-modal-box.has-open-app.fix-iphonex .mask {
+    bottom: 258rpx;
+}
+
+.modify-modal-box.fix-iphonex .modify-modal {
+    bottom: 188rpx;
+}
+
+.modify-modal-box.isActivity .modify-modal {
+    bottom: 249rpx;
+}
+
+.modify-modal-box.isActivity.fix-iphonex .modify-modal {
+    bottom: 317rpx;
+}
+
+.modify-modal-box.isActivity.has-open-app .modify-modal {
+    bottom: 349rpx;
+}
+
+.modify-modal-box.isActivity.fix-iphonex.has-open-app .modify-modal {
+    bottom: 417rpx;
+}
+
+.info-sheet button {
+    background: none;
+    line-height: inherit;
+}
+
+.info-sheet button::after {
+    border: none;
+}
+
+.footer-whole-btn {
+    width: 100%;
+}
+
+.activity-rate {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    color: #999999;
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 26rpx;
+}
+
+.activity-status-con {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -8rpx;
+    margin-bottom: 8rpx;
+}
+
+.rate-num-text {
+    color: #666;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.activity-rate-con {
+    width: 100%;
+    height: 20rpx;
+    background: #E1E1E1;
+    border-radius: 12rpx;
+    overflow: hidden;
+}
+
+.activity-rate-signed {
+    width: 0;
+    height: 100%;
+    background: #00CD91;
+    border-radius: 12rpx;
+}
+
+.activity-btn-con {
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
+.footer-form-btn {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-form-btn .footer-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: #00CD91;
+    font-size: 36rpx;
+    color: #fff;
+    border-radius: 0;
+}
+
+.footer-form-btn .footer-btn.disabled-btn {
+    background: #C4C4C4;
+}
+
+.footer-form-btn .footer-btn::after {
+    border-radius: 0;
+    border: none;
+}
+
+.more-action-con {
+    position: fixed;
+    bottom: 124rpx;
+    right: 12rpx;
+    z-index: 100;
+    padding: 0 50rpx;
+    height: 100rpx;
+    background: #FFFFFF;
+    border-radius: 50rpx;
+    border: 2rpx solid rgba(243,243,243,1);
+    box-shadow: 0 3rpx 10rpx rgba(0,0,0,0.16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more-action-con.has-ipx {
+    bottom: 192rpx;
+}
+
+.more-action-con.has-open-app {
+    bottom: 224rpx;
+}
+
+.has-ipx.has-open-app {
+    bottom: 292rpx;
+}
+
+.form-action {
+    flex-shrink: 0;
+    position: relative;
+    width: 100rpx;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-action .action-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: none;
+    padding: 0;
+}
+
+.form-action .action-btn::after {
+    border: none;
+    background: none;
+}
+
+.action-manage-image {
+    display: block;
+    width: 37rpx;
+    height: 31rpx;
+    margin: 0 auto;
+}
+
+.action-share-image {
+    display: block;
+    width: 31rpx;
+    height: 31rpx;
+    margin: 0 auto;
+}
+
+.action-home-image {
+    display: block;
+    width: 40rpx;
+    height: 31rpx;
+    margin: 0 auto;
+}
+
+.action-text {
+    font-size: 24rpx;
+    color: #666;
+    margin-top: 5rpx;
+}
+
+.hn-disabled-button {
+    background: #98e2c8!important;
+}
+
+.icon-abnormal {
+    position: relative;
+    top: 10rpx;
+    width: 46rpx;
+    height: 46rpx;
+}
+
+.button-to-index {
+    position: fixed;
+    z-index: 997;
+    width: 75rpx;
+    height: 75rpx;
+    bottom: 180rpx;
+    right: 20rpx;
+    padding-right: 10rpx;
+}
+
+.button-to-index-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

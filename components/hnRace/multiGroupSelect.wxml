@@ -1,0 +1,9 @@
+<view class="multi-group-body">
+    <i class="icon group-subject-title">
+        <image class="icon-image" src="/static/group-subject-title.svg"></image>
+        <text class="subject-title-text">{{multiSelectTitle}}</text>
+    </i>
+    <scroll-view class="multi-group-wrap" scrollY="{{true}}" style="height: {{scrollViewHeight}}rpx">
+        <groupDetailCard bindonCheck="onCheck" bindonRemove="onRemove" bindshowInfo="showErrorInfo" cardDetail="{{item}}" class="group-item" wx:for="{{allSubjects}}" wx:key="{{item.name}}"></groupDetailCard>
+    </scroll-view>
+</view>

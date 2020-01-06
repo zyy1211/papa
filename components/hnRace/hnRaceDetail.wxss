@@ -1,0 +1,510 @@
+@import "../authorize.wxss";
+
+page {
+    background: #fff;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.content {
+    margin-top: 2rpx;
+    padding-bottom: 100rpx;
+}
+
+.content.fix-iphonex {
+    padding-bottom: 168rpx;
+}
+
+.content.has-footer-app {
+    padding-bottom: 200rpx;
+}
+
+.content.fix-iphonex.has-footer-app {
+    padding-bottom: 268rpx;
+}
+
+.content.activity-con {
+    padding-bottom: 220rpx;
+}
+
+.content.activity-con.fix-iphonex {
+    padding-bottom: 288rpx;
+}
+
+.content.activity-con.has-footer-app {
+    padding-bottom: 320rpx;
+}
+
+.content.activity-con.fix-iphonex.has-footer-app {
+    padding-bottom: 388rpx;
+}
+
+.header {
+    font-size: 26rpx;
+}
+
+.header-bg {
+    width: 710rpx;
+    height: 275rpx;
+    margin: 20rpx auto;
+}
+
+.header-bg-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20rpx;
+    background-color: #f3f3f3;
+}
+
+.header-card {
+    position: relative;
+    width: 710rpx;
+    margin: 0 auto;
+    color: #55666d;
+    padding-bottom: 20rpx;
+}
+
+.header-title {
+    width: 100%;
+    line-height: 55rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333;
+}
+
+.themes-list-labels {
+    width: 710rpx;
+    overflow-x: auto;
+    font-size: 22rpx;
+    color: #646364;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.labels-item {
+    display: inline-block;
+    margin: 10rpx 8rpx 0 0;
+    padding: 5rpx 10rpx 3rpx;
+    background: #F5F6F8;
+    border-radius: 20rpx;
+    line-height: 32rpx;
+}
+
+.header-card-club {
+    display: block;
+    margin-top: 10rpx;
+    padding-top: 10rpx;
+    border-top: 2rpx solid #f3f3f3;
+    line-height: 50rpx;
+}
+
+.club-logo {
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 10rpx;
+    border-radius: 50%;
+}
+
+.club-name {
+    display: inline-block;
+    width: 620rpx;
+}
+
+.header-card-fee {
+    height: 60rpx;
+    line-height: 56rpx;
+}
+
+.header-box {
+    width: 700rpx;
+    padding: 15rpx 20rpx 0 30rpx;
+    border-top: 20rpx solid #f3f3f3;
+    line-height: 65rpx;
+}
+
+.header-card-address {
+    display: block;
+    position: relative;
+}
+
+.header-card-address text {
+    display: inline-block;
+    width: 620rpx;
+    vertical-align: middle;
+}
+
+.header-description {
+    width: 710rpx;
+    margin-top: 20rpx;
+    padding: 20rpx 20rpx;
+    border-top: 20rpx solid #f3f3f3;
+}
+
+.user-name {
+    width: 600rpx;
+}
+
+.user-name text {
+    display: inline-block;
+    max-width: 550rpx;
+}
+
+.user-description {
+    margin: 20rpx 0;
+    color: #4A4A4A;
+    line-height: 50rpx;
+}
+
+.contact-group {
+    width: 710rpx;
+    height: 65rpx;
+    margin: 20rpx auto;
+    margin-bottom: 0;
+    border: 2rpx solid #f3f3f3;
+    border-radius: 35rpx;
+    text-align: center;
+    line-height: 65rpx;
+    font-size: 24rpx;
+    color: #666;
+}
+
+.contact-button {
+    position: relative;
+    display: inline-block;
+    width: 355rpx;
+}
+
+.contact-split {
+    position: absolute;
+    right: 0;
+    top: 12rpx;
+    width: 0;
+    height: 40rpx;
+    border-left: 2rpx solid #f3f3f3;
+}
+
+.icon {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+
+.icon-item {
+    margin: -6rpx 20rpx 0 0;
+}
+
+.icon-sex {
+    width: 25rpx;
+    height: 25rpx;
+    margin-left: 5rpx;
+    vertical-align: text-top;
+}
+
+.icon-phone,.icon-weixin {
+    width: 46rpx;
+    height: 46rpx;
+    margin: 0 15rpx 0 0;
+}
+
+.icon-address {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24rpx;
+    height: 40rpx;
+    margin: 15rpx 0 0;
+    transform: rotate(-90deg);
+}
+
+.wxapp-modal .content {
+    padding: 0;
+}
+
+.text-bold {
+    margin: 0 10rpx 0 5rpx;
+    font-weight: bold;
+    font-size: 32rpx;
+}
+
+.text-opacity {
+    color: rgba(255,255,255,0.5);
+}
+
+.info-wrap {
+    width: 710rpx;
+    padding: 0 20rpx;
+    border-top: 20rpx solid #f3f3f3;
+    line-height: 90rpx;
+}
+
+.info-wrap form {
+    display: block;
+}
+
+.info-wrap-title {
+    position: relative;
+    font-size: 28rpx;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-right-title {
+    font-size: 24rpx;
+    font-weight: 400rpx;
+    color: #00CD91;
+}
+
+.info-wrap-title text {
+    margin-left: 10rpx;
+    font-weight: normal;
+    color: #B8B8B8;
+}
+
+.icon-border {
+    width: 0;
+    height: 40rpx;
+    border-left: 10rpx solid #03C682;
+    margin-right: 18rpx;
+}
+
+.info-wrap-content {
+    width: 710rpx;
+    margin: 0 auto;
+    line-height: 60rpx;
+    color: #666;
+    font-size: 26rpx;
+    text-indent: 20rpx;
+}
+
+.info-image-item {
+    display: block;
+    width: 710rpx;
+    margin-top: 20rpx;
+}
+
+.info-wrap-content text {
+    word-wrap: break-word;
+}
+
+.success-text {
+    font-size: 28rpx;
+    color: #666;
+}
+
+.modal-not-warn {
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    font-size: 24rpx;
+    color: #8F9597;
+}
+
+.modal-not-warn checkbox {
+    zoom: 54%;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+
+.header-download-app {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 140rpx;
+    height: 50rpx;
+    background: #00CD91;
+    text-align: center;
+    line-height: 50rpx;
+    color: #fff;
+    font-size: 26rpx;
+    border-radius: 8rpx;
+}
+
+page {
+    background: #f3f3f3;
+}
+
+.header {
+    position: relative;
+    background: #fff;
+    padding-top: 20rpx;
+}
+
+.header-bg {
+    margin-top: 0;
+}
+
+.info-wrap-box {
+    height: 90rpx;
+}
+
+.info-wrap {
+    line-height: 1;
+    background: #fff;
+}
+
+.icon-border {
+    position: static;
+    margin-right: 16rpx;
+}
+
+.info-wrap-list {
+    float: left;
+    margin-left: 20rpx;
+}
+
+.info-wrap-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 90rpx;
+}
+
+.race-info {
+    position: absolute;
+    right: 46rpx;
+    top: 10rpx;
+    padding: 10rpx;
+    color: #fff;
+    font-size: 20rpx;
+    border-radius: 10rpx;
+    background-color: #42d899;
+}
+
+.list-item-image {
+    float: left;
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 25rpx;
+    border-radius: 50%;
+}
+
+.list-item-image:last-child {
+    margin: 0;
+}
+
+.list-wrap-queue {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.header-card-fee {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.register-count {
+    color: #b8b8b8;
+}
+
+.tags-wrapper {
+    width: 100%;
+    height: 50rpx;
+    white-space: nowrap;
+}
+
+.tag-item {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5rpx 10rpx;
+    margin-right: 20rpx;
+    color: #646364;
+    border-radius: 19px;
+    background-color: #f5f6f8;
+}
+
+.commissioner-info,.contact-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+
+.commissioner-info {
+    padding-left: 20rpx;
+}
+
+.green-dot,.yellow-dot {
+    width: 14rpx;
+    height: 14rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+}
+
+.green-dot {
+    background-color: #37d79d;
+}
+
+.yellow-dot {
+    background-color: #ffa918;
+}
+
+.commissioner-text,.contact-text {
+    font-weight: bold;
+    margin-right: 40rpx;
+}
+
+.commissioner-logo {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.contactor {
+    margin-right: 40rpx;
+}
+
+.contact-split {
+    width: 1rpx;
+    height: 26rpx;
+    background-color: #f3f3f3;
+}
+
+.see-more-btn {
+    width: 100%;
+    height: 60rpx;
+    padding-bottom: 30rpx;
+    color: #00cd91;
+    font-size: 26rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-more {
+    margin-left: 10rpx;
+    width: 0;
+    height: 0;
+    border: 6rpx solid transparent;
+    border-top: 6rpx solid #00cd91;
+    border-left: 6rpx solid #00cd91;
+    transform: rotate(-135deg);
+}
+
+.icon-collapse {
+    margin-left: 10rpx;
+    width: 0;
+    height: 0;
+    border: 6rpx solid transparent;
+    border-top: 6rpx solid #00cd91;
+    border-left: 6rpx solid #00cd91;
+    transform: rotate(45deg);
+    margin-top: 10rpx;
+}
+
+.race-detail {
+    padding-bottom: 20rpx;
+}

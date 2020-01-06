@@ -1,0 +1,247 @@
+<view class="form-footer clearfix {{isIpx?'fix-iphonex-button':''}} {{footerData.showAppButton?'has-footer-app':''}}">
+    <block wx:if="{{pageType==='activity'}}">
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-whole-btn" data-url="/pages/package-bill/billEvent?id={{pageId}}" wx:if="{{footerData.canCreateBill}}">
+            <button formType="submit" type="default">发起活动收款</button>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-whole-btn" data-url="/pages/package-bill/billDetail?id={{pageId}}" wx:elif="{{footerData.canViewBill&&footerData.creator}}">
+            <button formType="submit" type="default">查看活动收款</button>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-whole-btn" data-url="/pages/package-bill/billDetail?id={{pageId}}" wx:elif="{{footerData.canViewBill&&!footerData.creator&&footerData.paied}}">
+            <button formType="submit" type="default">查看活动账单</button>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-whole-btn" data-url="/pages/package-bill/billDetail?id={{pageId}}" wx:elif="{{footerData.canViewBill&&!footerData.creator&&!footerData.paied}}">
+            <button formType="submit" type="default">支付活动费用</button>
+        </form>
+        <block wx:else>
+            <view class="activity-rate">
+                <view class="activity-status-con">
+                    <view class="status-text">
+            {{footerData.timesToRegisterEnd?footerData.hasJoinActivity?footerData.hasQueueActivity?'正在排队':'我已报名':footerData.joinerNum<footerData.limitNum?'报名中':'已报满':'报名截止'}} </view>
+                    <view class="rate-text-con" wx:if="{{!footerData.canJoin}}">
+                        <text class="rate-num-text">{{footerData.joinerNum}}/{{footerData.limitNum}}</text>
+                    </view>
+                    <block wx:else>
+                        <view class="rate-text-con" wx:if="{{footerData.joinerNum<footerData.limitNum}}">
+                            <text class="rate-num-text">{{footerData.joinerNum}}/{{footerData.limitNum}}</text>
+                        </view>
+                        <block wx:else>
+                            <view class="rate-text-con" wx:if="{{footerData.hasJoinActivity&&footerData.hasQueueActivity}}">
+                    前面
+                    <text class="rate-num-text">{{footerData.queueNum>99?'99+':footerData.queueNum}}</text>人
+                  </view>
+                            <block wx:else>
+                                <view class="rate-text-con" wx:if="{{footerData.allowQueue}}">
+                                    <text class="rate-num-text">{{footerData.queueNum}}</text>人排队中
+                    </view>
+                                <view class="rate-text-con" wx:else>
+                                    <text class="rate-num-text">{{footerData.joinerNum}}/{{footerData.limitNum}}</text>
+                                </view>
+                            </block>
+                        </block>
+                    </block>
+                </view>
+                <view class="activity-rate-con">
+                    <view class="activity-rate-signed" style="width:{{footerData.joinerNum/footerData.limitNum*100}}%"></view>
+                </view>
+            </view>
+            <view class="activity-btn-con">
+                <block wx:if="{{footerData.hasJoinActivity&&!footerData.hasQueueActivity}}">
+                    <form reportSubmit bindsubmit="navigateToEnter" class="footer-form-btn" wx:if="{{footerData.canJoin}}">
+                        <button class="footer-btn" formType="submit" type="default">修改报名</button>
+                    </form>
+                    <form class="footer-form-btn" wx:else>
+                        <button class="footer-btn disabled-btn" type="default">修改报名</button>
+                    </form>
+                </block>
+                <block wx:elif="{{footerData.hasJoinActivity&&footerData.hasQueueActivity}}">
+                    <form reportSubmit bindsubmit="navigateToEnter" class="footer-form-btn" wx:if="{{footerData.canJoin}}">
+                        <button class="footer-btn" formType="submit" type="default">修改排队</button>
+                    </form>
+                    <form class="footer-form-btn" wx:else>
+                        <button class="footer-btn disabled-btn" type="default">我要报名</button>
+                    </form>
+                </block>
+                <block wx:elif="{{!footerData.hasJoinActivity}}">
+                    <block wx:if="{{footerData.joinerNum<footerData.limitNum}}">
+                        <form reportSubmit bindsubmit="navigateToEnter" class="footer-form-btn" data-type="enter" wx:if="{{footerData.canJoin}}">
+                            <button class="footer-btn" formType="submit" type="default">我要报名</button>
+                        </form>
+                        <form class="footer-form-btn" wx:else>
+                            <button class="footer-btn disabled-btn" type="default">我要报名</button>
+                        </form>
+                    </block>
+                    <block wx:else>
+                        <block wx:if="{{footerData.allowQueue}}">
+                            <form reportSubmit bindsubmit="navigateToEnter" class="footer-form-btn" data-type="enter" wx:if="{{footerData.canJoin}}">
+                                <button class="footer-btn" formType="submit" type="default">排队</button>
+                            </form>
+                            <form class="footer-form-btn" wx:else>
+                                <button class="footer-btn disabled-btn" type="default">我要报名</button>
+                            </form>
+                        </block>
+                        <form class="footer-form-btn" wx:else>
+                            <button class="footer-btn disabled-btn" type="default">我要报名</button>
+                        </form>
+                    </block>
+                </block>
+            </view>
+        </block>
+        <view class="more-action-con {{isIpx?'has-ipx':''}} {{footerData.showAppButton?'has-open-app':''}}">
+            <form reportSubmit bindsubmit="showModifyModal" class="form-action" wx:if="{{footerData.canModify||footerData.canCancle}}">
+                <button class="action-btn" formType="submit" type="default"></button>
+                <image class="action-manage-image" src="/static/manage.png"></image>
+                <view class="action-text">管理</view>
+            </form>
+            <form reportSubmit bindsubmit="actionSheetChange" class="form-action">
+                <button class="action-btn" formType="submit" type="default"></button>
+                <image class="action-share-image" src="/static/icon-share.svg"></image>
+                <view class="action-text">分享</view>
+            </form>
+            <form reportSubmit bindsubmit="redirectToIndex" class="form-action" wx:if="{{showToIndex}}">
+                <button class="action-btn" formType="submit" type="default"></button>
+                <image class="action-home-image" src="/static/back-home.png"></image>
+                <view class="action-text">返回首页</view>
+            </form>
+        </view>
+    </block>
+    <block wx:else>
+        <form reportSubmit bindsubmit="actionSheetChange" class="form-for-formid footer-share">
+            <button formType="submit" type="default"></button>
+            <image class="footer-share-image" src="/static/icon-share.svg"></image>
+            <view class="footer-share-text">分享</view>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-item-more" data-url="/pages/package-bill/billEvent?id={{pageId}}" wx:if="{{footerData.canCreateBill}}">
+            <button formType="submit" type="default">发起活动收款</button>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-item-more" data-url="/pages/package-bill/billDetail?id={{pageId}}" wx:elif="{{footerData.canViewBill&&footerData.creator}}">
+            <button formType="submit" type="default">查看活动收款</button>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-item-more" data-url="/pages/package-bill/billDetail?id={{pageId}}" wx:elif="{{footerData.canViewBill&&!footerData.creator&&footerData.paied}}">
+            <button formType="submit" type="default">查看活动账单</button>
+        </form>
+        <form reportSubmit bindsubmit="navigate" class="footer-item footer-item-more" data-url="/pages/package-bill/billDetail?id={{pageId}}" wx:elif="{{footerData.canViewBill&&!footerData.creator&&!footerData.paied}}">
+            <button formType="submit" type="default">支付活动费用</button>
+        </form>
+        <block wx:elif="{{pageType==='hnRace'}}">
+            <form class="form-for-formid footer-item footer-item-more hn-disabled-button" wx:if="{{footerData.btnText==='赛事已取消'}}">
+                <button formType="submit">赛事已取消</button>
+            </form>
+            <form reportSubmit bindsubmit="navigate" class="form-for-formid footer-item footer-item-more" wx:elif="{{footerData.hasJoinActivity}}">
+                <button formType="submit" type="default">
+          报名详情
+          <i class="icon icon-abnormal" wx:if="{{footerData.status==='ABNORMAL'}}">
+                        <image src="/static/icon-warning-red.svg"></image>
+                    </i>
+                </button>
+            </form>
+            <form reportSubmit bindsubmit="navigate" class="{{footerData.btnText==='报名'&&footerData.canJoin?'form-for-formid footer-item footer-item-more':'form-for-formid footer-item footer-item-more hn-disabled-button'}}" wx:else>
+                <button formType="submit">{{footerData.btnText}}</button>
+            </form>
+            <form reportSubmit bindsubmit="redirectToIndex" class="form-for-formid button-to-index" wx:if="{{showHnToIndex}}">
+                <button formType="submit" type="default"></button>
+                <image class="button-to-index-img" mode="widthFix" src="/static/icon-to-index.svg"></image>
+            </form>
+        </block>
+        <block wx:else>
+            <block wx:if="{{pageType==='specialRace'}}">
+                <form class="footer-item footer-item-more disabled" wx:if="{{footerData.status.name==='CANCEL'}}">
+                    <button class="disabled-button" type="default">已取消</button>
+                </form>
+                <block wx:else>
+                    <form reportSubmit bindsubmit="navigateToEnter" class="footer-item footer-item-more" wx:if="{{footerData.hasEnter}}">
+                        <button formType="submit" type="default">报名详情</button>
+                    </form>
+                    <block wx:else>
+                        <form class="footer-item footer-item-more disabled" wx:if="{{footerData.gmtEnterStart>footerData.nowDate}}">
+                            <button class="disabled-button" type="default">报名未开始</button>
+                        </form>
+                        <form reportSubmit bindsubmit="navigateToEnter" class="footer-item footer-item-more" wx:elif="{{footerData.gmtEnterStart<=footerData.nowDate&&footerData.gmtEnterEnd>footerData.nowDate}}">
+                            <button formType="submit" type="default">报名入口</button>
+                        </form>
+                        <form class="footer-item footer-item-more disabled" wx:elif="{{footerData.gmtEnterEnd<=footerData.nowDate}}">
+                            <button class="disabled-button" type="default">报名已结束</button>
+                        </form>
+                    </block>
+                </block>
+            </block>
+            <block wx:else>
+                <block wx:if="{{footerData.creator||!footerData.creator&&footerData.hasJoinActivity&&footerData.teamModel}}">
+                    <block wx:if="{{footerData.canJoin}}">
+                        <form reportSubmit bindsubmit="navigateToEnter" class="footer-item" wx:if="{{footerData.hasJoinActivity}}">
+                            <button formType="submit" type="default">修改报名</button>
+                        </form>
+                        <form reportSubmit bindsubmit="navigateToEnter" class="footer-item" wx:else>
+                            <button formType="submit" type="default">我要报名</button>
+                        </form>
+                    </block>
+                    <block wx:else>
+                        <form class="footer-item disabled" wx:if="{{footerData.hasJoinActivity}}">
+                            <button class="disabled-button" type="default">修改报名</button>
+                        </form>
+                        <form class="footer-item disabled" wx:else>
+                            <button class="disabled-button" type="default">我要报名</button>
+                        </form>
+                    </block>
+                    <form reportSubmit bindsubmit="showModifyModal" class="form-for-formid footer-item footer-modify" wx:if="{{footerData.canModify||footerData.canCancle&&footerData.creator}}">
+                        <button formType="submit" type="default">更多操作</button>
+                    </form>
+                    <form class="form-for-formid footer-item footer-modify" wx:elif="{{!footerData.creator&&footerData.hasJoinActivity&&footerData.teamModel&&!footerData.teamIsFull}}">
+                        <button data-sharetype="invite" openType="share" type="default">邀请组队</button>
+                    </form>
+                    <form reportSubmit bindsubmit="showTeamMember" class="form-for-formid footer-item footer-modify" wx:elif="{{!footerData.creator&&footerData.hasJoinActivity&&footerData.teamModel&&footerData.teamIsFull}}">
+                        <button formType="submit" type="default">查看好友</button>
+                    </form>
+                    <form reportSubmit bindsubmit="showTeamMember" class="form-for-formid footer-item footer-modify" wx:elif="{{footerData.creator&&!footerData.canModify&&!footerData.canCancle&&footerData.teamIsFull}}">
+                        <button formType="submit" type="default">查看好友</button>
+                    </form>
+                    <form class="form-for-formid footer-item footer-modify disabled" wx:elif="{{footerData.creator&&!footerData.canModify&&!footerData.canCancle}}">
+                        <button class="disabled-button" type="default">更多操作</button>
+                    </form>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{footerData.canJoin}}">
+                        <form reportSubmit bindsubmit="navigateToEnter" class="form-for-formid footer-item footer-item-more" wx:if="{{footerData.hasJoinActivity}}">
+                            <button formType="submit" type="default">修改报名</button>
+                        </form>
+                        <form reportSubmit bindsubmit="navigateToEnter" class="form-for-formid footer-item footer-item-more" data-type="enter" wx:else>
+                            <button formType="submit" type="default">我要报名</button>
+                        </form>
+                    </block>
+                    <block wx:else>
+                        <form class="footer-item footer-item-more disabled" wx:if="{{footerData.hasJoinActivity}}">
+                            <button class="disabled-button" type="default">修改报名</button>
+                        </form>
+                        <form class="footer-item footer-item-more disabled" wx:else>
+                            <button class="disabled-button" type="default">我要报名</button>
+                        </form>
+                    </block>
+                </block>
+            </block>
+        </block>
+    </block>
+</view>
+<view class="wxapp-modal modify-modal-box {{modifyModalHidden?'hide':''}} {{isIpx?'fix-iphonex':''}} {{pageType==='activity'?'isActivity':''}} {{footerData.showAppButton?'has-open-app':''}}">
+    <view bindtap="hideModifyModal" class="mask"></view>
+    <view class="modify-modal {{showToIndex?'has-back-home':''}}">
+        <view class="modify-modal-border"></view>
+        <form reportSubmit bindsubmit="navigateToEvent" class="form-for-formid modify-item" wx:if="{{footerData.canModify}}">
+            <button formType="submit" type="default"></button>编辑活动
+      </form>
+        <form reportSubmit bindsubmit="bindCancelActivity" class="form-for-formid modify-item" wx:if="{{footerData.canCancle}}">
+            <button formType="submit" type="default"></button>取消活动
+      </form>
+        <form reportSubmit bindsubmit="showTeamMember" class="form-for-formid modify-item" wx:if="{{footerData.teamModel&&footerData.hasJoinActivity&&footerData.teamIsFull}}">
+            <button formType="submit" type="default"></button>查看好友
+      </form>
+        <form class="form-for-formid modify-item" wx:elif="{{footerData.teamModel&&footerData.hasJoinActivity&&!footerData.teamIsFull}}">
+            <button data-sharetype="invite" openType="share" type="default"></button>邀请组队
+      </form>
+    </view>
+</view>
+<action-sheet bindchange="actionSheetChange" class="info-sheet" hidden="{{actionSheetHidden}}">
+    <action-sheet-item bindtap="createQrcode" class="item">生成二维码</action-sheet-item>
+    <action-sheet-item class="item">
+        <button bindtouchstart="actionSheetChange" data-sharetype="detail" openType="share">好友</button>
+    </action-sheet-item>
+    <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>

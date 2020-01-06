@@ -1,0 +1,128 @@
+.content {
+    font-size: 26rpx;
+}
+
+.content-header {
+    padding: 30rpx 20rpx 100rpx;
+    background: #00CD91;
+    color: #fff;
+}
+
+.header-name-box {
+    position: relative;
+    display: block;
+}
+
+.header-con {
+    width: 80%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header-avater {
+    width: 100rpx;
+    height: 100rpx;
+    margin-left: 20rpx;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.header-name {
+    display: inline-block;
+    height: 100rpx;
+    margin-left: 20rpx;
+    line-height: 100rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.icon-link {
+    position: absolute;
+    top: 36rpx;
+    right: 10rpx;
+    width: 22rpx;
+    height: 40rpx;
+    transform: rotate(-90deg);
+}
+
+.header-data-item {
+    float: left;
+    width: 235rpx;
+    margin-top: 30rpx;
+    text-align: center;
+}
+
+.header-data-account {
+    margin-top: 20rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.content-box {
+    width: 640rpx;
+    margin: -65rpx auto 0;
+    padding: 0 30rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.content-box2 {
+    width: 640rpx;
+    margin: 26rpx auto 0;
+    padding: 0 30rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.content-box-item {
+    display: block;
+    width: 100%;
+    height: 130rpx;
+    border-bottom: 2rpx solid #eaeaea;
+    line-height: 130rpx;
+}
+
+.content-box-border-none {
+    border: none;
+}
+
+.content-box-item text {
+    margin-left: 20rpx;
+}
+
+.icon-memo,.icon-logo {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 20rpx;
+    vertical-align: middle;
+}
+
+.icon-logo {
+    width: 36rpx;
+    height: 56rpx;
+}
+
+.icon-hot {
+    position: absolute;
+    top: 55rpx;
+    right: 60rpx;
+    background: #fa5454;
+    padding: 6rpx;
+    color: #fff;
+    line-height: 20rpx;
+    font-size: 24rpx;
+    border-radius: 7rpx;
+}
+
+.icon-arrow {
+    float: right;
+    width: 22rpx;
+    height: 40rpx;
+    margin: 50rpx 20rpx 0 0;
+    transform: rotate(-90deg);
+}

@@ -1,0 +1,122 @@
+<view class="page-con {{currentTab==1||currentTab==2?'gray-page':''}}">
+    <view class="switch-tab">
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==0?'on':''}}" data-current="0">
+            <button formType="submit" type="default"></button>
+      详情<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==1?'on':''}}" data-current="1" wx:if="{{badmintonRace}}">
+            <button formType="submit" type="default"></button>
+      对阵<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==2?'on':''}}" data-current="2" wx:if="{{badmintonRace}}">
+            <button formType="submit" type="default"></button>
+      比分直播<i class="tab-bottom-line tab-bottom-line3"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==3?'on':''}}" data-current="3">
+            <button formType="submit" type="default"></button>
+      名单<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==4?'on':''}}" data-current="4">
+            <button formType="submit" type="default"></button>
+      赛果<i class="tab-bottom-line"></i>
+        </form>
+    </view>
+    <view class="main-content main-detail-content {{currentTab==0?'show':'hide'}} {{isIpx?'fix-iphonex':''}} {{footerData.showAppButton?'has-footer-app':''}}">
+        <view class="header">
+            <view class="header-bg">
+                <image class="header-bg-img" src="{{imageSrc}}"></image>
+            </view>
+            <view class="header-card">
+                <form reportSubmit bindsubmit="doDownloadApp" class="form-for-formid header-download-app" wx:if="{{footerData.creator}}">
+                    <button formType="submit" type="default"></button>APP下载
+        </form>
+                <view class="header-title">{{raceInfo.title}}</view>
+                <view class="header-card-organizer">举办方：<text class="text-overflow">{{raceInfo.organizerName}}</text>
+                </view>
+                <view class="themes-list-labels">
+                    <view class="themes-list-labels-content">
+                        <view class="labels-item" wx:for="{{raceInfo.label}}" wx:key="index">{{item}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="header-box">
+                <form reportSubmit bindsubmit="openMap" class="form-for-formid header-card-address">
+                    <button formType="submit" type="default"></button>
+                    <i class="icon icon-item" style="margin-top:0;">
+                        <image src="/static/icon-address.svg"></image>
+                    </i>
+                    <text class="text-overflow">{{raceInfo.addressDescribe}}</text>
+                    <i class="icon icon-address">
+                        <image src="/static/icon-arrow.svg"></image>
+                    </i>
+                </form>
+                <view>
+                    <i class="icon icon-item">
+                        <image src="/static/icon-time.svg"></image>
+                    </i>报名时间 {{raceInfo.enterInterval}}
+        </view>
+                <view>
+                    <i class="icon icon-item">
+                        <image src="/static/icon-time-interval.svg"></image>
+                    </i>比赛时间 {{raceInfo.timeInterval}}
+        </view>
+            </view>
+            <view class="header-description clearfix">
+                <userHeader id="userHeader" userInfo="{{userHeaderInfo}}"></userHeader>
+                <view class="user-description" wx:if="{{raceInfo.description}}">{{raceInfo.description}}</view>
+                <view class="contact-group clearfix" wx:if="{{!footerData.creator}}">
+                    <form reportSubmit bindsubmit="bindAddWeixin" class="form-for-formid contact-button" wx:if="{{raceInfo.creatorWeixinNo}}">
+                        <button formType="submit" type="default"></button>
+                        <i class="icon icon-weixin">
+                            <image src="/static/icon-weixin.svg"></image>
+                        </i>联系微信
+            <i class="contact-split"></i>
+                    </form>
+                    <form reportSubmit bindsubmit="bindCallPhone" class="form-for-formid contact-button">
+                        <button formType="submit" type="default"></button>
+                        <i class="icon icon-phone">
+                            <image src="/static/icon-phone.svg"></image>
+                        </i>拨打电话
+          </form>
+                </view>
+            </view>
+        </view>
+        <view class="info-wrap" wx:if="{{raceInfo.describeId}}">
+            <view class="info-wrap-title">
+                <view class="info-left-title">
+                    <i class="icon-border"></i>赛事详情
+        </view>
+            </view>
+            <view class="info-wrap-content" wx:if="{{raceInfo.raceDescribeTextContent}}">
+                <text>{{raceInfo.raceDescribeTextContent}}</text>
+            </view>
+            <view class="info-wrap-content" wx:elif="{{raceInfo.raceDescribeImageUrlList}}">
+                <image class="info-image-item" mode="widthFix" src="{{item}}" wx:for="{{raceInfo.raceDescribeImageUrlList}}"></image>
+            </view>
+        </view>
+    </view>
+    <createQrCode bindgetPhotosAlbum="getPhotosAlbum" id="createQrCode" pageData="{{raceInfo}}" pageId="{{id}}" pageType="specialRace"></createQrCode>
+    <detailFooter bindbindCancelActivity="allActionTotal" bindcreateQrcode="bindCreateQrcode" bindnavigate="allActionTotal" bindnavigateToEnter="allActionTotal" bindnavigatetoEvent="allActionTotal" footerData="{{footerData}}" pageId="{{id}}" pageType="specialRace" wx:if="{{currentTab==0}}"></detailFooter>
+    <appFooter currentTab="{{currentTab}}" id="appFooter" pageId="{{id}}" pageType="specialRace"></appFooter>
+    <authorize id="authorize"></authorize>
+    <view class="main-content {{currentTab==1?'show':'hide'}}">
+        <specialRaceMatch id="specialRaceMatch" isIpx="{{isIpx}}" raceId="{{id}}" wx:if="{{currentTab==1}}"></specialRaceMatch>
+    </view>
+    <view class="main-content {{currentTab==2?'show':'hide'}}">
+        <raceLive id="raceLive" isIpx="{{isIpx}}" raceId="{{id}}" wx:if="{{currentTab==2}}"></raceLive>
+    </view>
+    <view class="main-content {{currentTab==3?'show':'hide'}}">
+        <toggleProject bindchooseProject="chooseProject" id="toggleProject" projectList="{{projectList}}"></toggleProject>
+        <view class="no-data-content" wx:if="{{teamMembers.length===0}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">名单暂未公示！</view>
+        </view>
+        <view class="team-list {{isIpx?'fix-iphonex':''}}" wx:else>
+            <teamItem teamIndex="{{index}}" teamInfo="{{item}}" wx:for="{{teamMembers}}" wx:key="{{index}}"></teamItem>
+        </view>
+    </view>
+    <view class="main-content {{currentTab==4?'show':'hide'}}">
+        <raceResult id="raceResult" isIpx="{{isIpx}}" raceId="{{id}}" wx:if="{{currentTab==4}}"></raceResult>
+    </view>
+    <view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+</view>

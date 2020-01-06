@@ -1,0 +1,47 @@
+<template name="raceResult">
+    <view class="main-content {{currentTab==4?'show':'hide'}}">
+        <view class="main-result-content {{isIpx?'fix-iphonex':''}} {{!showResultReport?'main-result-no-bottom':''}} {{pointRace?'point-race-list':''}}" style="top:{{raceResultListNone?'98rpx':''}};{{raceResultNeedDraw?'background:none':''}}">
+            <view class="result-box-title clearfix" wx:if="{{!raceResultListNone&&!raceResultNeedDraw}}">
+                <view class="tdr tdr-index"></view>
+                <view class="tdr tdr-nick-name">人员</view>
+                <view class="tdr tdr-victory-count">胜场</view>
+                <view class="tdr tdr-total-count">总场次</view>
+                <view class="tdr tdr-net-victory-score">净胜分</view>
+                <view class="tdr tdr-point-race" wx:if="{{pointRace}}">积分</view>
+            </view>
+            <view class="no-data-content" wx:if="{{raceResultListNone}}">
+                <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+                <view class="no-data-text">暂无数据！</view>
+            </view>
+            <view class="no-data-content" wx:if="{{raceResultNeedDraw}}">
+                <image class="no-data-img" mode="widthFix" src="/static/no-result.png"></image>
+                <view class="no-data-text">有队伍排名一样，等待裁判抽签决出名次！</view>
+            </view>
+            <scroll-view scrollY bindscrolltolower="getMoreRaceResult" class="result-box" lowerThreshold="50" wx:else>
+                <view class="result-list-item clearfix {{item.className}}" wx:for="{{raceResultList}}">
+                    <i class="icon icon-enter-next" wx:if="{{item.enterNextStage}}">
+                        <image src="/static/icon-enter-next.png"></image>
+                    </i>
+                    <view class="tdr tdr-index">
+                        <i class="icon icon-result" wx:if="{{item.indexUrl!==''}}">
+                            <image src="{{item.indexUrl}}"></image>
+                        </i>{{item.index}}</view>
+                    <view class="tdr tdr-nick-name">
+                        <view class="text-overflow" style="line-height:{{item.lineHeight}}rpx" wx:for="{{item.nameList}}">
+              {{item.nickName}}
+            </view>
+                    </view>
+                    <view class="tdr tdr-victory-count">{{item.victoryCount}}</view>
+                    <view class="tdr tdr-total-count">{{item.totalCount}}</view>
+                    <view class="tdr tdr-net-victory-score">{{item.netVictoryScore}}</view>
+                    <view class="tdr tdr-point-race" wx:if="{{pointRace}}">{{item.itemPointRace}}</view>
+                </view>
+            </scroll-view>
+            <view class="result-footer {{isIpx?'fix-iphonex':''}}" wx:if="{{showResultReport}}">
+                <form reportSubmit bindsubmit="bindNavigateButton">
+                    <button formType="submit" type="default">生成个人战报</button>
+                </form>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,45 @@
+<view class="race-live-list  {{isIpx?'is-ipx':''}}">
+    <toggleProject bindchooseProject="chooseProject" id="toggleProject" projectList="{{projectList}}"></toggleProject>
+    <view class="live-item" wx:if="{{liveList.length>0}}" wx:for="{{liveList}}" wx:key="{{index}}">
+        <view class="live-team">
+            <image class="live-bg" src="/static/live-bg.png"></image>
+            <view class="live-team-con">
+                <view class="team-site-info">
+                    <view class="race-type">{{item.roundName?item.roundName:''}}</view>
+                    <view class="race-name">{{showGroupName?item.groupName?item.groupName:'':''}}</view>
+                    <view class="race-site">{{item.matchSiteNo?item.matchSiteNo+'号场':''}}</view>
+                </view>
+                <view class="team-info">
+                    <view class="team-name left-name">{{item.teamLiveInfo.positionAndPalyerName.LEFT[0]}}</view>
+                    <view class="score-text">{{item.teamLiveInfo.positionAndScore.LEFT}} : {{item.teamLiveInfo.positionAndScore.RIGHT}}</view>
+                    <view class="team-name right-name">{{item.teamLiveInfo.positionAndPalyerName.RIGHT[0]}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="live-member" wx:if="{{item.memberLiveInfo.length>0}}">
+            <view class="member-item" wx:for="{{item.memberLiveInfo}}" wx:for-index="memberIndex" wx:for-item="memberItem" wx:key="{{memberIndex}}">
+                <view class="member-info">
+                    <view class="member-name left-name">
+                        <view class="member-name-con" wx:for="{{memberItem.positionAndPalyerName.LEFT}}" wx:for-index="leftNameIndex" wx:for-item="leftNameItem" wx:key="{{leftNameIndex}}">{{leftNameItem}}</view>
+                    </view>
+                    <view class="member-score-text">
+                        <view class="race-time">{{memberItem.time}}</view>
+                        <view class="score-con">{{memberItem.positionAndScore.LEFT}} : {{memberItem.positionAndScore.RIGHT}}</view>
+                    </view>
+                    <view class="member-name right-name">
+                        <view class="member-name-con" wx:for="{{memberItem.positionAndPalyerName.RIGHT}}" wx:for-index="rightNameIndex" wx:for-item="rightNameItem" wx:key="{{rightNameIndex}}">{{rightNameItem}}</view>
+                    </view>
+                </view>
+                <view class="end-race-score" wx:if="{{memberItem.scoreHis.length>0}}">
+                    <view wx:for="{{memberItem.scoreHis}}" wx:for-index="endScoreIndex" wx:for-item="endScoreItem" wx:key="{{endScoreIndex}}">
+            {{endScoreItem}}
+          </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="no-data-con" wx:if="{{liveList.length<=0}}">
+        <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+        <view class="no-data-text">暂无数据！</view>
+    </view>
+</view>

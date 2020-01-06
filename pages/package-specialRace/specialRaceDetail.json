@@ -1,0 +1,16 @@
+{
+    "navigationBarTitleText": "比赛详情",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "detailFooter": "/components/detailFooter",
+        "authorize": "/components/authorize",
+        "appFooter": "/components/appFooter",
+        "createQrCode": "/components/createQrCode",
+        "teamItem": "/components/raceTeam",
+        "specialRaceMatch": "/components/specialRace/specialRaceMatch",
+        "raceLive": "/components/specialRace/raceLive",
+        "raceResult": "/components/specialRace/raceResult",
+        "userHeader": "/components/subject/userHeader",
+        "toggleProject": "/components/specialRace/toggleRaceProject"
+    }
+}

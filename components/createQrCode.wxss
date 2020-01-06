@@ -1,0 +1,61 @@
+@import "authorize.wxss";
+
+.container-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.container-content {
+    position: absolute;
+    top: 100rpx;
+    left: 50%;
+    width: 606rpx;
+    height: 900rpx;
+    margin-left: -303rpx;
+    background: #fff;
+    border-radius: 6rpx;
+}
+
+.canvas-none {
+    position: fixed;
+    left: -800px;
+    top: -800px;
+}
+
+.my-canvas {
+    width: 100%;
+    height: 870rpx;
+    background: #fff;
+    border-radius: 6rpx;
+}
+
+.save-button {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    background: #00CD91;
+    color: #fff;
+    text-align: center;
+}
+
+.icon-download {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 30rpx;
+}

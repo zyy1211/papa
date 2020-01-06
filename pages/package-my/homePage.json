@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "个人主页",
+    "navigationBarBackgroundColor": "#00CD91",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "activityCard": "/components/activityCard",
+        "subjectCard": "/components/subjectCard"
+    }
+}

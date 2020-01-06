@@ -1,0 +1,61 @@
+<view class="match-card">
+    <view class="match-header" wx:if="{{matchInfo.matchSiteNo!==0||matchInfo.gmtPrepareStart}}">
+        <view class="match-site">{{matchInfo.matchSiteNo===0?'':matchInfo.matchSiteNo+'号场'}}</view>
+        <view class="match-time">{{matchInfo.gmtPrepareStart||''}}</view>
+    </view>
+    <view class="team-info {{matchInfo.matchSiteNo===0?'match-empty-site':''}}">
+        <view class="team-index">{{matchInfo.seqInRound}}</view>
+        <view class="team-name left-name {{matchInfo.leftOutLine?'':'no-out-line'}} ">{{matchInfo.sideId==='EMPTY_SIDE'?'轮空':teamIdAndTeamName[matchInfo.sideId]}}</view>
+        <view class="match-status">
+            <view class="vs-status" wx:if="{{matchInfo.status.name==='WAITING_JUDGE'||matchInfo.sideId==='EMPTY_SIDE'||matchInfo.otherSideId==='EMPTY_SIDE'}}">vs</view>
+            <view class="start-status" wx:if="{{matchInfo.status.name==='WORKING'}}">进行中</view>
+            <view class="end-status" wx:if="{{matchInfo.status.name==='END'||matchInfo.status.name==='ABNORMAL_END'}}">
+                <view class="end-text">{{matchInfo.result}}</view>
+                <view bindtap="openAbstainModal" class="warn-status" data-both-abstain="{{matchInfo.bothAbstain}}" data-warn-info="{{matchInfo.memo}}" data-warn-name="{{teamIdAndTeamName[matchInfo.winSide]}}" wx:if="{{matchInfo.status.name==='ABNORMAL_END'}}">!</view>
+            </view>
+        </view>
+        <view class="team-name right-name {{matchInfo.rightOutLine?'':'no-out-line'}} ">
+      {{matchInfo.otherSideId==='EMPTY_SIDE'?'轮空':teamIdAndTeamName[matchInfo.otherSideId]}}     
+    </view>
+    </view>
+    <view class="member-con" hidden="{{!showMember}}">
+        <view class="member-item" wx:for="{{memberList}}" wx:key="{{index}}">
+            <view class="member-info-con">
+                <view class="member-name left-name">
+                    <view class="name-con" wx:for="{{item.sideMember}}" wx:for-index="memberIndex" wx:for-item="memberItem" wx:key="{{memberIndex}}">{{memberItem}}</view>
+                </view>
+                <view class="match-status">
+                    <view class="vs-status" wx:if="{{item.status.name==='WAITING_JUDGE'}}">vs</view>
+                    <view class="start-status" wx:if="{{item.status.name==='WORKING'}}">进行中</view>
+                    <view class="end-status" wx:if="{{item.status.name==='END'||item.status.name==='ABNORMAL_END'}}">
+                        <view class="end-text">{{item.result}}</view>
+                        <view bindtap="openAbstainModal" class="warn-status" data-both-abstain="{{item.bothAbstain}}" data-warn-info="{{item.memo}}" data-warn-name="{{item.winUsers}}" wx:if="{{item.status.name==='ABNORMAL_END'}}">!</view>
+                    </view>
+                    <view class="no-match-status" wx:if="{{item.status.name==='CANCEL'}}">-</view>
+                </view>
+                <view class="member-name right-name">
+                    <view class="name-con" wx:for="{{item.otherSideMember}}" wx:for-index="memberIndex" wx:for-item="memberItem" wx:key="{{memberIndex}}">{{memberItem}}</view>
+                </view>
+            </view>
+            <view class="end-race-score" wx:if="{{scheduleIdMatchResults[item.id]&&item.totalMatchCount>1}}">
+                <view wx:for="{{scheduleIdMatchResults[item.id]}}" wx:for-index="endScoreIndex" wx:for-item="endScoreItem" wx:key="{{endScoreIndex}}">
+          {{endScoreItem}}
+        </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="showMemberToggle" class="show-btn {{showMember?'active':''}} " wx:if="{{matchInfo.confirmPlayerList}}">{{showMember?'收起':'展开'}}</view>
+</view>
+<view class="abstain-modal" hidden="{{!showAbstainInfo}}">
+    <view bindtap="closeModal" class="mask"></view>
+    <view class="info-con">
+        <view class="modal-title">提示</view>
+        <view class="modal-con">
+            <view class="abstain-info">{{warnInfo.warnName}}</view>
+            <view class="abstain-info">原因：{{warnInfo.warnMemo}}</view>
+        </view>
+        <view class="modal-footer">
+            <button bindtap="closeModal" class="confirm" type="default">确定</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,203 @@
+<view class="main-content {{isIpx?'fix-iphonex':''}}">
+    <view class="switch-tab">
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===0?'on':''}}" data-current="0">
+            <button formType="submit" type="default"></button>
+      发起者<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===1?'on':''}}" data-current="1">
+            <button formType="submit" type="default"></button>
+      参与者<i class="tab-bottom-line"></i>
+        </form>
+    </view>
+    <block wx:if="{{currentTab===0}}">
+        <view class="no-data-content" wx:if="{{createData.error}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">暂无数据</view>
+        </view>
+        <view class="content-box" wx:else>
+            <view class="first-box box">
+                <image class="box-bg" src="/static/icon-data-activity-bg.png"></image>
+                <view class="first-box-content">
+                    <view class="first-memo">第一次使用PaPa小程序举办活动</view>
+                    <view class="first-time">{{createData.gmtFirstCreateActivity}}</view>
+                </view>
+            </view>
+            <view class="box">
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-activity.svg"></image>
+                    </i>共计举办活动</view>
+                <view class="total-times">
+                    <text class="strong-text">{{createData.totalCreateActivtyCount}}</text>场</view>
+                <view class="clearfix">
+                    <view class="year-box">
+                        <view class="year-memo">本年度举办活动</view>
+                        <view class="year-times">
+                            <text class="strong">{{createData.thisYearCreateActivtyCount}}</text>场</view>
+                    </view>
+                    <view class="month-box">
+                        <view class="month-memo">本月举办活动</view>
+                        <view class="month-times">
+                            <text class="strong">{{createData.thisMonthCreateActivtyCount}}</text>场</view>
+                    </view>
+                </view>
+            </view>
+            <view class="clearfix">
+                <view class="total-people-box box">
+                    <view class="total-memo">
+                        <i class="icon icon-memo">
+                            <image src="/static/icon-data-people.svg"></image>
+                        </i>参加活动总人数</view>
+                    <view class="total-times">
+                        <text class="strong-text">{{createData.totalActivityJoinerCount}}</text>人</view>
+                </view>
+                <view class="month-people-box box">
+                    <view class="month-people-memo">本月参与人数</view>
+                    <view class="month-people-times">
+                        <text class="strong">{{createData.thisMonthActivityJoinerCount}}</text>人</view>
+                </view>
+            </view>
+            <view class="total-duration box clearfix">
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-time.svg"></image>
+                    </i>举办活动总时长</view>
+                <view class="total-times">
+                    <text class="strong-text">{{createData.totalCreateActivityMinutes}}</text>小时</view>
+            </view>
+            <view class="box">
+                <form reportSubmit bindsubmit="showHelpModal" class="form-for-formid icon-help-box" data-type="create">
+                    <button formType="submit" type="default"></button>
+                    <image class="icon-help" src="/static/icon-help-gray.svg"></image>
+                </form>
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-fee.svg"></image>
+                    </i>共计收费</view>
+                <view class="total-times">
+                    <text class="strong-text">{{createData.totalInAccountAmount}}</text>元</view>
+                <view class="clearfix">
+                    <view class="year-box">
+                        <view class="year-memo">本年度收费</view>
+                        <view class="year-times">
+                            <text class="strong">{{createData.thisYearInAccountAmount}}</text>元</view>
+                    </view>
+                    <view class="month-box">
+                        <view class="month-memo">本月收费</view>
+                        <view class="month-times">
+                            <text class="strong">{{createData.thisMonthInAccountAmount}}</text>元</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{currentTab===1}}">
+        <view class="no-data-content" wx:if="{{joinData.error}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-activity.png"></image>
+            <view class="no-data-text">暂无数据！</view>
+        </view>
+        <view class="content-box" wx:else>
+            <view class="first-box box">
+                <image class="box-bg" src="/static/icon-data-activity-bg.png"></image>
+                <view class="first-box-content">
+                    <view class="first-memo">第一次使用PaPa小程序参与活动</view>
+                    <view class="first-time">{{joinData.gmtFirstJoinActivity}}</view>
+                </view>
+            </view>
+            <view class="box">
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-activity.svg"></image>
+                    </i>共计参与活动</view>
+                <view class="total-times">
+                    <text class="strong-text">{{joinData.totalJoinActivityCount}}</text>场</view>
+                <view class="clearfix">
+                    <view class="year-box">
+                        <view class="year-memo">本年度参与活动</view>
+                        <view class="year-times">
+                            <text class="strong">{{joinData.thisYearJoinActivityCount}}</text>场</view>
+                    </view>
+                    <view class="month-box">
+                        <view class="month-memo">本月参与活动</view>
+                        <view class="month-times">
+                            <text class="strong">{{joinData.thisMonthJoinActivityCount}}</text>场</view>
+                    </view>
+                </view>
+            </view>
+            <view class="clearfix">
+                <view class="total-people-box total-duration box">
+                    <view class="total-memo">
+                        <i class="icon icon-memo">
+                            <image src="/static/icon-data-time.svg"></image>
+                        </i>参加活动总时长</view>
+                    <view class="total-times">
+                        <text class="strong-text">{{joinData.totalJoinActivityMinutes}}</text>小时</view>
+                </view>
+                <view class="month-people-box box">
+                    <view class="month-people-memo">
+                        <i class="icon icon-memo">
+                            <image src="/static/icon-data-people.svg"></image>
+                        </i>共计带过的好友</view>
+                    <view class="total-times">
+                        <text class="strong">{{joinData.totalCarryUserCount}}</text>人</view>
+                </view>
+            </view>
+            <view class="total-people box">
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-people.svg"></image>
+                    </i>共同参与活动次数最多的好友</view>
+                <view class="total-times strong-name">{{joinData.maxJoinTogether}}</view>
+            </view>
+            <view class="total-people box">
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-people.svg"></image>
+                    </i>参加TA的活动次数最多</view>
+                <view class="total-times strong-name">{{joinData.maxJoinActivity}}</view>
+            </view>
+            <view class="box">
+                <form reportSubmit bindsubmit="showHelpModal" class="form-for-formid icon-help-box" data-type="join">
+                    <button formType="submit" type="default"></button>
+                    <image class="icon-help" src="/static/icon-help-gray.svg"></image>
+                </form>
+                <view class="total-memo">
+                    <i class="icon icon-memo">
+                        <image src="/static/icon-data-fee.svg"></image>
+                    </i>共计消费</view>
+                <view class="total-times">
+                    <text class="strong-text">{{joinData.totalPayAmount}}</text>元</view>
+                <view class="clearfix">
+                    <view class="year-box">
+                        <view class="year-memo">本年度消费</view>
+                        <view class="year-times">
+                            <text class="strong">{{joinData.thisYearPayAmount}}</text>元</view>
+                    </view>
+                    <view class="month-box">
+                        <view class="month-memo">本月消费</view>
+                        <view class="month-times">
+                            <text class="strong">{{joinData.thisMonthPayAmount}}</text>元</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="wxapp-modal" hidden="{{helpModalHidden}}">
+    <view bindtap="closeHelpModal" class="mask"></view>
+    <view class="content" style="top:10%">
+        <view class="modal-header">说明</view>
+        <view class="body">
+            <view class="help-content">
+                <view>{{helpModalcontent}}</view>
+            </view>
+        </view>
+        <view class="footer">
+            <button bindtap="closeHelpModal" class="confirm" style="width:100%;" type="default">确定</button>
+        </view>
+    </view>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

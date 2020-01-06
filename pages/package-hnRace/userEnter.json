@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "添加队员",
+    "usingComponents": {
+        "flexbleForm": "/components/hnRace/flexbleForm",
+        "hnRaceFooter": "/components/hnRace/hnRaceFooter",
+        "multiGroupSelect": "/components/hnRace/multiGroupSelect",
+        "enterTimeTitle": "/components/hnRace/enterTimeTitle"
+    }
+}

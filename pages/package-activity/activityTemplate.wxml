@@ -1,0 +1,39 @@
+<import src="../../template/template.wxml"></import>
+<view class="show">
+    <view class="switch-tab">
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==0?'on':''}}" data-current="0">
+            <button formType="submit" type="default"></button>
+      活动<i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab==1?'on':''}}" data-current="1">
+            <button formType="submit" type="default"></button>
+      赛事<i class="tab-bottom-line"></i>
+        </form>
+    </view>
+    <block wx:if="{{currentTab==0}}">
+        <view class="no-data-content" wx:if="{{dataList.length===0}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-data.png"></image>
+            <view class="no-data-text">暂无活动，快去发起活动吧</view>
+        </view>
+        <view class="themes-list {{isIpx?'fix-iphonex':''}}" wx:else>
+            <view class="themes-list-box clearfix" wx:for="{{dataList}}">
+                <template is="templateActivityList" data="{{...item}}"></template>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{currentTab==1}}">
+        <view class="no-data-content" wx:if="{{dataList.length===0}}">
+            <image class="no-data-img" mode="widthFix" src="/static/no-race.png"></image>
+            <view class="no-data-text">暂无比赛，快去发起比赛吧</view>
+        </view>
+        <view class="themes-list {{isIpx?'fix-iphonex':''}}" wx:else>
+            <view class="themes-list-box clearfix" wx:for="{{dataList}}">
+                <template is="templateActivityList" data="{{...item}}"></template>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+<view animation="{{__wetoast__.animationData}}" class="wetoast__bd {{__wetoast__.position}}">
+    <view class="wetoast__bd__title {{__wetoast__.titleClassName||''}}" wx:if="{{__wetoast__.title}}">{{__wetoast__.title}}</view>
+</view>

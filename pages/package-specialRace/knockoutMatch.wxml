@@ -1,0 +1,69 @@
+<view class="knockout-con {{isIpx?'is-ipx':''}}">
+    <image class="knockout-bg" mode="scaleToFill" src="/static/race-elimination-schdule-bg.png"></image>
+    <scroll-view scrollX scrollY class="team-con">
+        <view class="scroll-con">
+            <view class="round-con" wx:for="{{leftRound}}" wx:key="{{index}}">
+                <view class="filter-con">
+                    <view class="round-item {{item.roundCode==='FINAL_GAME'?'final-round':''}} {{roundItem.winSide?roundItem.winSide===roundItem.sideId?'team1':roundItem.winSide===roundItem.otherSideId?'team2':'':''}}" wx:for="{{item.teamList}}" wx:for-index="teamIndex" wx:for-item="roundItem" wx:key="{{teamIndex}}">
+                        <view class="team-item {{roundItem?roundItem.winSide?roundItem.winSide===roundItem.sideId?'':'no-win':'':roundList[index-1].teamList.length>0?leftRound[index-1].teamList[teamIndex*2].winSide?'':'no-win':'no-win'}} {{roundItem?'out-line':roundList[index-1].teamList.length>0?leftRound[index-1].teamList[teamIndex*2].winSide?'out-line':'':''}}">
+                            <view class="text-con">
+                                <view>
+                  {{roundItem?roundItem.sideId==='EMPTY_SIDE'?'轮空':item.sideIdAndSideName[roundItem.sideId]:roundList[index-1].teamList.length>0?leftRound[index-1].teamList[teamIndex*2].winSide?leftRound[index-1].sideIdAndSideName[leftRound[index-1].teamList[teamIndex*2].winSide]:leftRound[index-1].teamList[teamIndex*2].bothAbstain?'轮空':'敬请期待':'敬请期待'}}
+                </view>
+                            </view>
+                        </view>
+                        <view class="team-item  {{roundItem?roundItem.winSide?roundItem.winSide===roundItem.otherSideId?'':'no-win':'':roundList[index-1].teamList.length>0?leftRound[index-1].teamList[teamIndex*2+1].winSide?'':'no-win':'no-win'}} {{roundItem?'out-line':roundList[index-1].teamList.length>0?leftRound[index-1].teamList[teamIndex*2+1].winSide?'out-line':'':''}}" wx:if="{{item.roundCode!=='FINAL_GAME'}}">
+                            <view class="text-con">
+                                <view>
+                  {{roundItem?roundItem.otherSideId==='EMPTY_SIDE'?'轮空':item.sideIdAndSideName[roundItem.otherSideId]:roundList[index-1].teamList.length>0?leftRound[index-1].teamList[teamIndex*2+1].winSide?leftRound[index-1].sideIdAndSideName[leftRound[index-1].teamList[teamIndex*2+1].winSide]:leftRound[index-1].teamList[teamIndex*2+1].bothAbstain?'轮空':'敬请期待':'敬请期待'}}
+                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="vs-con" wx:if="{{roundList.length>0}}">VS</view>
+            <view class="three-four-round" wx:if="{{threeFourRound.roundCode==='THIRD_FOURTH_FINAL_GAME'}}">
+                <view class="three-four-con">
+                    <view class="team-item {{threeFourRound.teamList.length>0?threeFourRound.teamList[0].winSide===threeFourRound.teamList[0].sideId?'':'no-win':semifinal.teamList.length>0?semifinal.teamList[0].winSide?'':'no-win':'no-win'}} ">
+                        <view class="text-con">
+                            <view>
+                {{threeFourRound.teamList.length>0?threeFourRound.sideIdAndSideName[threeFourRound.teamList[0].sideId]:semifinal.teamList.length>0?semifinal.teamList[0].winSide?semifinal.sideIdAndSideName[semifinal.teamList[0].winSide]:'敬请期待':'敬请期待'}}
+              </view>
+                        </view>
+                    </view>
+                    <view class="vs-con">VS</view>
+                    <view class="team-item {{threeFourRound.teamList.length>0?threeFourRound.teamList[0].winSide===threeFourRound.teamList[0].otherSideId?'':'no-win':semifinal.teamList.length>0?semifinal.teamList[1].winSide?'':'no-win':'no-win'}} ">
+                        <view class="text-con">
+                            <view>
+                {{threeFourRound.teamList.length>0?threeFourRound.sideIdAndSideName[threeFourRound.teamList[0].otherSideId]:semifinal.teamList.length>0?semifinal.teamList[1].winSide?semifinal.sideIdAndSideName[semifinal.teamList[1].winSide]:'敬请期待':'敬请期待'}}
+              </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="three-four-title">三四名决赛</view>
+            </view>
+            <view class="round-con right" wx:for="{{rightRound}}" wx:key="{{index}}">
+                <view class="filter-con">
+                    <view class="round-item {{item.roundCode==='FINAL_GAME'?'final-round':''}} {{roundItem.winSide?roundItem.winSide===roundItem.sideId?'team1':roundItem.winSide===roundItem.otherSideId?'team2':'':''}}" wx:for="{{item.teamList}}" wx:for-index="teamIndex" wx:for-item="roundItem" wx:key="{{teamIndex}}">
+                        <view class="team-item {{roundItem?roundItem.winSide?roundItem.winSide===roundItem.sideId?'':'no-win':'':roundList[roundList.length-index-2].teamList.length>0?rightRound[index+1].teamList[teamIndex*2].winSide?'':'no-win':'no-win'}} {{roundItem?'out-line':roundList[roundList.length-index-2].teamList.length>0?rightRound[index+1].teamList[teamIndex*2].winSide?'out-line':'':''}}" wx:if="{{item.roundCode!=='FINAL_GAME'}}">
+                            <view class="text-con">
+                                <view>
+                  {{roundItem?roundItem.sideId==='EMPTY_SIDE'?'轮空':item.sideIdAndSideName[roundItem.sideId]:roundList[roundList.length-index-2].teamList.length>0?rightRound[index+1].teamList[teamIndex*2].winSide?rightRound[index+1].sideIdAndSideName[rightRound[index+1].teamList[teamIndex*2].winSide]:rightRound[index+1].teamList[teamIndex*2].bothAbstain?'轮空':'敬请期待':'敬请期待'}}
+                </view>
+                            </view>
+                        </view>
+                        <view class="team-item {{roundItem?roundItem.winSide?roundItem.winSide===roundItem.otherSideId?'':'no-win':'':roundList[roundList.length-index-2].teamList.length>0?rightRound[index+1].teamList[teamIndex*2+1].winSide?'':'no-win':'no-win'}} {{roundItem?'out-line':roundList[roundList.length-index-2].teamList.length>0?rightRound[index+1].teamList[teamIndex*2+1].winSide?'out-line':'':''}}">
+                            <view class="text-con">
+                                <view>
+                  {{roundItem?roundItem.otherSideId==='EMPTY_SIDE'?'轮空':item.sideIdAndSideName[roundItem.otherSideId]:roundList[roundList.length-index-2].teamList.length>0?rightRound[index+1].teamList[teamIndex*2+1].winSide?rightRound[index+1].sideIdAndSideName[rightRound[index+1].teamList[teamIndex*2+1].winSide]:rightRound[index+1].teamList[teamIndex*2+1].bothAbstain?'轮空':'敬请期待':'敬请期待'}}
+                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="fix-ipx-content" wx:if="{{isIpx}}"></view>

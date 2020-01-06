@@ -1,0 +1,20 @@
+<view class="hn-race-detail">
+    <view class="switch-tab">
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===0?'on':''}}" data-current="{{0}}">
+            <button formType="submit" type="default"></button>
+      详情
+      <i class="tab-bottom-line"></i>
+        </form>
+        <form reportSubmit bindsubmit="swichNav" class="form-for-formid switch-tab-list {{currentTab===2?'on':''}}" data-current="{{2}}">
+            <button formType="submit" type="default"></button>
+      赛果
+      <i class="tab-bottom-line"></i>
+        </form>
+    </view>
+    <view class="hn-race-body">
+        <hnRaceDetail id="hnRaceDetail" raceId="{{raceId}}" wx:if="{{currentTab===0}}"></hnRaceDetail>
+        <hnTeamMemberList id="hnTeamMemberList" wx:if="{{currentTab===1}}"></hnTeamMemberList>
+        <hnRaceResult id="hnRaceResult" raceId="{{raceId}}" wx:if="{{currentTab===2}}"></hnRaceResult>
+    </view>
+    <view class="{{isIpx?'fix-iphonex-content':'hide'}}"></view>
+</view>

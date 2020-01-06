@@ -1,0 +1,154 @@
+.main-content {
+    color: #333;
+    padding-bottom: 20rpx;
+}
+
+.main-content.fix-iphonex {
+    padding-bottom: 88rpx;
+}
+
+.form-header {
+    display: block;
+    padding: 20rpx;
+    font-size: 30rpx;
+    background: #fff;
+}
+
+.icon-arrow {
+    margin-left: 10rpx;
+}
+
+.form-map {
+    float: left;
+}
+
+.form-address-input {
+    display: inline-block;
+    max-width: 165rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    vertical-align: middle;
+    color: #333;
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.form-search {
+    position: relative;
+    float: left;
+    height: 60rpx;
+    margin-left: 20rpx;
+    line-height: 60rpx;
+}
+
+.form-search-input {
+    width: 340rpx;
+    height: 60rpx;
+    padding: 0 50rpx;
+    background: #F4F4F4;
+    border-radius: 30rpx;
+    font-size: 26rpx;
+    line-height: 60rpx;
+}
+
+.icon-search {
+    position: absolute;
+    left: 17rpx;
+    top: 17rpx;
+    width: 27rpx;
+    height: 27rpx;
+}
+
+.icon-delete {
+    position: absolute;
+    right: 7rpx;
+    top: 15rpx;
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.icon-address {
+    width: 24rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}
+
+.icon-get-location {
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}
+
+.form-no-location {
+    line-height: 100rpx;
+}
+
+.form-location-box {
+    width: 710rpx;
+    padding: 0 20rpx;
+    background: #fff;
+    line-height: 100rpx;
+    font-size: 30rpx;
+}
+
+.form-location-border {
+    width: 100%;
+    border-top: 2rpx solid #eaeaea;
+}
+
+.form-location {
+    float: left;
+    width: 510rpx;
+    padding-left: 30rpx;
+}
+
+.form-get-location {
+    float: right;
+    color: #00CD91;
+}
+
+.location-box {
+    margin-top: 20rpx;
+    padding: 20rpx 20rpx 0;
+    background: #fff;
+    font-size: 26rpx;
+    line-height: 80rpx;
+}
+
+.location-box-title {
+    color: #999;
+}
+
+.location-item {
+    display: block;
+    width: 660rpx;
+    padding: 0 20rpx 0 30rpx;
+    border-bottom: 2rpx solid #eaeaea;
+}
+
+.search-location-box {
+    position: relative;
+    line-height: 40rpx;
+}
+
+.search-location-box .location-item {
+    padding: 20rpx;
+}
+
+.location-item-name {
+    font-size: 30rpx;
+}
+
+.location-item-memo {
+    margin-top: 10rpx;
+    color: #999;
+    font-size: 24rpx;
+}
+
+.location-item-distance {
+    position: absolute;
+    top: 30rpx;
+    right: 10rpx;
+    font-size: 24rpx;
+    color: #999;
+}
